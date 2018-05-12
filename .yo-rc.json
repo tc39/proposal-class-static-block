@@ -1,0 +1,22 @@
+{
+  "generator-ecmascript-proposal": {
+    "promptValues": {
+      "hasChampion": true,
+      "championName": "Ron Buckton",
+      "championGithub": "rbuckton",
+      "spec": "https://rbuckton.github.io/proposal-class-static-block",
+      "stage": "0",
+      "sections": [
+        "prior-art",
+        "syntax",
+        "semantics",
+        "examples",
+        "grammar",
+        "references",
+        "prior-discussion"
+      ],
+      "build": "gulp",
+      "vscode": true
+    }
+  }
+}
