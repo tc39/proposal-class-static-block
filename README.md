@@ -242,11 +242,11 @@ The following is a high-level list of tasks to progress through each stage of th
 [Specification]: https://rbuckton.github.io/proposal-class-static-block
 
 <!-- The following links should be supplied as the proposal advances: -->
-[Transpiler]: #todo <!-- TODO: provide link to github PR -->
-[Stage3ReviewerSignOff]: #todo <!-- TODO: provide link to github issue -->
-[Stage3EditorSignOff]: #todo <!-- TODO: provide link to github issue -->
-[Test262PullRequest]: #todo <!-- TODO: provide link to github PR -->
-[Implementation1]: #todo <!-- TODO: provide link to github issue -->
-[Implementation2]: #todo <!-- TODO: provide link to github issue -->
-[Ecma262PullRequest]: #todo <!-- TODO: provide link to github PR -->
+[Transpiler]: #todo
+[Stage3ReviewerSignOff]: #todo
+[Stage3EditorSignOff]: #todo
+[Test262PullRequest]: #todo
+[Implementation1]: #todo
+[Implementation2]: #todo
+[Ecma262PullRequest]: #todo
 <!--#endregion:links-->
