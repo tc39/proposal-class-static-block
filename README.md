@@ -8,6 +8,8 @@ This is not intended as a replacement for public fields, as they provide useful 
 static analysis tools and are a valid target for decorators. Rather, this is intended to augment
 existing use cases and make enable new use cases not currently handled by that proposal.
 
+* [Stage 0 Presentation](https://docs.google.com/presentation/d/1TLFrhKMW2UHlHIcjKN02cEJsSq4HL7odS6TE6M-OGYg/edit?usp=sharing)
+
 <!--#endregion:intro-->
 
 <!--#region:status-->
