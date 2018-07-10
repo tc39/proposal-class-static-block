@@ -1,0 +1,196 @@
+<emu-clause id="sec-class-definitions">
+  <h1>Class Definitions</h1>
+  <h2>Syntax</h2>
+  <emu-grammar>
+    ClassElement[Yield, Await] :
+      MethodDefinition[?Yield, ?Await]
+      `static` MethodDefinition[?Yield, ?Await]
+      <ins>ClassStaticBlock</ins>
+      `;`
+
+    <ins>
+    ClassStaticBlock :
+      `static` `{` StaticBlockBody `}`
+    
+    ClassStaticBlockBody :
+      ClassStaticBlockStatementList
+
+    ClassStaticBlockStatementList :
+      StatementList[~Yield, ~Await, ~Return]?
+    </ins>
+  </emu-grammar>
+
+  <emu-clause id="sec-class-definitions-static-semantics-early-errors">
+    <h1>Static Semantics: Early Errors</h1>
+    <emu-grammar collapsed>ClassBody : ClassElementList</emu-grammar>
+    <ul>
+      <li>
+        <p><ins>It is a Syntax Error if ClassStaticBlockList of |ClassElementList| contains more than one element.</ins></p>
+      </li>
+    </ul>
+  </emu-clause>
+
+  <emu-clause id="sec-static-semantics-isstatic">
+    <h1>Static Semantics: IsStatic</h1>
+    <emu-grammar collapsed><ins>ClassElement: ClassStaticBlock</ins></emu-grammar>
+    <emu-alg>
+      1. <ins>Return *false*.</ins>
+    </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-static-semantics-nonconstructormethoddefinitions">
+    <h1>Static Semantics: NonConstructorMethodDefinitions</h1>
+    <emu-grammar collapsed>ClassElementList: ClassElement</emu-grammar>
+    <emu-alg>
+      1. If |ClassElement| is <emu-grammar collapsed>ClassElement : `;`</emu-grammar> <ins>or <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar></ins>, return a new empty List.
+      1. If IsStatic of |ClassElement| is *false* and PropName of |ClassElement| is `"constructor"`, return a new empty List.
+      1. Return a List containing |ClassElement|.
+    </emu-alg>
+    <emu-grammar collapsed>ClassElementList: ClassElementList ClassElement</emu-grammar>
+    <emu-alg>
+      1. Let _list_ be NonConstructorMethodDefinitions of |ClassElementList|.
+      1. If |ClassElement| is <emu-grammar collapsed>ClassElement : `;`</emu-grammar> <ins>or <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar></ins>, return _list_.
+      1. If IsStatic of |ClassElement| is *false* and PropName of |ClassElement| is `"constructor"`, return _list_.
+      1. Append |ClassElement| to the end of _list_.
+      1. Return _list_.
+    </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-static-semantics-classstaticblocklist">
+    <h1><ins>Static Semantics: ClassStaticBlockList</ins></h1>
+    <emu-grammar collapsed>ClassElementList: ClassElement</emu-grammar>
+    <emu-alg>
+      1. If |ClassElement| is not <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar>, return a new empty List.
+      1. Return a List containing |ClassElement|.
+    </emu-alg>
+    <emu-grammar collapsed>ClassElementList: ClassElementList ClassElement</emu-grammar>
+    <emu-alg>
+      1. Let _list_ be ClassStaticBlockList of |ClassElementList|.
+      1. If |ClassElement| is not <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar>, return _list_.
+      1. Append |ClassElement| to the end of _list_.
+      1. Return _list_.
+    </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-class-definitions-static-semantics-propname">
+    <h1>Static Semantics: PropName</h1>
+    <emu-grammar collapsed><ins>ClassElement : ClassStaticBlock</ins></emu-grammar>
+    <emu-alg>
+      1. <ins>Return ~empty~.</ins>
+    </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-runtime-semantics-classdefinitionevaluation">
+    <h1>Runtime Semantics: ClassDefinitionEvaluation</h1>
+    <emu-note>This algorithm is a delta from the <a href="https://tc39.github.io/proposal-class-fields/#runtime-semantics-class-definition-evaluation">Class Fields proposal</a>.</emu-note>
+    <p>With parameter _className_.</p>
+    <emu-grammar>ClassTail : ClassHeritage? `{` ClassBody? `}`</emu-grammar>
+    <emu-alg>
+      1. Let _lex_ be the LexicalEnvironment of the running execution context.
+      1. Let _classScope_ be NewDeclarativeEnvironment(_lex_).
+      1. Let _classScopeEnvRec_ be _classScope_'s EnvironmentRecord.
+      1. If _className_ is not *undefined*, then
+        1. Perform _classScopeEnvRec_.CreateImmutableBinding(_className_, *true*).
+      1. Let _outerPrivateEnvironment_ be the PrivateNameEnvironment of the running execution context.
+      1. Let _classPrivateEnvironment_ be NewDeclarativeEnvironment(_outerPrivateEnvironment_).
+      1. Let _classPrivateEnvRec_ be _classPrivateEnvironment_'s EnvironmentRecord.
+      1. If |ClassBody_opt| is present, then
+        1. For each element _dn_ of the PrivateBoundNames of |ClassBody_opt|,
+          1. Perform _classPrivateEnvRec_.CreateImmutableBinding(_dn_, *true*).
+      1. If |ClassHeritage_opt| is not present, then
+        1. Let _protoParent_ be the intrinsic object %ObjectPrototype%.
+        1. Let _constructorParent_ be the intrinsic object %FunctionPrototype%.
+      1. Else,
+        1. Set the running execution context's LexicalEnvironment to _classScope_.
+        1. NOTE: The running execution context's PrivateNameEnvironment is _outerPrivateEnvironment_ when evaluating |ClassHeritage|.
+        1. Let _superclass_ be the result of evaluating |ClassHeritage|.
+        1. Set the running execution context's LexicalEnvironment to _lex_.
+        1. ReturnIfAbrupt(_superclass_).
+        1. If _superclass_ is *null*, then
+          1. Let _protoParent_ be *null*.
+          1. Let _constructorParent_ be the intrinsic object %FunctionPrototype%.
+        1. Else if IsConstructor(_superclass_) is *false*, throw a *TypeError* exception.
+        1. Else,
+          1. Let _protoParent_ be ? Get(_superclass_, `"prototype"`).
+          1. If Type(_protoParent_) is neither Object nor Null, throw a *TypeError* exception.
+          1. Let _constructorParent_ be _superclass_.
+      1. Let _proto_ be ObjectCreate(_protoParent_).
+      1. If |ClassBody_opt| is not present, let _constructor_ be ~empty~.
+      1. Else, let _constructor_ be ConstructorMethod of |ClassBody|.
+      1. If _constructor_ is ~empty~, then
+        1. If |ClassHeritage_opt| is present and _protoParent_ is not *null*, then
+          1. Let _constructor_ be the result of parsing the source text
+            <pre><code class="javascript">constructor(... args){ super (...args);}</code></pre>
+            using the syntactic grammar with the goal symbol |MethodDefinition[~Yield]|.
+        1. Else,
+          1. Let _constructor_ be the result of parsing the source text
+            <pre><code class="javascript">constructor( ){ }</code></pre>
+            using the syntactic grammar with the goal symbol |MethodDefinition[~Yield]|.
+      1. Set the running execution context's LexicalEnvironment to _classScope_.
+      1. Set the running execution context's PrivateNameEnvironment to _classPrivateEnvironment_.
+      1. Let _constructorInfo_ be the result of performing DefineMethod for _constructor_ with arguments _proto_ and _constructorParent_ as the optional _functionPrototype_ argument.
+      1. Assert: _constructorInfo_ is not an abrupt completion.
+      1. Let _F_ be _constructorInfo_.[[Closure]].
+      1. If |ClassHeritage_opt| is present and _protoParent_ is not *null*, then set _F_.[[ConstructorKind]] to `"derived"`.
+      1. Perform MakeConstructor(_F_, *false*, _proto_).
+      1. Perform MakeClassConstructor(_F_).
+      1. Perform CreateMethodProperty(_proto_, `"constructor"`, _F_).
+      1. If |ClassBody_opt| is not present, let _elements_ be a new empty List.
+      1. Else, let _elements_ be NonConstructorMethodDefinitions of |ClassBody|.
+      1. Let _fieldRecords_ be a new empty List.
+      1. For each |ClassElement| _e_ in order from _elements_
+        1. If IsStatic of _e_ is *false*, then
+          1. Let _fields_ be the result of performing ClassElementEvaluation for _e_ with arguments _proto_ and *false*.
+        1. Else,
+          1. Let _fields_ be the result of performing ClassElementEvaluation for _e_ with arguments _F_ and *false*.
+        1. If _fields_ is an abrupt completion, then
+          1. Set the running execution context's LexicalEnvironment to _lex_.
+          1. Set the running execution context's PrivateNameEnvironment to _outerPrivateEnvironment_.
+          1. Return Completion(_fields_).
+        1. Append to _fieldRecords_ the elements of _fields_.
+      1. <ins>If |ClassBody_opt| is not present, let _staticBlocks_ be a new empty List.</ins>
+      1. <ins>Else, let _staticBlocks_ be ClassStaticBlockList of |ClassBody|.</ins>
+      1. <ins>If _staticBlocks_ contains a single element, then</ins>
+        1. <ins>Let _staticBlock_ be the first element of _staticBlocks_.</ins>
+        1. <ins>Let _status_ be the result of performing ClassStaticBlockEvaluation for _staticBlock_ with argument _F_.</ins>
+        1. <ins>If _status_ is an abrupt completion, then</ins>
+          1. <ins>Set the running execution context's LexicalEnvironment to _lex_.</ins>
+          1. <ins>Set the running execution context's PrivateNameEnvironment to _outerPrivateEnvironment_.</ins>
+          1. <ins>Return Completion(_status_).</ins>
+      1. Set the running execution context's LexicalEnvironment to _lex_.
+      1. If _className_ is not *undefined*, then
+        1. Perform _classScopeEnvRec_.InitializeBinding(_className_, _F_).
+      1. Set the value of _F_'s [[Fields]] internal slot to _fieldRecords_.
+      1. Set the running execution context's PrivateNameEnvironment to _outerPrivateEnvironment_.
+      1. Return _F_.
+    </emu-alg>
+
+    <emu-clause id="sec-runtime-semantics-classstaticblockevaluation">
+      <h1><ins>Runtime Semantics: ClassStaticBlockEvaluation</ins></h1>
+      <p>With parameter _homeObject_.</p>
+      <emu-grammar collapsed>ClassElement: ClassStaticBlock</emu-grammar>
+      <emu-alg>
+        1. Perform ClassStaticBlockEvaluation of |ClassStaticBlock| with parameter _homeObject_.
+      </emu-alg>
+      <emu-grammar collapsed>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</emu-grammar>
+      <emu-alg>
+        1. Let _lex_ be the Lexical Environment of the running execution context.
+        1. Let _privateEnvironment_ be the PrivateNameEnvironment of the running execution context.
+        1. Let _formalParameterList_ be an instance of the production <emu-grammar collapsed>FormalParameters: [empty]</emu-grammar>.
+        1. Let _staticBlock_ be FunctionCreate(~Method~, _formalParameterList_, |ClassStaticBlockBody|, _lex_, _privateEnvironment_, *true*).
+        1. Perform MakeMethod(_staticBlock_, _homeObject_).
+        1. return ? Call(_staticBlock_, _homeObject_).
+      <emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-runtime-semantics-classstaticblockbody-evaluatebody">
+      <h1>Runtime Semantics: EvaluateBody</h1>
+      <p>With parameter _functionObject_ and List _argumentsList_.</p>
+      <emu-grammar collapsed>ClassStaticBlockBody: ClassStaticBlockStatementList</emu-grammar>
+      <emu-alg>
+        1. Assert: _argumentList_ is empty.
+        1. Return the result of evaluating |ClassStaticBlockStatementList|</emu-grammar>
+      </emu-alg>
+    </emu-clause>
+  </emu-clause>
+</emu-clause>

@@ -15,7 +15,7 @@ existing use cases and make enable new use cases not currently handled by that p
 <!--#region:status-->
 ## Status
 
-**Stage:** 0  
+**Stage:** 1  
 **Champion:** Ron Buckton (@rbuckton)  
 
 _For detailed status of this proposal see [TODO](#todo), below._  
@@ -213,7 +213,7 @@ The following is a high-level list of tasks to progress through each stage of th
 
 ### Stage 2 Entrance Criteria
 
-* [ ] [Initial specification text][Specification].  
+* [x] [Initial specification text][Specification].  
 * [ ] [Transpiler support][Transpiler] (_Optional_).  
 
 ### Stage 3 Entrance Criteria
