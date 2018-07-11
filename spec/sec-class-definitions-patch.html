@@ -80,6 +80,42 @@
     </emu-alg>
   </emu-clause>
 
+  <emu-clause id="sec-class-definitions-static-semantics-LexicallyDeclaredNames">
+    <h1>Static Semantics: VarDeclaredNames</h1>
+    <emu-grammar collapsed>ClassBlockStatementList: [empty]</emu-grammar>
+    <emu-alg>
+      1. Return a new empty List.
+    </emu-alg>
+    <emu-grammar collapsed>ClassBlockStatementList: StatementList</emu-grammar>
+    <emu-alg>
+      1. Return the TopLevelLexicallyDeclaredNames of |StatementList|.
+    </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-class-definitions-static-semantics-vardeclarednames">
+    <h1>Static Semantics: VarDeclaredNames</h1>
+    <emu-grammar collapsed>ClassBlockStatementList: [empty]</emu-grammar>
+    <emu-alg>
+      1. Return a new empty List.
+    </emu-alg>
+    <emu-grammar collapsed>ClassBlockStatementList: StatementList</emu-grammar>
+    <emu-alg>
+      1. Return the TopLevelVarDeclaredNames of |StatementList|.
+    </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-class-definitions-static-semantics-varscopeddeclarations">
+    <h1>Static Semantics: VarScopedDeclarations</h1>
+    <emu-grammar collapsed>ClassBlockStatementList: [empty]</emu-grammar>
+    <emu-alg>
+      1. Return a new empty List.
+    </emu-alg>
+    <emu-grammar collapsed>ClassBlockStatementList: StatementList</emu-grammar>
+    <emu-alg>
+      1. Return the TopLevelVarScopedDeclarations of |StatementList|.
+    </emu-alg>
+  </emu-clause>
+
   <emu-clause id="sec-runtime-semantics-classdefinitionevaluation">
     <h1>Runtime Semantics: ClassDefinitionEvaluation</h1>
     <emu-note>This algorithm is a delta from the <a href="https://tc39.github.io/proposal-class-fields/#runtime-semantics-class-definition-evaluation">Class Fields proposal</a>.</emu-note>
@@ -148,48 +184,120 @@
           1. Set the running execution context's PrivateNameEnvironment to _outerPrivateEnvironment_.
           1. Return Completion(_fields_).
         1. Append to _fieldRecords_ the elements of _fields_.
+      1. <del>Set the running execution context's LexicalEnvironment to _lex_.</del>
+      1. If _className_ is not *undefined*, then</ins>
+        1. Perform _classScopeEnvRec_.InitializeBinding(_className_, _F_).
+      1. Set the value of _F_'s [[Fields]] internal slot to _fieldRecords_.
       1. <ins>If |ClassBody_opt| is not present, let _staticBlocks_ be a new empty List.</ins>
       1. <ins>Else, let _staticBlocks_ be ClassStaticBlockList of |ClassBody|.</ins>
       1. <ins>If _staticBlocks_ contains a single element, then</ins>
-        1. <ins>Let _staticBlock_ be the first element of _staticBlocks_.</ins>
-        1. <ins>Let _status_ be the result of performing ClassStaticBlockEvaluation for _staticBlock_ with argument _F_.</ins>
+        1. <ins>Let _block_ be the first element of _staticBlocks_.</ins>
+        1. <ins>Let _status_ be the result of performing ClassStaticBlockEvaluation for _block_ with argument _F_.</ins>
         1. <ins>If _status_ is an abrupt completion, then</ins>
           1. <ins>Set the running execution context's LexicalEnvironment to _lex_.</ins>
           1. <ins>Set the running execution context's PrivateNameEnvironment to _outerPrivateEnvironment_.</ins>
           1. <ins>Return Completion(_status_).</ins>
-      1. Set the running execution context's LexicalEnvironment to _lex_.
-      1. If _className_ is not *undefined*, then
-        1. Perform _classScopeEnvRec_.InitializeBinding(_className_, _F_).
-      1. Set the value of _F_'s [[Fields]] internal slot to _fieldRecords_.
+      1. <ins>Set the running execution context's LexicalEnvironment to _lex_.</ins>
       1. Set the running execution context's PrivateNameEnvironment to _outerPrivateEnvironment_.
       1. Return _F_.
     </emu-alg>
+  </emu-clause>
 
-    <emu-clause id="sec-runtime-semantics-classstaticblockevaluation" aoid="ClassStaticBlockEvaluation">
-      <h1><ins>Runtime Semantics: ClassStaticBlockEvaluation</ins></h1>
-      <p>With parameter _homeObject_.</p>
-      <emu-grammar collapsed>ClassElement: ClassStaticBlock</emu-grammar>
+  <emu-clause id="sec-runtime-semantics-classstaticblockevaluation">
+    <h1><ins>Runtime Semantics: ClassStaticBlockEvaluation</ins></h1>
+    <p>With parameter _F_.</p>
+    <emu-grammar collapsed>ClassElement: ClassStaticBlock</emu-grammar>
+    <emu-alg>
+      1. Perform ClassStaticBlockEvaluation of |ClassStaticBlock| with parameter _F_.
+    </emu-alg>
+    <emu-grammar collapsed>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</emu-grammar>
+    <emu-alg>
+      1. Let _outerContext_ be the running execution context.
+      1. Let _innerContext_ be PrepareForClassStaticBlockEvaluation(_F_).
+      1. Assert: _innerContext_ is now the running execution context.
+      1. Perform ClassStaticBlockBindThis(_F_, _innerContext_).
+      1. Let _result_ be ClassStaticBlockEvaluateBody(_F_).
+      1. Remove _innerContext_ from the execution context stack and restore _outerContext_ as the running execution context.
+      1. ReturnIfAbrupt(_result_).
+      1. Return NormalCompletion(*undefined*).
+    </emu-alg>
+
+    <emu-clause id="sec-prepareforclassstaticblockevaluation" aoid="PrepareForClassStaticBlockEvaluation">
+      <h1>PrepareForClassStaticBlockEvaluation ( _F_ )</h1>
+      <p>When the abstract operation PrepareForClassStaticBlockEvaluation is called with function object _F_, the following steps are taken:</p>
       <emu-alg>
-        1. Perform ClassStaticBlockEvaluation of |ClassStaticBlock| with parameter _homeObject_.
+        1. Let _outerContext_ be the running execution context.
+        1. Let _privateNameEnv_ be the PrivateNameEnvironment of _outerContext_.
+        1. Let _innerContext_ be a new ECMAScript code execution context.
+        1. Set the Function of _innerContext_ to *null*.
+        1. Set the PrivateNameEnvironment of _innerContext_ to _privateNameEnv_.
+        1. Let _innerRealm_ be _F_.[[Realm]].
+        1. Set the Realm of _innerContext_ to _innerRealm_.
+        1. Set the ScriptOrModule of _innerContext_ to _F_.[[ScriptOrModule]].
+        1. Let _localEnv_ be NewClassStaticBlockEnvironment(_F_).
+        1. Set the LexicalEnvironment of _innerContext_ to _localEnv_.
+        1. Set the VariableEnvironment of _innerContext_ to _localEnv_.
+        1. If _outerContext_ is not already suspended, suspend _outerContext_.
+        1. Push _innerContext_ onto the execution context stack; _innerContext_ is now the running execution context.
+        1. NOTE: Any exception objects produced after this point are associated with _innerRealm_.
+        1. Return _innerContext_.
       </emu-alg>
-      <emu-grammar collapsed>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</emu-grammar>
-      <emu-alg>
-        1. Let _lex_ be the Lexical Environment of the running execution context.
-        1. Let _privateEnvironment_ be the PrivateNameEnvironment of the running execution context.
-        1. Let _formalParameterList_ be an instance of the production <emu-grammar collapsed>FormalParameters: [empty]</emu-grammar>.
-        1. Let _staticBlock_ be FunctionCreate(~Method~, _formalParameterList_, |ClassStaticBlockBody|, _lex_, _privateEnvironment_, *true*).
-        1. Perform MakeMethod(_staticBlock_, _homeObject_).
-        1. return ? Call(_staticBlock_, _homeObject_).
-      <emu-alg>
     </emu-clause>
 
-    <emu-clause id="sec-runtime-semantics-classstaticblockbody-evaluatebody">
-      <h1>Runtime Semantics: EvaluateBody</h1>
-      <p>With parameter _functionObject_ and List _argumentsList_.</p>
-      <emu-grammar collapsed>ClassStaticBlockBody: ClassStaticBlockStatementList</emu-grammar>
+    <emu-clause id="sec-classstaticblockbindthis" aoid="ClassStaticBlockBindThis">
+      <h1>ClassStaticBlockBindThis ( _F_, _innerContext_ )</h1>
+      <p>When the abstract operation ClassStaticBlockBindThis is called with function object _F_ and execution context _innerContext_, the following steps are taken:</p>
       <emu-alg>
-        1. Assert: _argumentList_ is empty.
-        1. Return the result of evaluating |ClassStaticBlockStatementList|</emu-grammar>
+        1. Let _innerRealm_ be _F_.[[Realm]].
+        1. Let _localEnv_ be the LexicalEnvironment of _innerContext_.
+        1. Let _envRec_ be _localEnv_'s EnvironmentRecord.
+        1. Assert: _envRec_ is a class static block Environment Record.
+        1. Assert: The next step never returns an abrupt completion because _envRec_.[[ThisBindingStatus]] is not `"initialized"`.
+        1. Perform _envRec_.BindThisValue(_F_).
+      </emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-classstaticblockevaluatebody" aoid="ClassStaticBlockEvaluateBody">
+      <h1>ClassStaticBlockEvaluateBody ( _block_ )</h1>
+      <emu-alg>
+        1. Perform ? ClassStaticBlockDeclarationInstantiation(_block_).
+        1. Return the result of evaluating _block_.
+      </emu-alg>
+    </emu-clause>
+
+    <emu-clause id="classstaticblockdeclarationinstantiation" aoid="ClassStaticBlockDeclarationInstantiation">
+      <h1>ClassStaticBlockDeclarationInstantiation ( _block_ )</h1>
+      <emu-alg>
+        1. Let _env_ be the LexicalEnvironment of the running execution context.
+        1. Let _envRec_ be _env_'s EnvironmentRecord.
+        1. Let _varNames_ be the VarDeclaredNames of _block_.
+        1. Let _varDeclarations_ be the VarScopedDeclarations of _block_.
+        1. Let _functionsToInitialize_ be a new empty List.
+        1. Let _declaredFunctionNames_ be a new empty List.
+        1. For each _d_ in _varDeclarations_, in reverse list order, do
+          1. If _d_ is neither a |VariableDeclaration| nor a |ForBinding| nor a |BindingIdentifier|, then
+            1. Assert: _d_ is either a |FunctionDeclaration|, a |GeneratorDeclaration|, an |AsyncFunctionDeclaration|, or an |AsyncGeneratorDeclaration|.
+            1. Let _fn_ be the sole element of the BoundNames of _d_.
+            1. If _fn_ is not an element of _declaredFunctionNames_, then
+              1. Insert _fn_ as the first element of _declaredFunctionNames_.
+              1. NOTE: If there are multiple function declarations for the same name, the last declaration is used.
+              1. Insert _d_ as the first element of _functionsToInitialize_.
+        1. For each _n_ in _varNames_, do
+          1. Perform ! _envRec_.CreateMutableBinding(_n_, *false*).
+          1. Call _envRec_.InitializeBinding(_n_, *undefined*).
+        1. Let _lexDeclarations_ be the LexicallyScopedDeclarations of _block_.
+        1. For each element _d_ in _lexDeclarations_, do
+          1. NOTE: A lexically declared name cannot be the same as a function/generator declaration, formal parameter, or a var name. Lexically declared names are only instantiated here but not initialized.
+          1. For each element _dn_ of the BoundNames of _d_, do
+            1. If IsConstantDeclaration of _d_ is *true*, then
+              1. Perform ! _envRec_.CreateImmutableBinding(_dn_, *true*).
+            1. Else,
+              1. Perform ! _envRec_.CreateMutableBinding(_dn_, *false*).
+        1. For each Parse Node _f_ in _functionsToInitialize_, do
+          1. Let _fn_ be the sole element of the BoundNames of _f_.
+          1. Let _fo_ be the result of performing InstantiateFunctionObject for _f_ with argument _env_.
+          1. Perform ! _varEnvRec_.SetMutableBinding(_fn_, _fo_, *false*).
+        1. Return NormalCompletion(~empty~).
       </emu-alg>
     </emu-clause>
   </emu-clause>

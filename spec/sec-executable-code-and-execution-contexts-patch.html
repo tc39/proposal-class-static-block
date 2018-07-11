@@ -1,0 +1,67 @@
+<p><ins>A <i>class static block environment</i> is a Lexical Environment that corresponds to the evaluation of the static block of a class. A class static block environment establishes a new `this` binding.</ins></p>
+
+<emu-clause id="sec-class-static-block-environment-records">
+    <h1><ins>Class Static Block Environment Records</ins></h1>
+    <p>A class static block Environment Record is a declarative Environemtn Record that is used to represent the top-level scope of a class static block and provides a `this` binding.</p>
+    <p>Class Static Block Environment Records have the additional state fields listed in <emu-xref href="#table-class-static-block"></emu-xref>.</p>
+    <emu-table id="table-class-static-block" caption="Additional Fields of Function Environment Records">
+        <table>
+        <tbody>
+        <tr>
+            <th>
+            Field Name
+            </th>
+            <th>
+            Value
+            </th>
+            <th>
+            Meaning
+            </th>
+        </tr>
+        <tr>
+            <td>
+            [[ThisValue]]
+            </td>
+            <td>
+            Any
+            </td>
+            <td>
+            This is the *this* value used for this invocation of the function.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            [[ThisBindingStatus]]
+            </td>
+            <td>
+            `"initialized"` | `"uninitialized"`
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            [[FunctionObject]]
+            </td>
+            <td>
+            Object
+            </td>
+            <td>
+            The function object for a class whose static belock evaluation caused this Environment Record to be created.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            [[HomeObject]]
+            </td>
+            <td>
+            Object | *undefined*
+            </td>
+            <td>
+            If the associated function has `super` property accesses and is not an |ArrowFunction|, [[HomeObject]] is the object that the function is bound to as a method. The default value for [[HomeObject]] is *undefined*.
+            </td>
+        </tr>
+        </tbody>
+        </table>
+    </emu-table>
+</emu-clause>
