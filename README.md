@@ -81,7 +81,7 @@ export class C {
   }
 
   static {
-    // getX has privilged access to #x
+    // getX has privileged access to #x
     getX = (obj) => obj.#x;
   }
 }
