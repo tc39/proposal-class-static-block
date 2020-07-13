@@ -8,8 +8,6 @@ This is not intended as a replacement for public fields, as they provide useful 
 static analysis tools and are a valid target for decorators. Rather, this is intended to augment
 existing use cases and make enable new use cases not currently handled by that proposal.
 
-* [Stage 0 Presentation](https://docs.google.com/presentation/d/1TLFrhKMW2UHlHIcjKN02cEJsSq4HL7odS6TE6M-OGYg/edit?usp=sharing)
-
 <!--#endregion:intro-->
 
 <!--#region:status-->
@@ -33,33 +31,41 @@ _For detailed status of this proposal see [TODO](#todo), below._
 The current proposals for static fields and static private fields provide a mechanism to perform
 per-field initialization of the static-side of a class during ClassDefinitionEvaluation, however 
 there are some cases that cannot be covered easily. For example, if you need to evaluate statements
-during initialization (such as `try..catch`), you have to perform that logic outside of the class
-definition. 
+during initialization (such as `try..catch`), or set two fields from a single value, you have to 
+perform that logic outside of the class definition. 
 
 ```js
 // without static blocks:
 class C {
   static x = ...;
   static y;
+  static z;
 }
 
 try {
-  C.y = doSomethingWith(C.x);
+  const obj = doSomethingWith(C.x);
+  C.y = obj.y
+  C.z = obj.z;
 }
 catch {
   C.y = ...;
+  C.z = ...;
 }
 
 // with static blocks:
 class C {
   static x = ...;
   static y;
+  static z;
   static {
     try {
-      this.y = doSomethingWith(this.x);
+      const obj = doSomethingWith(this.x);
+      this.y = obj.y;
+      this.z = obj.z;
     }
     catch {
       this.y = ...;
+      this.z = ...;
     }
   }
 }
@@ -88,6 +94,79 @@ export class C {
 
 export function readXData(obj) {
   return getX(obj).data;
+}
+```
+
+## Relation to "Private Declarations"
+
+Proposal: https://github.com/tc39/proposal-private-declarations
+
+The Private Declarations proposal also intends to address the issue of privileged access between two classes, by lifting 
+the private name out of the class declaration and into the enclosing scope. While there is some overlap in that respect,
+private declarations do not solve the issue of multi-step static initialization without potentially exposing a private
+name to the outer scope purely for initialization purposes:
+
+```js
+// with private declarations
+private #z; // exposed purely for post-declaration initialization
+class C {
+  static y;
+  static outer #z;
+}
+const obj = ...;
+C.y = obj.y;
+C.#z = obj.z;
+
+// with static block
+class C {
+  static y;
+  static #z; // not exposed outside of class
+  static {
+    const obj = ...;
+    this.y = obj.y;
+    this.#z = obj.z;
+  }
+}
+```
+
+In addition, Private Declarations expose a private name that potentially allows both read and write access to shared private state
+when read-only access might be desireable. To work around this with private declarations requires additional complexity (though there is
+a similar cost for `static{}` as well):
+
+```js
+// with private declarations
+private #zRead;
+class C {
+  #z = ...; // only writable inside of the class
+  get #zRead() { return this.#z; } // wrapper needed to ensure read-only access
+}
+
+// with static
+let zRead;
+class C {
+  #z = ...; // only writable inside of the class
+  static { zRead = obj => obj.#z; } // callback needed to ensure read-only access
+}
+```
+
+In the long run, however, there is nothing that prevents these two proposals from working side-by-side:
+
+```js
+private #shared;
+class C {
+  static outer #shared;
+  static #local;
+  static {
+    const obj = ...;
+    this.#shared = obj.shared;
+    this.#local = obj.local;
+  }
+}
+class D {
+  method() {
+    C.#shared; // ok
+    C.#local; // no access
+  }
 }
 ```
 
@@ -180,13 +259,10 @@ let A, B;
 <!--#endregion:grammar-->
 
 <!--#region:references-->
-<!-- 
 # References
 
-> TODO: Provide links to other specifications, etc.
+* [Stage 0 Presentation](https://docs.google.com/presentation/d/1TLFrhKMW2UHlHIcjKN02cEJsSq4HL7odS6TE6M-OGYg/edit?usp=sharing)
 
-* [Title](url)   
--->
 <!--#endregion:references-->
 
 <!--#region:prior-discussion-->
@@ -230,8 +306,6 @@ The following is a high-level list of tasks to progress through each stage of th
 * [ ] The ECMAScript editor has signed off on the [pull request][Ecma262PullRequest].  
 <!--#endregion:todo-->
 
-<!--#region:links-->
-<!-- The following links are used throughout the README: -->
 [Process]: https://tc39.github.io/process-document/
 [Proposals]: https://github.com/tc39/proposals/
 [Grammarkdown]: http://github.com/rbuckton/grammarkdown#readme
@@ -240,8 +314,6 @@ The following is a high-level list of tasks to progress through each stage of th
 [Examples]: #examples
 [API]: #api
 [Specification]: https://rbuckton.github.io/proposal-class-static-block
-
-<!-- The following links should be supplied as the proposal advances: -->
 [Transpiler]: #todo
 [Stage3ReviewerSignOff]: #todo
 [Stage3EditorSignOff]: #todo
@@ -249,4 +321,3 @@ The following is a high-level list of tasks to progress through each stage of th
 [Implementation1]: #todo
 [Implementation2]: #todo
 [Ecma262PullRequest]: #todo
-<!--#endregion:links-->
