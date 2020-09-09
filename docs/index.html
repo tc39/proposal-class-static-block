@@ -2,20 +2,25 @@
 <head><meta charset="utf-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <link rel="spec" href="es2015">
-<title>ECMAScript class static initialization blocks</title><script type="application/json" id="menu-search-biblio">[{"type":"clause","id":"sec-intro","aoid":null,"title":"Introduction","titleHTML":"Introduction","number":"","namespace":"<no location>","location":"","referencingIds":[],"key":"Introduction"},{"type":"table","id":"table-class-static-block","number":1,"caption":"Table 1: Additional Fields of Function Environment Records","referencingIds":["_ref_0"],"namespace":"<no location>","location":"","key":"Table 1: Additional Fields of Function Environment Records"},{"type":"clause","id":"sec-class-static-block-environment-records","aoid":null,"title":"Class Static Block Environment Records","titleHTML":"<ins>Class Static Block Environment Records</ins>","number":"1.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Class Static Block Environment Records"},{"type":"clause","id":"sec-executable-code-and-execution-contexts","aoid":null,"title":"Executable Code and Execution Contexts","titleHTML":"Executable Code and Execution Contexts","number":"1","namespace":"<no location>","location":"","referencingIds":[],"key":"Executable Code and Execution Contexts"},{"type":"production","id":"prod-ClassElement","name":"ClassElement","referencingIds":["_ref_28","_ref_29","_ref_31","_ref_32","_ref_33","_ref_35","_ref_37","_ref_39","_ref_40","_ref_41","_ref_42","_ref_43","_ref_45","_ref_47","_ref_49","_ref_51","_ref_60"],"namespace":"<no location>","location":"","key":"ClassElement"},{"type":"production","id":"prod-ClassStaticBlock","name":"ClassStaticBlock","referencingIds":["_ref_23","_ref_27","_ref_30","_ref_38","_ref_44","_ref_50","_ref_52","_ref_63","_ref_64"],"namespace":"<no location>","location":"","key":"ClassStaticBlock"},{"type":"production","id":"prod-ClassStaticBlockBody","name":"ClassStaticBlockBody","referencingIds":["_ref_65"],"namespace":"<no location>","location":"","key":"ClassStaticBlockBody"},{"type":"production","id":"prod-ClassStaticBlockStatementList","name":"ClassStaticBlockStatementList","referencingIds":["_ref_24"],"namespace":"<no location>","location":"","key":"ClassStaticBlockStatementList"},{"type":"production","id":"prod-ClassBody","name":"ClassBody","referencingIds":["_ref_53","_ref_54","_ref_55","_ref_56","_ref_57","_ref_58","_ref_59","_ref_61","_ref_62"],"namespace":"<no location>","location":"","key":"ClassBody"},{"type":"clause","id":"sec-class-definitions-static-semantics-early-errors","aoid":null,"title":"Static Semantics: Early Errors","titleHTML":"Static Semantics: Early Errors","number":"2.1.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: Early Errors"},{"type":"clause","id":"sec-static-semantics-isstatic","aoid":null,"title":"Static Semantics: IsStatic","titleHTML":"Static Semantics: IsStatic","number":"2.1.2","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: IsStatic"},{"type":"production","id":"prod-ClassElementList","name":"ClassElementList","referencingIds":["_ref_25","_ref_26","_ref_34","_ref_36","_ref_46","_ref_48"],"namespace":"<no location>","location":"","key":"ClassElementList"},{"type":"clause","id":"sec-static-semantics-nonconstructormethoddefinitions","aoid":null,"title":"Static Semantics: NonConstructorMethodDefinitions","titleHTML":"Static Semantics: NonConstructorMethodDefinitions","number":"2.1.3","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: NonConstructorMethodDefinitions"},{"type":"op","aoid":"ClassStaticBlockList","refId":"sec-static-semantics-classstaticblocklist","location":"","referencingIds":[],"key":"ClassStaticBlockList"},{"type":"clause","id":"sec-static-semantics-classstaticblocklist","aoid":"ClassStaticBlockList","title":"Static Semantics: ClassStaticBlockList","titleHTML":"<ins>Static Semantics: ClassStaticBlockList</ins>","number":"2.1.4","namespace":"<no location>","location":"","referencingIds":["_ref_1","_ref_2","_ref_14"],"key":"Static Semantics: ClassStaticBlockList"},{"type":"clause","id":"sec-class-definitions-static-semantics-propname","aoid":null,"title":"Static Semantics: PropName","titleHTML":"Static Semantics: PropName","number":"2.1.5","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: PropName"},{"type":"production","id":"prod-ClassBlockStatementList","name":"ClassBlockStatementList","referencingIds":[],"namespace":"<no location>","location":"","key":"ClassBlockStatementList"},{"type":"clause","id":"sec-class-definitions-static-semantics-LexicallyDeclaredNames","aoid":null,"title":"Static Semantics: VarDeclaredNames","titleHTML":"Static Semantics: VarDeclaredNames","number":"2.1.6","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: VarDeclaredNames"},{"type":"clause","id":"sec-class-definitions-static-semantics-vardeclarednames","aoid":null,"title":"Static Semantics: VarDeclaredNames","titleHTML":"Static Semantics: VarDeclaredNames","number":"2.1.7","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: VarDeclaredNames"},{"type":"clause","id":"sec-class-definitions-static-semantics-varscopeddeclarations","aoid":null,"title":"Static Semantics: VarScopedDeclarations","titleHTML":"Static Semantics: VarScopedDeclarations","number":"2.1.8","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: VarScopedDeclarations"},{"type":"production","id":"prod-ClassTail","name":"ClassTail","referencingIds":[],"namespace":"<no location>","location":"","key":"ClassTail"},{"type":"clause","id":"sec-runtime-semantics-classdefinitionevaluation","aoid":null,"title":"Runtime Semantics: ClassDefinitionEvaluation","titleHTML":"Runtime Semantics: ClassDefinitionEvaluation","number":"2.1.9","namespace":"<no location>","location":"","referencingIds":[],"key":"Runtime Semantics: ClassDefinitionEvaluation"},{"type":"op","aoid":"PrepareForClassStaticBlockEvaluation","refId":"sec-prepareforclassstaticblockevaluation","location":"","referencingIds":[],"key":"PrepareForClassStaticBlockEvaluation"},{"type":"clause","id":"sec-prepareforclassstaticblockevaluation","aoid":"PrepareForClassStaticBlockEvaluation","title":"PrepareForClassStaticBlockEvaluation ( F )","titleHTML":"PrepareForClassStaticBlockEvaluation ( <var>F</var> )","number":"2.1.10.1","namespace":"<no location>","location":"","referencingIds":["_ref_16"],"key":"PrepareForClassStaticBlockEvaluation ( F )"},{"type":"op","aoid":"ClassStaticBlockBindThis","refId":"sec-classstaticblockbindthis","location":"","referencingIds":[],"key":"ClassStaticBlockBindThis"},{"type":"clause","id":"sec-classstaticblockbindthis","aoid":"ClassStaticBlockBindThis","title":"ClassStaticBlockBindThis ( F, innerContext )","titleHTML":"ClassStaticBlockBindThis ( <var>F</var>, <var>innerContext</var> )","number":"2.1.10.2","namespace":"<no location>","location":"","referencingIds":["_ref_17"],"key":"ClassStaticBlockBindThis ( F, innerContext )"},{"type":"op","aoid":"ClassStaticBlockEvaluateBody","refId":"sec-classstaticblockevaluatebody","location":"","referencingIds":[],"key":"ClassStaticBlockEvaluateBody"},{"type":"clause","id":"sec-classstaticblockevaluatebody","aoid":"ClassStaticBlockEvaluateBody","title":"ClassStaticBlockEvaluateBody ( block )","titleHTML":"ClassStaticBlockEvaluateBody ( <var>block</var> )","number":"2.1.10.3","namespace":"<no location>","location":"","referencingIds":["_ref_18"],"key":"ClassStaticBlockEvaluateBody ( block )"},{"type":"op","aoid":"ClassStaticBlockDeclarationInstantiation","refId":"classstaticblockdeclarationinstantiation","location":"","referencingIds":[],"key":"ClassStaticBlockDeclarationInstantiation"},{"type":"clause","id":"classstaticblockdeclarationinstantiation","aoid":"ClassStaticBlockDeclarationInstantiation","title":"ClassStaticBlockDeclarationInstantiation ( block )","titleHTML":"ClassStaticBlockDeclarationInstantiation ( <var>block</var> )","number":"2.1.10.4","namespace":"<no location>","location":"","referencingIds":["_ref_21"],"key":"ClassStaticBlockDeclarationInstantiation ( block )"},{"type":"clause","id":"sec-runtime-semantics-classstaticblockevaluation","aoid":null,"title":"Runtime Semantics: ClassStaticBlockEvaluation","titleHTML":"<ins>Runtime Semantics: ClassStaticBlockEvaluation</ins>","number":"2.1.10","namespace":"<no location>","location":"","referencingIds":[],"key":"Runtime Semantics: ClassStaticBlockEvaluation"},{"type":"clause","id":"sec-class-definitions","aoid":null,"title":"Class Definitions","titleHTML":"Class Definitions","number":"2.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Class Definitions"},{"type":"clause","id":"sec-ecmascript-language-functions-and-classes","aoid":null,"title":"ECMAScript Language: Functions and Classes","titleHTML":"ECMAScript Language: Functions and Classes","number":"2","namespace":"<no location>","location":"","referencingIds":[],"key":"ECMAScript Language: Functions and Classes"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>"use strict";
+<title>ECMAScript class static initialization blocks</title><script type="application/json" id="menu-search-biblio">[{"type":"clause","id":"sec-intro","aoid":null,"title":"Introduction","titleHTML":"Introduction","number":"","namespace":"<no location>","location":"","referencingIds":[],"key":"Introduction"},{"type":"table","id":"table-class-static-block","node":{},"number":1,"caption":"Table 1: Additional Fields of Function Environment Records","referencingIds":["_ref_0"],"namespace":"<no location>","location":"","key":"Table 1: Additional Fields of Function Environment Records"},{"type":"clause","id":"sec-class-static-block-environment-records","aoid":null,"title":"Class Static Block Environment Records","titleHTML":"<ins>Class Static Block Environment Records</ins>","number":"1.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Class Static Block Environment Records"},{"type":"clause","id":"sec-executable-code-and-execution-contexts","aoid":null,"title":"Executable Code and Execution Contexts","titleHTML":"Executable Code and Execution Contexts","number":"1","namespace":"<no location>","location":"","referencingIds":[],"key":"Executable Code and Execution Contexts"},{"type":"production","id":"prod-ClassElement","name":"ClassElement","referencingIds":["_ref_28","_ref_29","_ref_31","_ref_32","_ref_33","_ref_35","_ref_37","_ref_39","_ref_40","_ref_41","_ref_42","_ref_43","_ref_45","_ref_47","_ref_49","_ref_51","_ref_60"],"namespace":"<no location>","location":"","key":"ClassElement"},{"type":"production","id":"prod-ClassStaticBlock","name":"ClassStaticBlock","referencingIds":["_ref_23","_ref_27","_ref_30","_ref_38","_ref_44","_ref_50","_ref_52","_ref_63","_ref_64"],"namespace":"<no location>","location":"","key":"ClassStaticBlock"},{"type":"production","id":"prod-ClassStaticBlockBody","name":"ClassStaticBlockBody","referencingIds":["_ref_65"],"namespace":"<no location>","location":"","key":"ClassStaticBlockBody"},{"type":"production","id":"prod-ClassStaticBlockStatementList","name":"ClassStaticBlockStatementList","referencingIds":["_ref_24"],"namespace":"<no location>","location":"","key":"ClassStaticBlockStatementList"},{"type":"production","id":"prod-ClassBody","name":"ClassBody","referencingIds":["_ref_53","_ref_54","_ref_55","_ref_56","_ref_57","_ref_58","_ref_59","_ref_61","_ref_62"],"namespace":"<no location>","location":"","key":"ClassBody"},{"type":"clause","id":"sec-class-definitions-static-semantics-early-errors","aoid":null,"title":"Static Semantics: Early Errors","titleHTML":"Static Semantics: Early Errors","number":"2.1.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: Early Errors"},{"type":"clause","id":"sec-static-semantics-isstatic","aoid":null,"title":"Static Semantics: IsStatic","titleHTML":"Static Semantics: IsStatic","number":"2.1.2","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: IsStatic"},{"type":"production","id":"prod-ClassElementList","name":"ClassElementList","referencingIds":["_ref_25","_ref_26","_ref_34","_ref_36","_ref_46","_ref_48"],"namespace":"<no location>","location":"","key":"ClassElementList"},{"type":"clause","id":"sec-static-semantics-nonconstructormethoddefinitions","aoid":null,"title":"Static Semantics: NonConstructorMethodDefinitions","titleHTML":"Static Semantics: NonConstructorMethodDefinitions","number":"2.1.3","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: NonConstructorMethodDefinitions"},{"type":"op","aoid":"ClassStaticBlockList","refId":"sec-static-semantics-classstaticblocklist","location":"","referencingIds":[],"key":"ClassStaticBlockList"},{"type":"clause","id":"sec-static-semantics-classstaticblocklist","aoid":"ClassStaticBlockList","title":"Static Semantics: ClassStaticBlockList","titleHTML":"<ins>Static Semantics: ClassStaticBlockList</ins>","number":"2.1.4","namespace":"<no location>","location":"","referencingIds":["_ref_1","_ref_2","_ref_14"],"key":"Static Semantics: ClassStaticBlockList"},{"type":"clause","id":"sec-class-definitions-static-semantics-propname","aoid":null,"title":"Static Semantics: PropName","titleHTML":"Static Semantics: PropName","number":"2.1.5","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: PropName"},{"type":"production","id":"prod-ClassBlockStatementList","name":"ClassBlockStatementList","referencingIds":[],"namespace":"<no location>","location":"","key":"ClassBlockStatementList"},{"type":"clause","id":"sec-class-definitions-static-semantics-LexicallyDeclaredNames","aoid":null,"title":"Static Semantics: VarDeclaredNames","titleHTML":"Static Semantics: VarDeclaredNames","number":"2.1.6","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: VarDeclaredNames"},{"type":"clause","id":"sec-class-definitions-static-semantics-vardeclarednames","aoid":null,"title":"Static Semantics: VarDeclaredNames","titleHTML":"Static Semantics: VarDeclaredNames","number":"2.1.7","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: VarDeclaredNames"},{"type":"clause","id":"sec-class-definitions-static-semantics-varscopeddeclarations","aoid":null,"title":"Static Semantics: VarScopedDeclarations","titleHTML":"Static Semantics: VarScopedDeclarations","number":"2.1.8","namespace":"<no location>","location":"","referencingIds":[],"key":"Static Semantics: VarScopedDeclarations"},{"type":"production","id":"prod-ClassTail","name":"ClassTail","referencingIds":[],"namespace":"<no location>","location":"","key":"ClassTail"},{"type":"clause","id":"sec-runtime-semantics-classdefinitionevaluation","aoid":null,"title":"Runtime Semantics: ClassDefinitionEvaluation","titleHTML":"Runtime Semantics: ClassDefinitionEvaluation","number":"2.1.9","namespace":"<no location>","location":"","referencingIds":[],"key":"Runtime Semantics: ClassDefinitionEvaluation"},{"type":"op","aoid":"PrepareForClassStaticBlockEvaluation","refId":"sec-prepareforclassstaticblockevaluation","location":"","referencingIds":[],"key":"PrepareForClassStaticBlockEvaluation"},{"type":"clause","id":"sec-prepareforclassstaticblockevaluation","aoid":"PrepareForClassStaticBlockEvaluation","title":"PrepareForClassStaticBlockEvaluation ( F )","titleHTML":"PrepareForClassStaticBlockEvaluation ( <var>F</var> )","number":"2.1.10.1","namespace":"<no location>","location":"","referencingIds":["_ref_16"],"key":"PrepareForClassStaticBlockEvaluation ( F )"},{"type":"op","aoid":"ClassStaticBlockBindThis","refId":"sec-classstaticblockbindthis","location":"","referencingIds":[],"key":"ClassStaticBlockBindThis"},{"type":"clause","id":"sec-classstaticblockbindthis","aoid":"ClassStaticBlockBindThis","title":"ClassStaticBlockBindThis ( F, innerContext )","titleHTML":"ClassStaticBlockBindThis ( <var>F</var>, <var>innerContext</var> )","number":"2.1.10.2","namespace":"<no location>","location":"","referencingIds":["_ref_17"],"key":"ClassStaticBlockBindThis ( F, innerContext )"},{"type":"op","aoid":"ClassStaticBlockEvaluateBody","refId":"sec-classstaticblockevaluatebody","location":"","referencingIds":[],"key":"ClassStaticBlockEvaluateBody"},{"type":"clause","id":"sec-classstaticblockevaluatebody","aoid":"ClassStaticBlockEvaluateBody","title":"ClassStaticBlockEvaluateBody ( block )","titleHTML":"ClassStaticBlockEvaluateBody ( <var>block</var> )","number":"2.1.10.3","namespace":"<no location>","location":"","referencingIds":["_ref_18"],"key":"ClassStaticBlockEvaluateBody ( block )"},{"type":"op","aoid":"ClassStaticBlockDeclarationInstantiation","refId":"classstaticblockdeclarationinstantiation","location":"","referencingIds":[],"key":"ClassStaticBlockDeclarationInstantiation"},{"type":"clause","id":"classstaticblockdeclarationinstantiation","aoid":"ClassStaticBlockDeclarationInstantiation","title":"ClassStaticBlockDeclarationInstantiation ( block )","titleHTML":"ClassStaticBlockDeclarationInstantiation ( <var>block</var> )","number":"2.1.10.4","namespace":"<no location>","location":"","referencingIds":["_ref_21"],"key":"ClassStaticBlockDeclarationInstantiation ( block )"},{"type":"clause","id":"sec-runtime-semantics-classstaticblockevaluation","aoid":null,"title":"Runtime Semantics: ClassStaticBlockEvaluation","titleHTML":"<ins>Runtime Semantics: ClassStaticBlockEvaluation</ins>","number":"2.1.10","namespace":"<no location>","location":"","referencingIds":[],"key":"Runtime Semantics: ClassStaticBlockEvaluation"},{"type":"clause","id":"sec-class-definitions","aoid":null,"title":"Class Definitions","titleHTML":"Class Definitions","number":"2.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Class Definitions"},{"type":"clause","id":"sec-ecmascript-language-functions-and-classes","aoid":null,"title":"ECMAScript Language: Functions and Classes","titleHTML":"ECMAScript Language: Functions and Classes","number":"2","namespace":"<no location>","location":"","referencingIds":[],"key":"ECMAScript Language: Functions and Classes"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>"use strict";
 
 function Search(menu) {
   this.menu = menu;
   this.$search = document.getElementById('menu-search');
   this.$searchBox = document.getElementById('menu-search-box');
   this.$searchResults = document.getElementById('menu-search-results');
-  
+
   this.loadBiblio();
-  
+
   document.addEventListener('keydown', this.documentKeydown.bind(this));
-  
+
   this.$searchBox.addEventListener('keydown', debounce(this.searchBoxKeydown.bind(this), { stopPropagation: true }));
   this.$searchBox.addEventListener('keyup', debounce(this.searchBoxKeyup.bind(this), { stopPropagation: true }));
+
+  // Perform an initial search if the box is not empty.
+  if (this.$searchBox.value) {
+    this.search(this.$searchBox.value);
+  }
 }
 
 Search.prototype.loadBiblio = function () {
@@ -55,7 +60,7 @@ Search.prototype.searchBoxKeyup = function (e) {
   if (e.keyCode === 13 || e.keyCode === 9) {
     return;
   }
-  
+
   this.search(e.target.value);
 }
 
@@ -78,25 +83,23 @@ Search.prototype.triggerSearch = function (e) {
 // prefer shorter matches.
 function relevance(result, searchString) {
   var relevance = 0;
-  
+
   relevance = Math.max(0, 8 - result.match.chunks) << 7;
-  
+
   if (result.match.caseMatch) {
     relevance *= 2;
   }
-  
+
   if (result.match.prefix) {
     relevance += 2048
   }
-  
+
   relevance += Math.max(0, 255 - result.entry.key.length);
-  
+
   return relevance;
 }
 
 Search.prototype.search = function (searchString) {
-  var s = Date.now();
-
   if (searchString === '') {
     this.displayResults([]);
     this.hideSearch();
@@ -104,12 +107,12 @@ Search.prototype.search = function (searchString) {
   } else {
     this.showSearch();
   }
-  
+
   if (searchString.length === 1) {
     this.displayResults([]);
     return;
   }
-    
+
   var results;
 
   if (/^[\d\.]*$/.test(searchString)) {
@@ -120,7 +123,7 @@ Search.prototype.search = function (searchString) {
     });
   } else {
     results = [];
-    
+
     for (var i = 0; i < this.biblio.length; i++) {
       var entry = this.biblio[i];
       if (!entry.key) {
@@ -133,11 +136,11 @@ Search.prototype.search = function (searchString) {
         results.push({ entry: entry, match: match });
       }
     }
-  
+
     results.forEach(function (result) {
       result.relevance = relevance(result, searchString);
     });
-    
+
     results = results.sort(function (a, b) { return b.relevance - a.relevance });
 
   }
@@ -145,7 +148,7 @@ Search.prototype.search = function (searchString) {
   if (results.length > 50) {
     results = results.slice(0, 50);
   }
-  
+
   this.displayResults(results);
 }
 Search.prototype.hideSearch = function () {
@@ -162,7 +165,7 @@ Search.prototype.selectResult = function () {
   if ($first) {
     document.location = $first.getAttribute('href');
   }
-  
+
   this.$searchBox.value = '';
   this.$searchBox.blur();
   this.displayResults([]);
@@ -176,7 +179,7 @@ Search.prototype.selectResult = function () {
 Search.prototype.displayResults = function (results) {
   if (results.length > 0) {
     this.$searchResults.classList.remove('no-results');
-    
+
     var html = '<ul>';
 
     results.forEach(function (result) {
@@ -193,7 +196,7 @@ Search.prototype.displayResults = function (results) {
       } else if (entry.type === 'production') {
         text = entry.key;
         cssClass = 'prod';
-        id = entry.id;  
+        id = entry.id;
       } else if (entry.type === 'op') {
         text = entry.key;
         cssClass = 'op';
@@ -205,7 +208,7 @@ Search.prototype.displayResults = function (results) {
       }
 
       if (text) {
-        html += '<li class=menu-search-result-' + cssClass + '><a href="#' + id + '">' + text + '</a></li>'
+        html += '<li class=menu-search-result-' + cssClass + '><a href="#' + id + '">' + text + '</a></li>';
       }
     });
 
@@ -228,7 +231,7 @@ function Menu() {
   this.$toc = document.querySelector('#menu-toc > ol');
   this.$specContainer = document.getElementById('spec-container');
   this.search = new Search(this);
-  
+
   this._pinnedIds = {}; 
   this.loadPinEntries();
 
@@ -273,9 +276,9 @@ function Menu() {
                     && target.offsetHeight + target.scrollTop >= target.scrollHeight;
 
     if (offBottom) {
-		  e.preventDefault();
-	  }
-  })
+      e.preventDefault();
+    }
+  });
 }
 
 Menu.prototype.documentKeydown = function (e) {
@@ -302,7 +305,7 @@ Menu.prototype.revealInToc = function (path) {
     current[i].classList.remove('revealed');
     current[i].classList.remove('revealed-leaf');
   }
-  
+
   var current = this.$toc;
   var index = 0;
   while (index < path.length) {
@@ -313,7 +316,7 @@ Menu.prototype.revealInToc = function (path) {
         if (index === path.length - 1) {
           children[i].classList.add('revealed-leaf');
           var rect = children[i].getBoundingClientRect();
-          this.$toc.getBoundingClientRect().top
+          // this.$toc.getBoundingClientRect().top;
           var tocRect = this.$toc.getBoundingClientRect();
           if (rect.top + 10 > tocRect.bottom) {
             this.$toc.scrollTop = this.$toc.scrollTop + (rect.top - tocRect.bottom) + (rect.bottom - rect.top);
@@ -324,29 +327,27 @@ Menu.prototype.revealInToc = function (path) {
         current = children[i].querySelector('ol');
         index++;
         break;
-      }      
+      }
     }
-    
+
   }
 }
 
 function findActiveClause(root, path) {
   var clauses = new ClauseWalker(root);
   var $clause;
-  var found = false;
   var path = path || [];
-  
+
   while ($clause = clauses.nextNode()) {
     var rect = $clause.getBoundingClientRect();
-    var $header = $clause.children[0];
+    var $header = $clause.querySelector("h1");
     var marginTop = parseInt(getComputedStyle($header)["margin-top"]);
-    
+
     if ((rect.top - marginTop) <= 0 && rect.bottom > 0) {
-      found = true;
       return findActiveClause($clause, path.concat($clause)) || path;
     }
   }
-  
+
   return path;
 }
 
@@ -371,7 +372,7 @@ function ClauseWalker(root) {
     },
     false
     );
-  
+
   return treeWalker;
 }
 
@@ -454,7 +455,7 @@ Menu.prototype.loadPinEntries = function () {
   } catch (e) {
     return;
   }
-  
+
   var pinsString = window.localStorage.pinEntries;
   if (!pinsString) return;
   var pins = JSON.parse(pinsString);
@@ -485,6 +486,11 @@ function init() {
   var $container = document.getElementById('spec-container');
   $container.addEventListener('mouseover', debounce(function (e) {
     Toolbox.activateIfMouseOver(e);
+  }));
+  document.addEventListener('keydown', debounce(function (e) {
+    if (e.code === "Escape" && Toolbox.active) {
+      Toolbox.deactivate();
+    }
   }));
 }
 
@@ -584,12 +590,11 @@ function fuzzysearch (searchString, haystack, caseInsensitive) {
   var qlen = searchString.length;
   var chunks = 1;
   var finding = false;
-  var prefix = true;
-  
+
   if (qlen > tlen) {
     return false;
   }
-  
+
   if (qlen === tlen) {
     if (searchString === haystack) {
       return { caseMatch: true, chunks: 1, prefix: true };
@@ -599,7 +604,7 @@ function fuzzysearch (searchString, haystack, caseInsensitive) {
       return false;
     }
   }
-  
+
   outer: for (var i = 0, j = 0; i < qlen; i++) {
     var nch = searchString[i];
     while (j < tlen) {
@@ -613,12 +618,12 @@ function fuzzysearch (searchString, haystack, caseInsensitive) {
         finding = false;
       }
     }
-    
-    if (caseInsensitive) { return false }
-    
+
+    if (caseInsensitive) { return false; }
+
     return fuzzysearch(searchString.toLowerCase(), haystack.toLowerCase(), true);
   }
-  
+
   return { caseMatch: !caseInsensitive, chunks: chunks, prefix: j <= qlen };
 }
 
@@ -775,7 +780,6 @@ var referencePane = {
       var target = document.getElementById(id);
       var cid = findParentClauseId(target);
       var clause = menu.search.biblio.byId[cid];
-      var dupCount = 0;
       return { id: id, clause: clause }
     }).sort(function (a, b) {
       return sortByClauseNumber(a.clause, b.clause);
@@ -815,7 +819,7 @@ function sortByClauseNumber(c1, c2) {
     if (i >= c2c.length) {
       return 1;
     }
-    
+
     var c1 = c1c[i];
     var c2 = c2c[i];
     var c1cn = Number(c1);
@@ -975,16 +979,43 @@ emu-const {
 emu-val {
   font-weight: bold;
 }
-emu-alg ol, emu-alg ol ol ol ol {
-    list-style-type: decimal;
+
+/* depth 1 */
+emu-alg ol,
+/* depth 4 */
+emu-alg ol ol ol ol,
+emu-alg ol.nested-thrice,
+emu-alg ol.nested-twice ol,
+emu-alg ol.nested-once ol ol {
+  list-style-type: decimal;
 }
 
-emu-alg ol ol, emu-alg ol ol ol ol ol {
-    list-style-type: lower-alpha;
+/* depth 2 */
+emu-alg ol ol,
+emu-alg ol.nested-once,
+/* depth 5 */
+emu-alg ol ol ol ol ol,
+emu-alg ol.nested-four-times,
+emu-alg ol.nested-thrice ol,
+emu-alg ol.nested-twice ol ol,
+emu-alg ol.nested-once ol ol ol {
+  list-style-type: lower-alpha;
 }
 
-emu-alg ol ol ol, ol ol ol ol ol ol {
-    list-style-type: lower-roman;
+/* depth 3 */
+emu-alg ol ol ol,
+emu-alg ol.nested-twice,
+emu-alg ol.nested-once ol,
+/* depth 6 */
+emu-alg ol ol ol ol ol ol,
+emu-alg ol.nested-lots,
+emu-alg ol.nested-four-times ol,
+emu-alg ol.nested-thrice ol ol,
+emu-alg ol.nested-twice ol ol ol,
+emu-alg ol.nested-once ol ol ol ol,
+/* depth 7+ */
+emu-alg ol.nested-lots ol {
+  list-style-type: lower-roman;
 }
 
 emu-eqn {
@@ -1035,6 +1066,10 @@ emu-note > div.note-contents > p:last-of-type {
   margin-bottom: 0;
 }
 
+emu-table td code {
+  white-space: normal;
+} 
+
 emu-figure {
   display: block;
 }
@@ -1059,6 +1094,10 @@ emu-table figure {
 
 emu-production {
     display: block;
+}
+
+emu-grammar[type="example"] emu-production,
+emu-grammar[type="definition"] emu-production {
     margin-top: 1em;
     margin-bottom: 1em;
     margin-left: 5ex;
@@ -1086,6 +1125,7 @@ emu-gann {
 }
 
 emu-gann emu-t:last-child,
+emu-gann emu-gprose:last-child,
 emu-gann emu-nt:last-child {
     margin-right: 0;
 }
@@ -1140,10 +1180,6 @@ emu-mods {
     font-weight: normal;
 }
 
-emu-production[collapsed] emu-mods {
-  display: none;
-}
-
 emu-params, emu-opt {
   margin-right: 1ex;
   font-family: monospace;
@@ -1160,6 +1196,10 @@ emu-opt {
 emu-gprose {
     font-size: 0.9em;
     font-family: Helvetica, Arial, sans-serif;
+}
+
+emu-production emu-gprose {
+    margin-right: 1ex;
 }
 
 h1.shortname {
@@ -1189,7 +1229,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 .secnum {
   text-decoration: none;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 h1 span.title {
@@ -1804,61 +1844,50 @@ li.menu-search-result-term:before {
     display: none; 
   }
 }
-</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-intro" title="Introduction">Introduction</a></li><li><span class="item-toggle">◢</span><a href="#sec-executable-code-and-execution-contexts" title="Executable Code and Execution Contexts"><span class="secnum">1</span> Executable Code and Execution Contexts</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-class-static-block-environment-records" title="Class Static Block Environment Records"><span class="secnum">1.1</span> <ins>Class Static Block Environment Records</ins></a></li></ol></li><li><span class="item-toggle">◢</span><a href="#sec-ecmascript-language-functions-and-classes" title="ECMAScript Language: Functions and Classes"><span class="secnum">2</span> ECMAScript Language: Functions and Classes</a><ol class="toc"><li><span class="item-toggle">◢</span><a href="#sec-class-definitions" title="Class Definitions"><span class="secnum">2.1</span> Class Definitions</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-early-errors" title="Static Semantics: Early Errors"><span class="secnum">2.1.1</span> SS: Early Errors</a></li><li><span class="item-toggle-none"></span><a href="#sec-static-semantics-isstatic" title="Static Semantics: IsStatic"><span class="secnum">2.1.2</span> SS: IsStatic</a></li><li><span class="item-toggle-none"></span><a href="#sec-static-semantics-nonconstructormethoddefinitions" title="Static Semantics: NonConstructorMethodDefinitions"><span class="secnum">2.1.3</span> SS: NonConstructorMethodDefinitions</a></li><li><span class="item-toggle-none"></span><a href="#sec-static-semantics-classstaticblocklist" title="Static Semantics: ClassStaticBlockList"><span class="secnum">2.1.4</span> <ins>SS: ClassStaticBlockList</ins></a></li><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-propname" title="Static Semantics: PropName"><span class="secnum">2.1.5</span> SS: PropName</a></li><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-LexicallyDeclaredNames" title="Static Semantics: VarDeclaredNames"><span class="secnum">2.1.6</span> SS: VarDeclaredNames</a></li><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-vardeclarednames" title="Static Semantics: VarDeclaredNames"><span class="secnum">2.1.7</span> SS: VarDeclaredNames</a></li><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-varscopeddeclarations" title="Static Semantics: VarScopedDeclarations"><span class="secnum">2.1.8</span> SS: VarScopedDeclarations</a></li><li><span class="item-toggle-none"></span><a href="#sec-runtime-semantics-classdefinitionevaluation" title="Runtime Semantics: ClassDefinitionEvaluation"><span class="secnum">2.1.9</span> RS: ClassDefinitionEvaluation</a></li><li><span class="item-toggle">◢</span><a href="#sec-runtime-semantics-classstaticblockevaluation" title="Runtime Semantics: ClassStaticBlockEvaluation"><span class="secnum">2.1.10</span> <ins>RS: ClassStaticBlockEvaluation</ins></a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-prepareforclassstaticblockevaluation" title="PrepareForClassStaticBlockEvaluation ( F )"><span class="secnum">2.1.10.1</span> PrepareForClassStaticBlockEvaluation ( <var>F</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-classstaticblockbindthis" title="ClassStaticBlockBindThis ( F, innerContext )"><span class="secnum">2.1.10.2</span> ClassStaticBlockBindThis ( <var>F</var>, <var>innerContext</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-classstaticblockevaluatebody" title="ClassStaticBlockEvaluateBody ( block )"><span class="secnum">2.1.10.3</span> ClassStaticBlockEvaluateBody ( <var>block</var> )</a></li><li><span class="item-toggle-none"></span><a href="#classstaticblockdeclarationinstantiation" title="ClassStaticBlockDeclarationInstantiation ( block )"><span class="secnum">2.1.10.4</span> ClassStaticBlockDeclarationInstantiation ( <var>block</var> )</a></li></ol></li></ol></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 1 Draft / July 11, 2018</h1><h1 class="title">ECMAScript class static initialization blocks</h1>
+</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-intro" title="Introduction">Introduction</a></li><li><span class="item-toggle">◢</span><a href="#sec-executable-code-and-execution-contexts" title="Executable Code and Execution Contexts"><span class="secnum">1</span> Executable Code and Execution Contexts</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-class-static-block-environment-records" title="Class Static Block Environment Records"><span class="secnum">1.1</span> <ins>Class Static Block Environment Records</ins></a></li></ol></li><li><span class="item-toggle">◢</span><a href="#sec-ecmascript-language-functions-and-classes" title="ECMAScript Language: Functions and Classes"><span class="secnum">2</span> ECMAScript Language: Functions and Classes</a><ol class="toc"><li><span class="item-toggle">◢</span><a href="#sec-class-definitions" title="Class Definitions"><span class="secnum">2.1</span> Class Definitions</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-early-errors" title="Static Semantics: Early Errors"><span class="secnum">2.1.1</span> SS: Early Errors</a></li><li><span class="item-toggle-none"></span><a href="#sec-static-semantics-isstatic" title="Static Semantics: IsStatic"><span class="secnum">2.1.2</span> SS: IsStatic</a></li><li><span class="item-toggle-none"></span><a href="#sec-static-semantics-nonconstructormethoddefinitions" title="Static Semantics: NonConstructorMethodDefinitions"><span class="secnum">2.1.3</span> SS: NonConstructorMethodDefinitions</a></li><li><span class="item-toggle-none"></span><a href="#sec-static-semantics-classstaticblocklist" title="Static Semantics: ClassStaticBlockList"><span class="secnum">2.1.4</span> <ins>SS: ClassStaticBlockList</ins></a></li><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-propname" title="Static Semantics: PropName"><span class="secnum">2.1.5</span> SS: PropName</a></li><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-LexicallyDeclaredNames" title="Static Semantics: VarDeclaredNames"><span class="secnum">2.1.6</span> SS: VarDeclaredNames</a></li><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-vardeclarednames" title="Static Semantics: VarDeclaredNames"><span class="secnum">2.1.7</span> SS: VarDeclaredNames</a></li><li><span class="item-toggle-none"></span><a href="#sec-class-definitions-static-semantics-varscopeddeclarations" title="Static Semantics: VarScopedDeclarations"><span class="secnum">2.1.8</span> SS: VarScopedDeclarations</a></li><li><span class="item-toggle-none"></span><a href="#sec-runtime-semantics-classdefinitionevaluation" title="Runtime Semantics: ClassDefinitionEvaluation"><span class="secnum">2.1.9</span> RS: ClassDefinitionEvaluation</a></li><li><span class="item-toggle">◢</span><a href="#sec-runtime-semantics-classstaticblockevaluation" title="Runtime Semantics: ClassStaticBlockEvaluation"><span class="secnum">2.1.10</span> <ins>RS: ClassStaticBlockEvaluation</ins></a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-prepareforclassstaticblockevaluation" title="PrepareForClassStaticBlockEvaluation ( F )"><span class="secnum">2.1.10.1</span> PrepareForClassStaticBlockEvaluation ( <var>F</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-classstaticblockbindthis" title="ClassStaticBlockBindThis ( F, innerContext )"><span class="secnum">2.1.10.2</span> ClassStaticBlockBindThis ( <var>F</var>, <var>innerContext</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-classstaticblockevaluatebody" title="ClassStaticBlockEvaluateBody ( block )"><span class="secnum">2.1.10.3</span> ClassStaticBlockEvaluateBody ( <var>block</var> )</a></li><li><span class="item-toggle-none"></span><a href="#classstaticblockdeclarationinstantiation" title="ClassStaticBlockDeclarationInstantiation ( block )"><span class="secnum">2.1.10.4</span> ClassStaticBlockDeclarationInstantiation ( <var>block</var> )</a></li></ol></li></ol></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 1 Draft / September 9, 2020</h1><h1 class="title">ECMAScript class static initialization blocks</h1>
 
 <emu-intro id="sec-intro">
     <h1>Introduction</h1>
-    <emu-import href="sec-introduction.html"><p>This proposal defines new syntax to perform privleged static initialization of a class.</p>
-<p>See  <a href="https://github.com/rbuckton/proposal-class-static-block">the proposal repository</a> for background material and discussion.</p></emu-import>
+    <emu-import href="sec-introduction.html"><p>This proposal defines new syntax to perform privleged static initialization of a class.</p><p>See <a href="https://github.com/rbuckton/proposal-class-static-block">the proposal repository</a> for background material and discussion.</p></emu-import>
 </emu-intro>
 
 <emu-clause id="sec-executable-code-and-execution-contexts">
-    <h1><span class="secnum">1</span>Executable Code and Execution Contexts</h1>
-    <emu-import href="sec-executable-code-and-execution-contexts-patch.html"><p><ins>A  <i>class static block environment</i> is a <emu-xref href="#sec-lexical-environments"><a href="https://tc39.github.io/ecma262/#sec-lexical-environments">Lexical Environment</a></emu-xref> that corresponds to the evaluation of the static block of a class. A class static block environment establishes a new <code>this</code> binding.</ins></p>
-
-<emu-clause id="sec-class-static-block-environment-records">
-    <h1><span class="secnum">1.1</span><ins>Class Static Block Environment Records</ins></h1>
-    <p>A class static block <emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref> is a declarative Environemtn <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> that is used to represent the top-level scope of a class static block and provides a <code>this</code> binding.</p>
-    <p>Class Static Block Environment Records have the additional state fields listed in  <emu-xref href="#table-class-static-block" id="_ref_0"><a href="#table-class-static-block">Table 1</a></emu-xref>.</p>
+    <h1><span class="secnum">1</span> Executable Code and Execution Contexts</h1>
+    <emu-import href="sec-executable-code-and-execution-contexts-patch.html"><p><ins>A <i>class static block environment</i> is a <emu-xref href="#sec-lexical-environments"><a href="https://tc39.es/ecma262/#sec-lexical-environments">Lexical Environment</a></emu-xref> that corresponds to the evaluation of the static block of a class. A class static block environment establishes a new <code>this</code> binding.</ins></p><emu-clause id="sec-class-static-block-environment-records">
+    <h1><span class="secnum">1.1</span> <ins>Class Static Block Environment Records</ins></h1>
+    <p>A class static block <emu-xref href="#sec-environment-records"><a href="https://tc39.es/ecma262/#sec-environment-records">Environment Record</a></emu-xref> is a declarative Environemtn <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> that is used to represent the top-level scope of a class static block and provides a <code>this</code> binding.</p>
+    <p>Class Static Block Environment Records have the additional state fields listed in <emu-xref href="#table-class-static-block" id="_ref_0"><a href="#table-class-static-block">Table 1</a></emu-xref>.</p>
     <emu-table id="table-class-static-block" caption="Additional Fields of Function Environment Records"><figure><figcaption>Table 1: Additional Fields of Function Environment Records</figcaption>
         <table>
         <tbody>
         <tr>
             <th>
             Field Name
-            
             </th>
             <th>
             Value
-            
             </th>
             <th>
             Meaning
-            
             </th>
         </tr>
         <tr>
             <td>
             [[ThisValue]]
-            
             </td>
             <td>
             Any
-            
             </td>
             <td>
             This is the <emu-val>this</emu-val> value used for this invocation of the function.
-            
             </td>
         </tr>
         <tr>
             <td>
             [[ThisBindingStatus]]
-            
             </td>
             <td>
             <code>"initialized"</code> | <code>"uninitialized"</code>
-            
             </td>
             <td>
             </td>
@@ -1866,29 +1895,23 @@ li.menu-search-result-term:before {
         <tr>
             <td>
             [[FunctionObject]]
-            
             </td>
             <td>
             Object
-            
             </td>
             <td>
-            The function object for a class whose static belock evaluation caused this <emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref> to be created.
-            
+            The <emu-xref href="#function-object"><a href="https://tc39.es/ecma262/#function-object">function object</a></emu-xref> for a class whose static belock evaluation caused this <emu-xref href="#sec-environment-records"><a href="https://tc39.es/ecma262/#sec-environment-records">Environment Record</a></emu-xref> to be created.
             </td>
         </tr>
         <tr>
             <td>
             [[HomeObject]]
-            
             </td>
             <td>
             Object | <emu-val>undefined</emu-val>
-            
             </td>
             <td>
-            If the associated function has <code>super</code> property accesses and is not an <emu-nt><a href="https://tc39.github.io/ecma262/#prod-ArrowFunction">ArrowFunction</a></emu-nt>, [[HomeObject]] is the object that the function is bound to as a method. The default value for [[HomeObject]] is <emu-val>undefined</emu-val>.
-            
+            If the associated function has <code>super</code> property accesses and is not an <emu-nt><a href="https://tc39.es/ecma262/#prod-asi-rules-ArrowFunction">ArrowFunction</a></emu-nt>, [[HomeObject]] is the object that the function is bound to as a method. The default value for [[HomeObject]] is <emu-val>undefined</emu-val>.
             </td>
         </tr>
         </tbody>
@@ -1898,13 +1921,13 @@ li.menu-search-result-term:before {
 </emu-clause>
 
 <emu-clause id="sec-ecmascript-language-functions-and-classes">
-    <h1><span class="secnum">2</span>ECMAScript Language: Functions and Classes</h1>
+    <h1><span class="secnum">2</span> ECMAScript Language: Functions and Classes</h1>
     <emu-import href="sec-class-definitions-patch.html"><emu-clause id="sec-class-definitions">
-  <h1><span class="secnum">2.1</span>Class Definitions</h1>
+  <h1><span class="secnum">2.1</span> Class Definitions</h1>
   <h2>Syntax</h2>
   <emu-grammar><emu-production name="ClassElement" params="Yield, Await" id="prod-ClassElement">
-    <emu-nt params="Yield, Await"><a href="#prod-ClassElement">ClassElement</a><emu-mods><emu-params>[Yield, Await]</emu-params></emu-mods></emu-nt><emu-geq>:</emu-geq><emu-rhs a="91edbff4"><emu-nt params="?Yield, ?Await"><a href="https://tc39.github.io/ecma262/#prod-MethodDefinition">MethodDefinition</a><emu-mods><emu-params>[?Yield, ?Await]</emu-params></emu-mods></emu-nt></emu-rhs>
-    <emu-rhs a="6b4234e8"><emu-t>static</emu-t><emu-nt params="?Yield, ?Await"><a href="https://tc39.github.io/ecma262/#prod-MethodDefinition">MethodDefinition</a><emu-mods><emu-params>[?Yield, ?Await]</emu-params></emu-mods></emu-nt></emu-rhs>
+    <emu-nt params="Yield, Await"><a href="#prod-ClassElement">ClassElement</a><emu-mods><emu-params>[Yield, Await]</emu-params></emu-mods></emu-nt><emu-geq>:</emu-geq><emu-rhs a="91edbff4"><emu-nt params="?Yield, ?Await"><a href="https://tc39.es/ecma262/#prod-MethodDefinition">MethodDefinition</a><emu-mods><emu-params>[?Yield, ?Await]</emu-params></emu-mods></emu-nt></emu-rhs>
+    <emu-rhs a="6b4234e8"><emu-t>static</emu-t><emu-nt params="?Yield, ?Await"><a href="https://tc39.es/ecma262/#prod-MethodDefinition">MethodDefinition</a><emu-mods><emu-params>[?Yield, ?Await]</emu-params></emu-mods></emu-nt></emu-rhs>
     <ins><emu-rhs a="d948be7f"><emu-nt id="_ref_23"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt></emu-rhs></ins>
     <emu-rhs a="4a0dac03"><emu-t>;</emu-t></emu-rhs>
 </emu-production>
@@ -1915,11 +1938,11 @@ li.menu-search-result-term:before {
     <emu-nt><a href="#prod-ClassStaticBlockBody">ClassStaticBlockBody</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="3a1d094a"><emu-nt id="_ref_24"><a href="#prod-ClassStaticBlockStatementList">ClassStaticBlockStatementList</a></emu-nt></emu-rhs>
 </emu-production>
 <emu-production name="ClassStaticBlockStatementList" id="prod-ClassStaticBlockStatementList">
-    <emu-nt><a href="#prod-ClassStaticBlockStatementList">ClassStaticBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="a27ca41c"><emu-nt params="~Yield, ~Await, ~Return" optional=""><a href="https://tc39.github.io/ecma262/#prod-StatementList">StatementList</a><emu-mods><emu-params>[~Yield, ~Await, ~Return]</emu-params><emu-opt>opt</emu-opt></emu-mods></emu-nt></emu-rhs>
+    <emu-nt><a href="#prod-ClassStaticBlockStatementList">ClassStaticBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="a27ca41c"><emu-nt params="~Yield, ~Await, ~Return" optional=""><a href="https://tc39.es/ecma262/#prod-grammar-notation-StatementList">StatementList</a><emu-mods><emu-params>[~Yield, ~Await, ~Return]</emu-params><emu-opt>opt</emu-opt></emu-mods></emu-nt></emu-rhs>
 </emu-production></ins></emu-grammar>
 
   <emu-clause id="sec-class-definitions-static-semantics-early-errors">
-    <h1><span class="secnum">2.1.1</span>Static Semantics: Early Errors</h1>
+    <h1><span class="secnum">2.1.1</span> Static Semantics: Early Errors</h1>
     <emu-grammar collapsed=""><emu-production name="ClassBody" collapsed="" id="prod-ClassBody">
     <emu-nt><a href="#prod-ClassBody">ClassBody</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="d72d43ba"><emu-nt id="_ref_25"><a href="#prod-ClassElementList">ClassElementList</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
@@ -1931,16 +1954,15 @@ li.menu-search-result-term:before {
   </emu-clause>
 
   <emu-clause id="sec-static-semantics-isstatic">
-    <h1><span class="secnum">2.1.2</span>Static Semantics: IsStatic</h1>
+    <h1><span class="secnum">2.1.2</span> Static Semantics: IsStatic</h1>
     <emu-grammar collapsed=""><ins><emu-production name="ClassElement" collapsed="">
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="d948be7f"><emu-nt id="_ref_27"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt></emu-rhs>
 </emu-production></ins></emu-grammar>
-    <emu-alg><ol><li><ins>Return <emu-val>false</emu-val>.</ins>
-    </li></ol></emu-alg>
+    <emu-alg><ol><li><ins>Return <emu-val>false</emu-val>.</ins></li></ol></emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-static-semantics-nonconstructormethoddefinitions">
-    <h1><span class="secnum">2.1.3</span>Static Semantics: NonConstructorMethodDefinitions</h1>
+    <h1><span class="secnum">2.1.3</span> Static Semantics: NonConstructorMethodDefinitions</h1>
     <emu-grammar collapsed=""><emu-production name="ClassElementList" collapsed="" id="prod-ClassElementList">
     <emu-nt><a href="#prod-ClassElementList">ClassElementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="711bcbba"><emu-nt id="_ref_28"><a href="#prod-ClassElement">ClassElement</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
@@ -1948,8 +1970,7 @@ li.menu-search-result-term:before {
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="4a0dac03"><emu-t>;</emu-t></emu-rhs>
 </emu-production></emu-grammar> <ins>or <emu-grammar><emu-production name="ClassElement" collapsed="" class=" inline">
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="d948be7f"><emu-nt id="_ref_30"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt></emu-rhs>
-</emu-production></emu-grammar></ins>, return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>If IsStatic of <emu-nt id="_ref_31"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is <emu-val>false</emu-val> and PropName of <emu-nt id="_ref_32"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is <code>"constructor"</code>, return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>Return a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> containing <emu-nt id="_ref_33"><a href="#prod-ClassElement">ClassElement</a></emu-nt>.
-    </li></ol></emu-alg>
+</emu-production></emu-grammar></ins>, return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>If IsStatic of <emu-nt id="_ref_31"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is <emu-val>false</emu-val> and PropName of <emu-nt id="_ref_32"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is <code>"constructor"</code>, return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>Return a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> containing <emu-nt id="_ref_33"><a href="#prod-ClassElement">ClassElement</a></emu-nt>.</li></ol></emu-alg>
     <emu-grammar collapsed=""><emu-production name="ClassElementList" collapsed="">
     <emu-nt><a href="#prod-ClassElementList">ClassElementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="9ac50b6a"><emu-nt id="_ref_34"><a href="#prod-ClassElementList">ClassElementList</a></emu-nt><emu-nt id="_ref_35"><a href="#prod-ClassElement">ClassElement</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
@@ -1957,140 +1978,123 @@ li.menu-search-result-term:before {
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="4a0dac03"><emu-t>;</emu-t></emu-rhs>
 </emu-production></emu-grammar> <ins>or <emu-grammar><emu-production name="ClassElement" collapsed="" class=" inline">
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="d948be7f"><emu-nt id="_ref_38"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt></emu-rhs>
-</emu-production></emu-grammar></ins>, return <var>list</var>.</li><li>If IsStatic of <emu-nt id="_ref_39"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is <emu-val>false</emu-val> and PropName of <emu-nt id="_ref_40"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is <code>"constructor"</code>, return <var>list</var>.</li><li>Append <emu-nt id="_ref_41"><a href="#prod-ClassElement">ClassElement</a></emu-nt> to the end of <var>list</var>.</li><li>Return <var>list</var>.
-    </li></ol></emu-alg>
+</emu-production></emu-grammar></ins>, return <var>list</var>.</li><li>If IsStatic of <emu-nt id="_ref_39"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is <emu-val>false</emu-val> and PropName of <emu-nt id="_ref_40"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is <code>"constructor"</code>, return <var>list</var>.</li><li>Append <emu-nt id="_ref_41"><a href="#prod-ClassElement">ClassElement</a></emu-nt> to the end of <var>list</var>.</li><li>Return <var>list</var>.</li></ol></emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-static-semantics-classstaticblocklist" aoid="ClassStaticBlockList">
-    <h1><span class="secnum">2.1.4</span><ins>Static Semantics: ClassStaticBlockList</ins></h1>
+    <h1><span class="secnum">2.1.4</span> <ins>Static Semantics: ClassStaticBlockList</ins></h1>
     <emu-grammar collapsed=""><emu-production name="ClassElementList" collapsed="">
     <emu-nt><a href="#prod-ClassElementList">ClassElementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="711bcbba"><emu-nt id="_ref_42"><a href="#prod-ClassElement">ClassElement</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
     <emu-alg><ol><li>If <emu-nt id="_ref_43"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is not <emu-grammar><emu-production name="ClassElement" collapsed="" class=" inline">
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="d948be7f"><emu-nt id="_ref_44"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt></emu-rhs>
-</emu-production></emu-grammar>, return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>Return a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> containing <emu-nt id="_ref_45"><a href="#prod-ClassElement">ClassElement</a></emu-nt>.
-    </li></ol></emu-alg>
+</emu-production></emu-grammar>, return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>Return a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> containing <emu-nt id="_ref_45"><a href="#prod-ClassElement">ClassElement</a></emu-nt>.</li></ol></emu-alg>
     <emu-grammar collapsed=""><emu-production name="ClassElementList" collapsed="">
     <emu-nt><a href="#prod-ClassElementList">ClassElementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="9ac50b6a"><emu-nt id="_ref_46"><a href="#prod-ClassElementList">ClassElementList</a></emu-nt><emu-nt id="_ref_47"><a href="#prod-ClassElement">ClassElement</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
     <emu-alg><ol><li>Let <var>list</var> be <emu-xref aoid="ClassStaticBlockList" id="_ref_2"><a href="#sec-static-semantics-classstaticblocklist">ClassStaticBlockList</a></emu-xref> of <emu-nt id="_ref_48"><a href="#prod-ClassElementList">ClassElementList</a></emu-nt>.</li><li>If <emu-nt id="_ref_49"><a href="#prod-ClassElement">ClassElement</a></emu-nt> is not <emu-grammar><emu-production name="ClassElement" collapsed="" class=" inline">
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="d948be7f"><emu-nt id="_ref_50"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt></emu-rhs>
-</emu-production></emu-grammar>, return <var>list</var>.</li><li>Append <emu-nt id="_ref_51"><a href="#prod-ClassElement">ClassElement</a></emu-nt> to the end of <var>list</var>.</li><li>Return <var>list</var>.
-    </li></ol></emu-alg>
+</emu-production></emu-grammar>, return <var>list</var>.</li><li>Append <emu-nt id="_ref_51"><a href="#prod-ClassElement">ClassElement</a></emu-nt> to the end of <var>list</var>.</li><li>Return <var>list</var>.</li></ol></emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-class-definitions-static-semantics-propname">
-    <h1><span class="secnum">2.1.5</span>Static Semantics: PropName</h1>
+    <h1><span class="secnum">2.1.5</span> Static Semantics: PropName</h1>
     <emu-grammar collapsed=""><ins><emu-production name="ClassElement" collapsed="">
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="d948be7f"><emu-nt id="_ref_52"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt></emu-rhs>
 </emu-production></ins></emu-grammar>
-    <emu-alg><ol><li><ins>Return <emu-const>empty</emu-const>.</ins>
-    </li></ol></emu-alg>
+    <emu-alg><ol><li><ins>Return <emu-const>empty</emu-const>.</ins></li></ol></emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-class-definitions-static-semantics-LexicallyDeclaredNames">
-    <h1><span class="secnum">2.1.6</span>Static Semantics: VarDeclaredNames</h1>
+    <h1><span class="secnum">2.1.6</span> Static Semantics: VarDeclaredNames</h1>
     <emu-grammar collapsed=""><emu-production name="ClassBlockStatementList" collapsed="" id="prod-ClassBlockStatementList">
     <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="37b9c04c"><emu-gann>[empty]</emu-gann></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.
-    </li></ol></emu-alg>
+    <emu-alg><ol><li>Return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li></ol></emu-alg>
     <emu-grammar collapsed=""><emu-production name="ClassBlockStatementList" collapsed="">
-    <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="cf403a0c"><emu-nt><a href="https://tc39.github.io/ecma262/#prod-StatementList">StatementList</a></emu-nt></emu-rhs>
+    <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="cf403a0c"><emu-nt><a href="https://tc39.es/ecma262/#prod-grammar-notation-StatementList">StatementList</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Return the TopLevelLexicallyDeclaredNames of <emu-nt><a href="https://tc39.github.io/ecma262/#prod-StatementList">StatementList</a></emu-nt>.
-    </li></ol></emu-alg>
+    <emu-alg><ol><li>Return the TopLevelLexicallyDeclaredNames of <emu-nt><a href="https://tc39.es/ecma262/#prod-grammar-notation-StatementList">StatementList</a></emu-nt>.</li></ol></emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-class-definitions-static-semantics-vardeclarednames">
-    <h1><span class="secnum">2.1.7</span>Static Semantics: VarDeclaredNames</h1>
+    <h1><span class="secnum">2.1.7</span> Static Semantics: VarDeclaredNames</h1>
     <emu-grammar collapsed=""><emu-production name="ClassBlockStatementList" collapsed="">
     <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="37b9c04c"><emu-gann>[empty]</emu-gann></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.
-    </li></ol></emu-alg>
+    <emu-alg><ol><li>Return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li></ol></emu-alg>
     <emu-grammar collapsed=""><emu-production name="ClassBlockStatementList" collapsed="">
-    <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="cf403a0c"><emu-nt><a href="https://tc39.github.io/ecma262/#prod-StatementList">StatementList</a></emu-nt></emu-rhs>
+    <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="cf403a0c"><emu-nt><a href="https://tc39.es/ecma262/#prod-grammar-notation-StatementList">StatementList</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Return the TopLevelVarDeclaredNames of <emu-nt><a href="https://tc39.github.io/ecma262/#prod-StatementList">StatementList</a></emu-nt>.
-    </li></ol></emu-alg>
+    <emu-alg><ol><li>Return the TopLevelVarDeclaredNames of <emu-nt><a href="https://tc39.es/ecma262/#prod-grammar-notation-StatementList">StatementList</a></emu-nt>.</li></ol></emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-class-definitions-static-semantics-varscopeddeclarations">
-    <h1><span class="secnum">2.1.8</span>Static Semantics: VarScopedDeclarations</h1>
+    <h1><span class="secnum">2.1.8</span> Static Semantics: VarScopedDeclarations</h1>
     <emu-grammar collapsed=""><emu-production name="ClassBlockStatementList" collapsed="">
     <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="37b9c04c"><emu-gann>[empty]</emu-gann></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.
-    </li></ol></emu-alg>
+    <emu-alg><ol><li>Return a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li></ol></emu-alg>
     <emu-grammar collapsed=""><emu-production name="ClassBlockStatementList" collapsed="">
-    <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="cf403a0c"><emu-nt><a href="https://tc39.github.io/ecma262/#prod-StatementList">StatementList</a></emu-nt></emu-rhs>
+    <emu-nt><a href="#prod-ClassBlockStatementList">ClassBlockStatementList</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="cf403a0c"><emu-nt><a href="https://tc39.es/ecma262/#prod-grammar-notation-StatementList">StatementList</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Return the TopLevelVarScopedDeclarations of <emu-nt><a href="https://tc39.github.io/ecma262/#prod-StatementList">StatementList</a></emu-nt>.
-    </li></ol></emu-alg>
+    <emu-alg><ol><li>Return the TopLevelVarScopedDeclarations of <emu-nt><a href="https://tc39.es/ecma262/#prod-grammar-notation-StatementList">StatementList</a></emu-nt>.</li></ol></emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-runtime-semantics-classdefinitionevaluation">
-    <h1><span class="secnum">2.1.9</span>Runtime Semantics: ClassDefinitionEvaluation</h1>
-    <emu-note><span class="note">Note</span><div class="note-contents">This algorithm is a delta from the  <a href="https://tc39.github.io/proposal-class-fields/#runtime-semantics-class-definition-evaluation">Class Fields proposal</a>.</div></emu-note>
+    <h1><span class="secnum">2.1.9</span> Runtime Semantics: ClassDefinitionEvaluation</h1>
+    <emu-note><span class="note">Note</span><div class="note-contents">This algorithm is a delta from the <a href="https://tc39.github.io/proposal-class-fields/#runtime-semantics-class-definition-evaluation">Class Fields proposal</a>.</div></emu-note>
     <p>With parameter <var>className</var>.</p>
     <emu-grammar><emu-production name="ClassTail" collapsed="" id="prod-ClassTail">
-    <emu-nt><a href="#prod-ClassTail">ClassTail</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="b8ea6aa5"><emu-nt optional=""><a href="https://tc39.github.io/ecma262/#prod-ClassHeritage">ClassHeritage</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt><emu-t>{</emu-t><emu-nt optional="" id="_ref_53"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt><emu-t>}</emu-t></emu-rhs>
+    <emu-nt><a href="#prod-ClassTail">ClassTail</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="b8ea6aa5"><emu-nt optional=""><a href="https://tc39.es/ecma262/#prod-ClassHeritage">ClassHeritage</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt><emu-t>{</emu-t><emu-nt optional="" id="_ref_53"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt><emu-t>}</emu-t></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Let <var>lex</var> be the LexicalEnvironment of the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>classScope</var> be <emu-xref aoid="NewDeclarativeEnvironment" id="_ref_3"><a href="https://tc39.github.io/ecma262/#sec-newdeclarativeenvironment">NewDeclarativeEnvironment</a></emu-xref>(<var>lex</var>).</li><li>Let <var>classScopeEnvRec</var> be <var>classScope</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.github.io/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li><li>If <var>className</var> is not <emu-val>undefined</emu-val>, then<ol><li>Perform <var>classScopeEnvRec</var>.CreateImmutableBinding(<var>className</var>, <emu-val>true</emu-val>).</li></ol></li><li>Let <var>outerPrivateEnvironment</var> be the PrivateNameEnvironment of the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>classPrivateEnvironment</var> be <emu-xref aoid="NewDeclarativeEnvironment" id="_ref_4"><a href="https://tc39.github.io/ecma262/#sec-newdeclarativeenvironment">NewDeclarativeEnvironment</a></emu-xref>(<var>outerPrivateEnvironment</var>).</li><li>Let <var>classPrivateEnvRec</var> be <var>classPrivateEnvironment</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.github.io/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li><li>If <emu-nt optional="" id="_ref_54"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is present, then<ol><li>For each element <var>dn</var> of the PrivateBoundNames of <emu-nt optional="" id="_ref_55"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt>,<ol><li>Perform <var>classPrivateEnvRec</var>.CreateImmutableBinding(<var>dn</var>, <emu-val>true</emu-val>).</li></ol></li></ol></li><li>If <emu-nt optional=""><a href="https://tc39.github.io/ecma262/#prod-ClassHeritage">ClassHeritage</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is not present, then<ol><li>Let <var>protoParent</var> be the intrinsic object <emu-xref href="#sec-properties-of-the-object-prototype-object"><a href="https://tc39.github.io/ecma262/#sec-properties-of-the-object-prototype-object">%ObjectPrototype%</a></emu-xref>.</li><li>Let <var>constructorParent</var> be the intrinsic object <emu-xref href="#sec-properties-of-the-function-prototype-object"><a href="https://tc39.github.io/ecma262/#sec-properties-of-the-function-prototype-object">%FunctionPrototype%</a></emu-xref>.</li></ol></li><li>Else,<ol><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>classScope</var>.</li><li>NOTE: The <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment is <var>outerPrivateEnvironment</var> when evaluating <emu-nt><a href="https://tc39.github.io/ecma262/#prod-ClassHeritage">ClassHeritage</a></emu-nt>.</li><li>Let <var>superclass</var> be the result of evaluating <emu-nt><a href="https://tc39.github.io/ecma262/#prod-ClassHeritage">ClassHeritage</a></emu-nt>.</li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</li><li><emu-xref aoid="ReturnIfAbrupt" id="_ref_5"><a href="https://tc39.github.io/ecma262/#sec-returnifabrupt">ReturnIfAbrupt</a></emu-xref>(<var>superclass</var>).</li><li>If <var>superclass</var> is <emu-val>null</emu-val>, then<ol><li>Let <var>protoParent</var> be <emu-val>null</emu-val>.</li><li>Let <var>constructorParent</var> be the intrinsic object <emu-xref href="#sec-properties-of-the-function-prototype-object"><a href="https://tc39.github.io/ecma262/#sec-properties-of-the-function-prototype-object">%FunctionPrototype%</a></emu-xref>.</li></ol></li><li>Else if <emu-xref aoid="IsConstructor" id="_ref_6"><a href="https://tc39.github.io/ecma262/#sec-isconstructor">IsConstructor</a></emu-xref>(<var>superclass</var>) is <emu-val>false</emu-val>, throw a <emu-val>TypeError</emu-val> exception.</li><li>Else,<ol><li>Let <var>protoParent</var> be ?&nbsp;<emu-xref aoid="Get" id="_ref_7"><a href="https://tc39.github.io/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>superclass</var>, <code>"prototype"</code>).</li><li>If <emu-xref aoid="Type" id="_ref_8"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>protoParent</var>) is neither Object nor Null, throw a <emu-val>TypeError</emu-val> exception.</li><li>Let <var>constructorParent</var> be <var>superclass</var>.</li></ol></li></ol></li><li>Let <var>proto</var> be <emu-xref aoid="ObjectCreate" id="_ref_9"><a href="https://tc39.github.io/ecma262/#sec-objectcreate">ObjectCreate</a></emu-xref>(<var>protoParent</var>).</li><li>If <emu-nt optional="" id="_ref_56"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is not present, let <var>constructor</var> be <emu-const>empty</emu-const>.</li><li>Else, let <var>constructor</var> be ConstructorMethod of <emu-nt id="_ref_57"><a href="#prod-ClassBody">ClassBody</a></emu-nt>.</li><li>If <var>constructor</var> is <emu-const>empty</emu-const>, then<ol><li>If <emu-nt optional=""><a href="https://tc39.github.io/ecma262/#prod-ClassHeritage">ClassHeritage</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is present and <var>protoParent</var> is not <emu-val>null</emu-val>, then<ol><li>Let <var>constructor</var> be the result of parsing the source text
+    <emu-alg><ol><li>Let <var>lex</var> be the LexicalEnvironment of the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>classScope</var> be <emu-xref aoid="NewDeclarativeEnvironment" id="_ref_3"><a href="https://tc39.es/ecma262/#sec-newdeclarativeenvironment">NewDeclarativeEnvironment</a></emu-xref>(<var>lex</var>).</li><li>Let <var>classScopeEnvRec</var> be <var>classScope</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.es/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li><li>If <var>className</var> is not <emu-val>undefined</emu-val>, then<ol><li>Perform <var>classScopeEnvRec</var>.CreateImmutableBinding(<var>className</var>, <emu-val>true</emu-val>).</li></ol></li><li>Let <var>outerPrivateEnvironment</var> be the PrivateNameEnvironment of the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>classPrivateEnvironment</var> be <emu-xref aoid="NewDeclarativeEnvironment" id="_ref_4"><a href="https://tc39.es/ecma262/#sec-newdeclarativeenvironment">NewDeclarativeEnvironment</a></emu-xref>(<var>outerPrivateEnvironment</var>).</li><li>Let <var>classPrivateEnvRec</var> be <var>classPrivateEnvironment</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.es/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li><li>If <emu-nt optional="" id="_ref_54"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is present, then<ol><li>For each element <var>dn</var> of the PrivateBoundNames of <emu-nt optional="" id="_ref_55"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt>,<ol><li>Perform <var>classPrivateEnvRec</var>.CreateImmutableBinding(<var>dn</var>, <emu-val>true</emu-val>).</li></ol></li></ol></li><li>If <emu-nt optional=""><a href="https://tc39.es/ecma262/#prod-ClassHeritage">ClassHeritage</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is not present, then<ol><li>Let <var>protoParent</var> be the intrinsic object <emu-xref href="#sec-properties-of-the-object-prototype-object"><a href="https://tc39.es/ecma262/#sec-properties-of-the-object-prototype-object">%ObjectPrototype%</a></emu-xref>.</li><li>Let <var>constructorParent</var> be the intrinsic object %FunctionPrototype%.</li></ol></li><li>Else,<ol><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>classScope</var>.</li><li>NOTE: The <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment is <var>outerPrivateEnvironment</var> when evaluating <emu-nt><a href="https://tc39.es/ecma262/#prod-ClassHeritage">ClassHeritage</a></emu-nt>.</li><li>Let <var>superclass</var> be the result of evaluating <emu-nt><a href="https://tc39.es/ecma262/#prod-ClassHeritage">ClassHeritage</a></emu-nt>.</li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</li><li><emu-xref aoid="ReturnIfAbrupt" id="_ref_5"><a href="https://tc39.es/ecma262/#sec-returnifabrupt">ReturnIfAbrupt</a></emu-xref>(<var>superclass</var>).</li><li>If <var>superclass</var> is <emu-val>null</emu-val>, then<ol><li>Let <var>protoParent</var> be <emu-val>null</emu-val>.</li><li>Let <var>constructorParent</var> be the intrinsic object %FunctionPrototype%.</li></ol></li><li>Else if <emu-xref aoid="IsConstructor" id="_ref_6"><a href="https://tc39.es/ecma262/#sec-isconstructor">IsConstructor</a></emu-xref>(<var>superclass</var>) is <emu-val>false</emu-val>, throw a <emu-val>TypeError</emu-val> exception.</li><li>Else,<ol><li>Let <var>protoParent</var> be ?&nbsp;<emu-xref aoid="Get" id="_ref_7"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>superclass</var>, <code>"prototype"</code>).</li><li>If <emu-xref aoid="Type" id="_ref_8"><a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>protoParent</var>) is neither Object nor Null, throw a <emu-val>TypeError</emu-val> exception.</li><li>Let <var>constructorParent</var> be <var>superclass</var>.</li></ol></li></ol></li><li>Let <var>proto</var> be <emu-xref aoid="ObjectCreate" id="_ref_9"><a href="https://tc39.es/ecma262/#sec-objectcreate">ObjectCreate</a></emu-xref>(<var>protoParent</var>).</li><li>If <emu-nt optional="" id="_ref_56"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is not present, let <var>constructor</var> be <emu-const>empty</emu-const>.</li><li>Else, let <var>constructor</var> be ConstructorMethod of <emu-nt id="_ref_57"><a href="#prod-ClassBody">ClassBody</a></emu-nt>.</li><li>If <var>constructor</var> is <emu-const>empty</emu-const>, then<ol><li>If <emu-nt optional=""><a href="https://tc39.es/ecma262/#prod-ClassHeritage">ClassHeritage</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is present and <var>protoParent</var> is not <emu-val>null</emu-val>, then<ol><li>Let <var>constructor</var> be the result of parsing the source text
             <pre><code class="javascript hljs"><span class="hljs-keyword">constructor</span>(... args){ <span class="hljs-keyword">super</span> (...args);}</code></pre>
-            using the syntactic grammar with the <emu-xref href="#sec-context-free-grammars"><a href="https://tc39.github.io/ecma262/#sec-context-free-grammars">goal symbol</a></emu-xref> <emu-nt params="~Yield"><a href="https://tc39.github.io/ecma262/#prod-MethodDefinition">MethodDefinition</a><emu-mods><emu-params>[~Yield]</emu-params></emu-mods></emu-nt>.</li></ol></li><li>Else,<ol><li>Let <var>constructor</var> be the result of parsing the source text
+            using the syntactic grammar with the <emu-xref href="#sec-context-free-grammars"><a href="https://tc39.es/ecma262/#sec-context-free-grammars">goal symbol</a></emu-xref> <emu-nt params="~Yield"><a href="https://tc39.es/ecma262/#prod-MethodDefinition">MethodDefinition</a><emu-mods><emu-params>[~Yield]</emu-params></emu-mods></emu-nt>.</li></ol></li><li>Else,<ol><li>Let <var>constructor</var> be the result of parsing the source text
             <pre><code class="javascript hljs"><span class="hljs-keyword">constructor</span>( ){ }</code></pre>
-            using the syntactic grammar with the <emu-xref href="#sec-context-free-grammars"><a href="https://tc39.github.io/ecma262/#sec-context-free-grammars">goal symbol</a></emu-xref> <emu-nt params="~Yield"><a href="https://tc39.github.io/ecma262/#prod-MethodDefinition">MethodDefinition</a><emu-mods><emu-params>[~Yield]</emu-params></emu-mods></emu-nt>.</li></ol></li></ol></li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>classScope</var>.</li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment to <var>classPrivateEnvironment</var>.</li><li>Let <var>constructorInfo</var> be the result of performing DefineMethod for <var>constructor</var> with arguments <var>proto</var> and <var>constructorParent</var> as the optional <var>functionPrototype</var> argument.</li><li>Assert: <var>constructorInfo</var> is not an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>.</li><li>Let <var>F</var> be <var>constructorInfo</var>.[[Closure]].</li><li>If <emu-nt optional=""><a href="https://tc39.github.io/ecma262/#prod-ClassHeritage">ClassHeritage</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is present and <var>protoParent</var> is not <emu-val>null</emu-val>, then set <var>F</var>.[[ConstructorKind]] to <code>"derived"</code>.</li><li>Perform <emu-xref aoid="MakeConstructor" id="_ref_10"><a href="https://tc39.github.io/ecma262/#sec-makeconstructor">MakeConstructor</a></emu-xref>(<var>F</var>, <emu-val>false</emu-val>, <var>proto</var>).</li><li>Perform <emu-xref aoid="MakeClassConstructor" id="_ref_11"><a href="https://tc39.github.io/ecma262/#sec-makeclassconstructor">MakeClassConstructor</a></emu-xref>(<var>F</var>).</li><li>Perform <emu-xref aoid="CreateMethodProperty" id="_ref_12"><a href="https://tc39.github.io/ecma262/#sec-createmethodproperty">CreateMethodProperty</a></emu-xref>(<var>proto</var>, <code>"constructor"</code>, <var>F</var>).</li><li>If <emu-nt optional="" id="_ref_58"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is not present, let <var>elements</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>Else, let <var>elements</var> be NonConstructorMethodDefinitions of <emu-nt id="_ref_59"><a href="#prod-ClassBody">ClassBody</a></emu-nt>.</li><li>Let <var>fieldRecords</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>For each <emu-nt id="_ref_60"><a href="#prod-ClassElement">ClassElement</a></emu-nt> <var>e</var> in order from <var>elements</var><ol><li>If IsStatic of <var>e</var> is <emu-val>false</emu-val>, then<ol><li>Let <var>fields</var> be the result of performing ClassElementEvaluation for <var>e</var> with arguments <var>proto</var> and <emu-val>false</emu-val>.</li></ol></li><li>Else,<ol><li>Let <var>fields</var> be the result of performing ClassElementEvaluation for <var>e</var> with arguments <var>F</var> and <emu-val>false</emu-val>.</li></ol></li><li>If <var>fields</var> is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>, then<ol><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment to <var>outerPrivateEnvironment</var>.</li><li>Return <emu-xref aoid="Completion" id="_ref_13"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">Completion</a></emu-xref>(<var>fields</var>).</li></ol></li><li>Append to <var>fieldRecords</var> the elements of <var>fields</var>.</li></ol></li><li><del>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</del></li><li>If <var>className</var> is not <emu-val>undefined</emu-val>, then<ol><li>Perform <var>classScopeEnvRec</var>.InitializeBinding(<var>className</var>, <var>F</var>).</li></ol></li><li>Set the value of <var>F</var>'s [[Fields]] internal slot to <var>fieldRecords</var>.</li><li><ins>If <emu-nt optional="" id="_ref_61"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is not present, let <var>staticBlocks</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</ins></li><li><ins>Else, let <var>staticBlocks</var> be <emu-xref aoid="ClassStaticBlockList" id="_ref_14"><a href="#sec-static-semantics-classstaticblocklist">ClassStaticBlockList</a></emu-xref> of <emu-nt id="_ref_62"><a href="#prod-ClassBody">ClassBody</a></emu-nt>.</ins></li><li><ins>If <var>staticBlocks</var> contains a single element, then</ins><ol><li><ins>Let <var>block</var> be the first element of <var>staticBlocks</var>.</ins></li><li><ins>Let <var>status</var> be the result of performing ClassStaticBlockEvaluation for <var>block</var> with argument <var>F</var>.</ins></li><li><ins>If <var>status</var> is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>, then</ins><ol><li><ins>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</ins></li><li><ins>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment to <var>outerPrivateEnvironment</var>.</ins></li><li><ins>Return <emu-xref aoid="Completion" id="_ref_15"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">Completion</a></emu-xref>(<var>status</var>).</ins></li></ol></li></ol></li><li><ins>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</ins></li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment to <var>outerPrivateEnvironment</var>.</li><li>Return <var>F</var>.
-    </li></ol></emu-alg>
+            using the syntactic grammar with the <emu-xref href="#sec-context-free-grammars"><a href="https://tc39.es/ecma262/#sec-context-free-grammars">goal symbol</a></emu-xref> <emu-nt params="~Yield"><a href="https://tc39.es/ecma262/#prod-MethodDefinition">MethodDefinition</a><emu-mods><emu-params>[~Yield]</emu-params></emu-mods></emu-nt>.</li></ol></li></ol></li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>classScope</var>.</li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment to <var>classPrivateEnvironment</var>.</li><li>Let <var>constructorInfo</var> be the result of performing DefineMethod for <var>constructor</var> with arguments <var>proto</var> and <var>constructorParent</var> as the optional <var>functionPrototype</var> argument.</li><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <var>constructorInfo</var> is not an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>.</li><li>Let <var>F</var> be <var>constructorInfo</var>.[[Closure]].</li><li>If <emu-nt optional=""><a href="https://tc39.es/ecma262/#prod-ClassHeritage">ClassHeritage</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is present and <var>protoParent</var> is not <emu-val>null</emu-val>, then set <var>F</var>.[[ConstructorKind]] to <code>"derived"</code>.</li><li>Perform <emu-xref aoid="MakeConstructor" id="_ref_10"><a href="https://tc39.es/ecma262/#sec-makeconstructor">MakeConstructor</a></emu-xref>(<var>F</var>, <emu-val>false</emu-val>, <var>proto</var>).</li><li>Perform <emu-xref aoid="MakeClassConstructor" id="_ref_11"><a href="https://tc39.es/ecma262/#sec-makeclassconstructor">MakeClassConstructor</a></emu-xref>(<var>F</var>).</li><li>Perform <emu-xref aoid="CreateMethodProperty" id="_ref_12"><a href="https://tc39.es/ecma262/#sec-createmethodproperty">CreateMethodProperty</a></emu-xref>(<var>proto</var>, <code>"constructor"</code>, <var>F</var>).</li><li>If <emu-nt optional="" id="_ref_58"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is not present, let <var>elements</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>Else, let <var>elements</var> be NonConstructorMethodDefinitions of <emu-nt id="_ref_59"><a href="#prod-ClassBody">ClassBody</a></emu-nt>.</li><li>Let <var>fieldRecords</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>For each <emu-nt id="_ref_60"><a href="#prod-ClassElement">ClassElement</a></emu-nt> <var>e</var> in order from <var>elements</var><ol><li>If IsStatic of <var>e</var> is <emu-val>false</emu-val>, then<ol><li>Let <var>fields</var> be the result of performing ClassElementEvaluation for <var>e</var> with arguments <var>proto</var> and <emu-val>false</emu-val>.</li></ol></li><li>Else,<ol><li>Let <var>fields</var> be the result of performing ClassElementEvaluation for <var>e</var> with arguments <var>F</var> and <emu-val>false</emu-val>.</li></ol></li><li>If <var>fields</var> is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>, then<ol><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment to <var>outerPrivateEnvironment</var>.</li><li>Return <emu-xref aoid="Completion" id="_ref_13"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">Completion</a></emu-xref>(<var>fields</var>).</li></ol></li><li>Append to <var>fieldRecords</var> the elements of <var>fields</var>.</li></ol></li><li><del>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</del></li><li>If <var>className</var> is not <emu-val>undefined</emu-val>, then<ol><li>Perform <var>classScopeEnvRec</var>.InitializeBinding(<var>className</var>, <var>F</var>).</li></ol></li><li>Set the value of <var>F</var>'s [[Fields]] internal slot to <var>fieldRecords</var>.</li><li><ins>If <emu-nt optional="" id="_ref_61"><a href="#prod-ClassBody">ClassBody</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt> is not present, let <var>staticBlocks</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</ins></li><li><ins>Else, let <var>staticBlocks</var> be <emu-xref aoid="ClassStaticBlockList" id="_ref_14"><a href="#sec-static-semantics-classstaticblocklist">ClassStaticBlockList</a></emu-xref> of <emu-nt id="_ref_62"><a href="#prod-ClassBody">ClassBody</a></emu-nt>.</ins></li><li><ins>If <var>staticBlocks</var> contains a single element, then</ins><ol><li><ins>Let <var>block</var> be the first element of <var>staticBlocks</var>.</ins></li><li><ins>Let <var>status</var> be the result of performing ClassStaticBlockEvaluation for <var>block</var> with argument <var>F</var>.</ins></li><li><ins>If <var>status</var> is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>, then</ins><ol><li><ins>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</ins></li><li><ins>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment to <var>outerPrivateEnvironment</var>.</ins></li><li><ins>Return <emu-xref aoid="Completion" id="_ref_15"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">Completion</a></emu-xref>(<var>status</var>).</ins></li></ol></li></ol></li><li><ins>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s LexicalEnvironment to <var>lex</var>.</ins></li><li>Set the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>'s PrivateNameEnvironment to <var>outerPrivateEnvironment</var>.</li><li>Return <var>F</var>.</li></ol></emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-runtime-semantics-classstaticblockevaluation">
-    <h1><span class="secnum">2.1.10</span><ins>Runtime Semantics: ClassStaticBlockEvaluation</ins></h1>
+    <h1><span class="secnum">2.1.10</span> <ins>Runtime Semantics: ClassStaticBlockEvaluation</ins></h1>
     <p>With parameter <var>F</var>.</p>
     <emu-grammar collapsed=""><emu-production name="ClassElement" collapsed="">
     <emu-nt><a href="#prod-ClassElement">ClassElement</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="d948be7f"><emu-nt id="_ref_63"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Perform ClassStaticBlockEvaluation of <emu-nt id="_ref_64"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt> with parameter <var>F</var>.
-    </li></ol></emu-alg>
+    <emu-alg><ol><li>Perform ClassStaticBlockEvaluation of <emu-nt id="_ref_64"><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt> with parameter <var>F</var>.</li></ol></emu-alg>
     <emu-grammar collapsed=""><emu-production name="ClassStaticBlock" collapsed="">
     <emu-nt><a href="#prod-ClassStaticBlock">ClassStaticBlock</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="86fea1a2"><emu-t>static</emu-t><emu-t>{</emu-t><emu-nt id="_ref_65"><a href="#prod-ClassStaticBlockBody">ClassStaticBlockBody</a></emu-nt><emu-t>}</emu-t></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Let <var>outerContext</var> be the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>innerContext</var> be <emu-xref aoid="PrepareForClassStaticBlockEvaluation" id="_ref_16"><a href="#sec-prepareforclassstaticblockevaluation">PrepareForClassStaticBlockEvaluation</a></emu-xref>(<var>F</var>).</li><li>Assert: <var>innerContext</var> is now the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Perform <emu-xref aoid="ClassStaticBlockBindThis" id="_ref_17"><a href="#sec-classstaticblockbindthis">ClassStaticBlockBindThis</a></emu-xref>(<var>F</var>, <var>innerContext</var>).</li><li>Let <var>result</var> be <emu-xref aoid="ClassStaticBlockEvaluateBody" id="_ref_18"><a href="#sec-classstaticblockevaluatebody">ClassStaticBlockEvaluateBody</a></emu-xref>(<var>F</var>).</li><li>Remove <var>innerContext</var> from the <emu-xref href="#execution-context-stack"><a href="https://tc39.github.io/ecma262/#execution-context-stack">execution context stack</a></emu-xref> and restore <var>outerContext</var> as the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li><emu-xref aoid="ReturnIfAbrupt" id="_ref_19"><a href="https://tc39.github.io/ecma262/#sec-returnifabrupt">ReturnIfAbrupt</a></emu-xref>(<var>result</var>).</li><li>Return <emu-xref aoid="NormalCompletion" id="_ref_20"><a href="https://tc39.github.io/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(<emu-val>undefined</emu-val>).
-    </li></ol></emu-alg>
+    <emu-alg><ol><li>Let <var>outerContext</var> be the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>innerContext</var> be <emu-xref aoid="PrepareForClassStaticBlockEvaluation" id="_ref_16"><a href="#sec-prepareforclassstaticblockevaluation">PrepareForClassStaticBlockEvaluation</a></emu-xref>(<var>F</var>).</li><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <var>innerContext</var> is now the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Perform <emu-xref aoid="ClassStaticBlockBindThis" id="_ref_17"><a href="#sec-classstaticblockbindthis">ClassStaticBlockBindThis</a></emu-xref>(<var>F</var>, <var>innerContext</var>).</li><li>Let <var>result</var> be <emu-xref aoid="ClassStaticBlockEvaluateBody" id="_ref_18"><a href="#sec-classstaticblockevaluatebody">ClassStaticBlockEvaluateBody</a></emu-xref>(<var>F</var>).</li><li>Remove <var>innerContext</var> from the <emu-xref href="#execution-context-stack"><a href="https://tc39.es/ecma262/#execution-context-stack">execution context stack</a></emu-xref> and restore <var>outerContext</var> as the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li><emu-xref aoid="ReturnIfAbrupt" id="_ref_19"><a href="https://tc39.es/ecma262/#sec-returnifabrupt">ReturnIfAbrupt</a></emu-xref>(<var>result</var>).</li><li>Return <emu-xref aoid="NormalCompletion" id="_ref_20"><a href="https://tc39.es/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(<emu-val>undefined</emu-val>).</li></ol></emu-alg>
 
     <emu-clause id="sec-prepareforclassstaticblockevaluation" aoid="PrepareForClassStaticBlockEvaluation">
-      <h1><span class="secnum">2.1.10.1</span>PrepareForClassStaticBlockEvaluation ( <var>F</var> )</h1>
-      <p>When the abstract operation PrepareForClassStaticBlockEvaluation is called with function object <var>F</var>, the following steps are taken:</p>
-      <emu-alg><ol><li>Let <var>outerContext</var> be the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>privateNameEnv</var> be the PrivateNameEnvironment of <var>outerContext</var>.</li><li>Let <var>innerContext</var> be a new ECMAScript code <emu-xref href="#sec-execution-contexts"><a href="https://tc39.github.io/ecma262/#sec-execution-contexts">execution context</a></emu-xref>.</li><li>Set the Function of <var>innerContext</var> to <emu-val>null</emu-val>.</li><li>Set the PrivateNameEnvironment of <var>innerContext</var> to <var>privateNameEnv</var>.</li><li>Let <var>innerRealm</var> be <var>F</var>.[[Realm]].</li><li>Set the <emu-xref href="#realm"><a href="https://tc39.github.io/ecma262/#realm">Realm</a></emu-xref> of <var>innerContext</var> to <var>innerRealm</var>.</li><li>Set the ScriptOrModule of <var>innerContext</var> to <var>F</var>.[[ScriptOrModule]].</li><li>Let <var>localEnv</var> be NewClassStaticBlockEnvironment(<var>F</var>).</li><li>Set the LexicalEnvironment of <var>innerContext</var> to <var>localEnv</var>.</li><li>Set the VariableEnvironment of <var>innerContext</var> to <var>localEnv</var>.</li><li>If <var>outerContext</var> is not already suspended, suspend <var>outerContext</var>.</li><li>Push <var>innerContext</var> onto the <emu-xref href="#execution-context-stack"><a href="https://tc39.github.io/ecma262/#execution-context-stack">execution context stack</a></emu-xref>; <var>innerContext</var> is now the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>NOTE: Any exception objects produced after this point are associated with <var>innerRealm</var>.</li><li>Return <var>innerContext</var>.
-      </li></ol></emu-alg>
+      <h1><span class="secnum">2.1.10.1</span> PrepareForClassStaticBlockEvaluation ( <var>F</var> )</h1>
+      <p>When the abstract operation PrepareForClassStaticBlockEvaluation is called with <emu-xref href="#function-object"><a href="https://tc39.es/ecma262/#function-object">function object</a></emu-xref> <var>F</var>, the following steps are taken:</p>
+      <emu-alg><ol><li>Let <var>outerContext</var> be the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>privateNameEnv</var> be the PrivateNameEnvironment of <var>outerContext</var>.</li><li>Let <var>innerContext</var> be a new ECMAScript code <emu-xref href="#sec-execution-contexts"><a href="https://tc39.es/ecma262/#sec-execution-contexts">execution context</a></emu-xref>.</li><li>Set the Function of <var>innerContext</var> to <emu-val>null</emu-val>.</li><li>Set the PrivateNameEnvironment of <var>innerContext</var> to <var>privateNameEnv</var>.</li><li>Let <var>innerRealm</var> be <var>F</var>.[[Realm]].</li><li>Set the <emu-xref href="#realm"><a href="https://tc39.es/ecma262/#realm">Realm</a></emu-xref> of <var>innerContext</var> to <var>innerRealm</var>.</li><li>Set the ScriptOrModule of <var>innerContext</var> to <var>F</var>.[[ScriptOrModule]].</li><li>Let <var>localEnv</var> be NewClassStaticBlockEnvironment(<var>F</var>).</li><li>Set the LexicalEnvironment of <var>innerContext</var> to <var>localEnv</var>.</li><li>Set the VariableEnvironment of <var>innerContext</var> to <var>localEnv</var>.</li><li>If <var>outerContext</var> is not already suspended, suspend <var>outerContext</var>.</li><li>Push <var>innerContext</var> onto the <emu-xref href="#execution-context-stack"><a href="https://tc39.es/ecma262/#execution-context-stack">execution context stack</a></emu-xref>; <var>innerContext</var> is now the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>NOTE: Any exception objects produced after this point are associated with <var>innerRealm</var>.</li><li>Return <var>innerContext</var>.</li></ol></emu-alg>
     </emu-clause>
 
     <emu-clause id="sec-classstaticblockbindthis" aoid="ClassStaticBlockBindThis">
-      <h1><span class="secnum">2.1.10.2</span>ClassStaticBlockBindThis ( <var>F</var>, <var>innerContext</var> )</h1>
-      <p>When the abstract operation ClassStaticBlockBindThis is called with function object <var>F</var> and <emu-xref href="#sec-execution-contexts"><a href="https://tc39.github.io/ecma262/#sec-execution-contexts">execution context</a></emu-xref> <var>innerContext</var>, the following steps are taken:</p>
-      <emu-alg><ol><li>Let <var>innerRealm</var> be <var>F</var>.[[Realm]].</li><li>Let <var>localEnv</var> be the LexicalEnvironment of <var>innerContext</var>.</li><li>Let <var>envRec</var> be <var>localEnv</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.github.io/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li><li>Assert: <var>envRec</var> is a class static block <emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref>.</li><li>Assert: The next step never returns an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref> because <var>envRec</var>.[[ThisBindingStatus]] is not <code>"initialized"</code>.</li><li>Perform <var>envRec</var>.BindThisValue(<var>F</var>).
-      </li></ol></emu-alg>
+      <h1><span class="secnum">2.1.10.2</span> ClassStaticBlockBindThis ( <var>F</var>, <var>innerContext</var> )</h1>
+      <p>When the abstract operation ClassStaticBlockBindThis is called with <emu-xref href="#function-object"><a href="https://tc39.es/ecma262/#function-object">function object</a></emu-xref> <var>F</var> and <emu-xref href="#sec-execution-contexts"><a href="https://tc39.es/ecma262/#sec-execution-contexts">execution context</a></emu-xref> <var>innerContext</var>, the following steps are taken:</p>
+      <emu-alg><ol><li>Let <var>innerRealm</var> be <var>F</var>.[[Realm]].</li><li>Let <var>localEnv</var> be the LexicalEnvironment of <var>innerContext</var>.</li><li>Let <var>envRec</var> be <var>localEnv</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.es/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <var>envRec</var> is a class static block <emu-xref href="#sec-environment-records"><a href="https://tc39.es/ecma262/#sec-environment-records">Environment Record</a></emu-xref>.</li><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: The next step never returns an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref> because <var>envRec</var>.[[ThisBindingStatus]] is not <code>"initialized"</code>.</li><li>Perform <var>envRec</var>.BindThisValue(<var>F</var>).</li></ol></emu-alg>
     </emu-clause>
 
     <emu-clause id="sec-classstaticblockevaluatebody" aoid="ClassStaticBlockEvaluateBody">
-      <h1><span class="secnum">2.1.10.3</span>ClassStaticBlockEvaluateBody ( <var>block</var> )</h1>
-      <emu-alg><ol><li>Perform ?&nbsp;<emu-xref aoid="ClassStaticBlockDeclarationInstantiation" id="_ref_21"><a href="#classstaticblockdeclarationinstantiation">ClassStaticBlockDeclarationInstantiation</a></emu-xref>(<var>block</var>).</li><li>Return the result of evaluating <var>block</var>.
-      </li></ol></emu-alg>
+      <h1><span class="secnum">2.1.10.3</span> ClassStaticBlockEvaluateBody ( <var>block</var> )</h1>
+      <emu-alg><ol><li>Perform ?&nbsp;<emu-xref aoid="ClassStaticBlockDeclarationInstantiation" id="_ref_21"><a href="#classstaticblockdeclarationinstantiation">ClassStaticBlockDeclarationInstantiation</a></emu-xref>(<var>block</var>).</li><li>Return the result of evaluating <var>block</var>.</li></ol></emu-alg>
     </emu-clause>
 
     <emu-clause id="classstaticblockdeclarationinstantiation" aoid="ClassStaticBlockDeclarationInstantiation">
-      <h1><span class="secnum">2.1.10.4</span>ClassStaticBlockDeclarationInstantiation ( <var>block</var> )</h1>
-      <emu-alg><ol><li>Let <var>env</var> be the LexicalEnvironment of the <emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>envRec</var> be <var>env</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.github.io/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li><li>Let <var>varNames</var> be the VarDeclaredNames of <var>block</var>.</li><li>Let <var>varDeclarations</var> be the VarScopedDeclarations of <var>block</var>.</li><li>Let <var>functionsToInitialize</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>Let <var>declaredFunctionNames</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>For each <var>d</var> in <var>varDeclarations</var>, in reverse list order, do<ol><li>If <var>d</var> is neither a <emu-nt><a href="https://tc39.github.io/ecma262/#prod-VariableDeclaration">VariableDeclaration</a></emu-nt> nor a <emu-nt><a href="https://tc39.github.io/ecma262/#prod-ForBinding">ForBinding</a></emu-nt> nor a <emu-nt><a href="https://tc39.github.io/ecma262/#prod-BindingIdentifier">BindingIdentifier</a></emu-nt>, then<ol><li>Assert: <var>d</var> is either a <emu-nt><a href="https://tc39.github.io/ecma262/#prod-FunctionDeclaration">FunctionDeclaration</a></emu-nt>, a <emu-nt><a href="https://tc39.github.io/ecma262/#prod-GeneratorDeclaration">GeneratorDeclaration</a></emu-nt>, an <emu-nt><a href="https://tc39.github.io/ecma262/#prod-AsyncFunctionDeclaration">AsyncFunctionDeclaration</a></emu-nt>, or an <emu-nt>AsyncGeneratorDeclaration</emu-nt>.</li><li>Let <var>fn</var> be the sole element of the BoundNames of <var>d</var>.</li><li>If <var>fn</var> is not an element of <var>declaredFunctionNames</var>, then<ol><li>Insert <var>fn</var> as the first element of <var>declaredFunctionNames</var>.</li><li>NOTE: If there are multiple function declarations for the same name, the last declaration is used.</li><li>Insert <var>d</var> as the first element of <var>functionsToInitialize</var>.</li></ol></li></ol></li></ol></li><li>For each <var>n</var> in <var>varNames</var>, do<ol><li>Perform ! <var>envRec</var>.CreateMutableBinding(<var>n</var>, <emu-val>false</emu-val>).</li><li>Call <var>envRec</var>.InitializeBinding(<var>n</var>, <emu-val>undefined</emu-val>).</li></ol></li><li>Let <var>lexDeclarations</var> be the LexicallyScopedDeclarations of <var>block</var>.</li><li>For each element <var>d</var> in <var>lexDeclarations</var>, do<ol><li>NOTE: A lexically declared name cannot be the same as a function/generator declaration, formal parameter, or a var name. Lexically declared names are only instantiated here but not initialized.</li><li>For each element <var>dn</var> of the BoundNames of <var>d</var>, do<ol><li>If IsConstantDeclaration of <var>d</var> is <emu-val>true</emu-val>, then<ol><li>Perform ! <var>envRec</var>.CreateImmutableBinding(<var>dn</var>, <emu-val>true</emu-val>).</li></ol></li><li>Else,<ol><li>Perform ! <var>envRec</var>.CreateMutableBinding(<var>dn</var>, <emu-val>false</emu-val>).</li></ol></li></ol></li></ol></li><li>For each Parse Node <var>f</var> in <var>functionsToInitialize</var>, do<ol><li>Let <var>fn</var> be the sole element of the BoundNames of <var>f</var>.</li><li>Let <var>fo</var> be the result of performing InstantiateFunctionObject for <var>f</var> with argument <var>env</var>.</li><li>Perform ! <var>varEnvRec</var>.SetMutableBinding(<var>fn</var>, <var>fo</var>, <emu-val>false</emu-val>).</li></ol></li><li>Return <emu-xref aoid="NormalCompletion" id="_ref_22"><a href="https://tc39.github.io/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(<emu-const>empty</emu-const>).
-      </li></ol></emu-alg>
+      <h1><span class="secnum">2.1.10.4</span> ClassStaticBlockDeclarationInstantiation ( <var>block</var> )</h1>
+      <emu-alg><ol><li>Let <var>env</var> be the LexicalEnvironment of the <emu-xref href="#running-execution-context"><a href="https://tc39.es/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li><li>Let <var>envRec</var> be <var>env</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.es/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li><li>Let <var>varNames</var> be the VarDeclaredNames of <var>block</var>.</li><li>Let <var>varDeclarations</var> be the VarScopedDeclarations of <var>block</var>.</li><li>Let <var>functionsToInitialize</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>Let <var>declaredFunctionNames</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>For each <var>d</var> in <var>varDeclarations</var>, in reverse list order, do<ol><li>If <var>d</var> is neither a <emu-nt><a href="https://tc39.es/ecma262/#prod-grammar-notation-VariableDeclaration">VariableDeclaration</a></emu-nt> nor a <emu-nt><a href="https://tc39.es/ecma262/#prod-ForBinding">ForBinding</a></emu-nt> nor a <emu-nt><a href="https://tc39.es/ecma262/#prod-annexB-BindingIdentifier">BindingIdentifier</a></emu-nt>, then<ol><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <var>d</var> is either a <emu-nt><a href="https://tc39.es/ecma262/#prod-FunctionDeclaration">FunctionDeclaration</a></emu-nt>, a <emu-nt><a href="https://tc39.es/ecma262/#prod-GeneratorDeclaration">GeneratorDeclaration</a></emu-nt>, an <emu-nt><a href="https://tc39.es/ecma262/#prod-AsyncFunctionDeclaration">AsyncFunctionDeclaration</a></emu-nt>, or an <emu-nt><a href="https://tc39.es/ecma262/#prod-AsyncGeneratorDeclaration">AsyncGeneratorDeclaration</a></emu-nt>.</li><li>Let <var>fn</var> be the sole element of the BoundNames of <var>d</var>.</li><li>If <var>fn</var> is not an element of <var>declaredFunctionNames</var>, then<ol><li>Insert <var>fn</var> as the first element of <var>declaredFunctionNames</var>.</li><li>NOTE: If there are multiple function declarations for the same name, the last declaration is used.</li><li>Insert <var>d</var> as the first element of <var>functionsToInitialize</var>.</li></ol></li></ol></li></ol></li><li>For each <var>n</var> in <var>varNames</var>, do<ol><li>Perform ! <var>envRec</var>.CreateMutableBinding(<var>n</var>, <emu-val>false</emu-val>).</li><li>Call <var>envRec</var>.InitializeBinding(<var>n</var>, <emu-val>undefined</emu-val>).</li></ol></li><li>Let <var>lexDeclarations</var> be the LexicallyScopedDeclarations of <var>block</var>.</li><li>For each element <var>d</var> in <var>lexDeclarations</var>, do<ol><li>NOTE: A lexically declared name cannot be the same as a function/generator declaration, formal parameter, or a var name. Lexically declared names are only instantiated here but not initialized.</li><li>For each element <var>dn</var> of the BoundNames of <var>d</var>, do<ol><li>If IsConstantDeclaration of <var>d</var> is <emu-val>true</emu-val>, then<ol><li>Perform ! <var>envRec</var>.CreateImmutableBinding(<var>dn</var>, <emu-val>true</emu-val>).</li></ol></li><li>Else,<ol><li>Perform ! <var>envRec</var>.CreateMutableBinding(<var>dn</var>, <emu-val>false</emu-val>).</li></ol></li></ol></li></ol></li><li>For each <emu-xref href="#sec-syntactic-grammar"><a href="https://tc39.es/ecma262/#sec-syntactic-grammar">Parse Node</a></emu-xref> <var>f</var> in <var>functionsToInitialize</var>, do<ol><li>Let <var>fn</var> be the sole element of the BoundNames of <var>f</var>.</li><li>Let <var>fo</var> be the result of performing InstantiateFunctionObject for <var>f</var> with argument <var>env</var>.</li><li>Perform ! <var>varEnvRec</var>.SetMutableBinding(<var>fn</var>, <var>fo</var>, <emu-val>false</emu-val>).</li></ol></li><li>Return <emu-xref aoid="NormalCompletion" id="_ref_22"><a href="https://tc39.es/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(<emu-const>empty</emu-const>).</li></ol></emu-alg>
     </emu-clause>
   </emu-clause>
 </emu-clause></emu-import>
 </emu-clause><emu-annex id="sec-copyright-and-software-license">
-      <h1><span class="secnum">A</span>Copyright &amp; Software License</h1>
+      <h1><span class="secnum">A</span> Copyright &amp; Software License</h1>
       
       <h2>Copyright Notice</h2>
-      <p>© 2018 Ron Buckton, Ecma International</p>
+      <p>© 2020 Ron Buckton, Ecma International</p>
 
       <h2>Software License</h2>
       <p>All Software contained in this document ("Software") is protected by copyright and is being made available under the "BSD License", included below. This Software may be subject to third party rights (rights from parties other than Ecma International), including patent rights, and no licenses under such third party rights are granted under this license even if the third party concerned is a member of Ecma International. SEE THE ECMA CODE OF CONDUCT IN PATENT MATTERS AVAILABLE AT https://ecma-international.org/memento/codeofconduct.htm FOR INFORMATION REGARDING THE LICENSING OF PATENT CLAIMS THAT ARE REQUIRED TO IMPLEMENT ECMA INTERNATIONAL STANDARDS.</p>
