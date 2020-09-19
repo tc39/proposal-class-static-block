@@ -10,7 +10,7 @@
 
     <ins>
     ClassStaticBlock :
-      `static` `{` StaticBlockBody `}`
+      `static` `{` ClassStaticBlockBody `}`
     
     ClassStaticBlockBody :
       ClassStaticBlockStatementList
@@ -120,7 +120,7 @@
     <h1>Runtime Semantics: ClassDefinitionEvaluation</h1>
     <emu-note>This algorithm is a delta from the <a href="https://tc39.github.io/proposal-class-fields/#runtime-semantics-class-definition-evaluation">Class Fields proposal</a>.</emu-note>
     <p>With parameter _className_.</p>
-    <emu-grammar>ClassTail : ClassHeritage? `{` ClassBody? `}`</emu-grammar>
+    <emu-grammar collapsed>ClassTail : ClassHeritage? `{` ClassBody? `}`</emu-grammar>
     <emu-alg>
       1. Let _lex_ be the LexicalEnvironment of the running execution context.
       1. Let _classScope_ be NewDeclarativeEnvironment(_lex_).
