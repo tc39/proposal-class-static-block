@@ -28,6 +28,33 @@
         <p><ins>It is a Syntax Error if ClassStaticBlockList of |ClassElementList| contains more than one element.</ins></p>
       </li>
     </ul>
+    <emu-grammar collapsed><ins>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</ins></emu-grammar>
+    <ul>
+      <li>
+        <p><ins>It is a Syntax Error if HasDirectSuper of |ClassStaticBlock| is *true*.</ins></p>
+      </li>
+    </ul>
+  </emu-clause>
+
+  <emu-clause id="sec-class-definitions-static-semantics-contains">
+    <h1>Static Semantics: Contains</h1>
+    <emu-grammar collapsed><ins>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</ins></emu-grammar>
+    <emu-alg>
+      1. <ins>Return *false*.</ins>
+    </emu-alg>
+    <emu-note>
+      <ins>
+        Static semantic rules that depend upon substructure generally do not look into `static` initialization blocks.
+      </ins>
+    </emu-note>
+  </emu-clause>
+
+  <emu-clause id="sec-class-definitions-static-semantics-hasdirectsuper">
+    <h1><ins>Static Semantics: HasDirectSuper</ins></h1>
+    <emu-grammar collapsed><ins>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</ins></emu-grammar>
+    <emu-alg>
+      1. <ins>Return |ClassStaticBlockBody| Contains |SuperCall|.</ins>
+    </emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-static-semantics-isstatic">
@@ -81,38 +108,38 @@
   </emu-clause>
 
   <emu-clause id="sec-class-definitions-static-semantics-LexicallyDeclaredNames">
-    <h1>Static Semantics: VarDeclaredNames</h1>
-    <emu-grammar collapsed>ClassBlockStatementList: [empty]</emu-grammar>
+    <h1>Static Semantics: LexicallyDeclaredNames</h1>
+    <emu-grammar collapsed><ins>ClassBlockStatementList: [empty]</ins></emu-grammar>
     <emu-alg>
-      1. Return a new empty List.
+      1. <ins>Return a new empty List.</ins>
     </emu-alg>
-    <emu-grammar collapsed>ClassBlockStatementList: StatementList</emu-grammar>
+    <emu-grammar collapsed><ins>ClassBlockStatementList: StatementList</ins></emu-grammar>
     <emu-alg>
-      1. Return the TopLevelLexicallyDeclaredNames of |StatementList|.
+      1. <ins>Return the TopLevelLexicallyDeclaredNames of |StatementList|.</ins>
     </emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-class-definitions-static-semantics-vardeclarednames">
     <h1>Static Semantics: VarDeclaredNames</h1>
-    <emu-grammar collapsed>ClassBlockStatementList: [empty]</emu-grammar>
+    <emu-grammar collapsed><ins>ClassBlockStatementList: [empty]</ins></emu-grammar>
     <emu-alg>
-      1. Return a new empty List.
+      1. <ins>Return a new empty List.</ins>
     </emu-alg>
-    <emu-grammar collapsed>ClassBlockStatementList: StatementList</emu-grammar>
+    <emu-grammar collapsed><ins>ClassBlockStatementList: StatementList</ins></emu-grammar>
     <emu-alg>
-      1. Return the TopLevelVarDeclaredNames of |StatementList|.
+      1. <ins>Return the TopLevelVarDeclaredNames of |StatementList|.</ins>
     </emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-class-definitions-static-semantics-varscopeddeclarations">
     <h1>Static Semantics: VarScopedDeclarations</h1>
-    <emu-grammar collapsed>ClassBlockStatementList: [empty]</emu-grammar>
+    <emu-grammar collapsed><ins>ClassBlockStatementList: [empty]</ins></emu-grammar>
     <emu-alg>
-      1. Return a new empty List.
+      1. <ins>Return a new empty List.</ins>
     </emu-alg>
-    <emu-grammar collapsed>ClassBlockStatementList: StatementList</emu-grammar>
+    <emu-grammar collapsed><ins>ClassBlockStatementList: StatementList</ins></emu-grammar>
     <emu-alg>
-      1. Return the TopLevelVarScopedDeclarations of |StatementList|.
+      1. <ins>Return the TopLevelVarScopedDeclarations of |StatementList|.</ins>
     </emu-alg>
   </emu-clause>
 
@@ -223,7 +250,7 @@
     </emu-alg>
 
     <emu-clause id="sec-prepareforclassstaticblockevaluation" aoid="PrepareForClassStaticBlockEvaluation">
-      <h1>PrepareForClassStaticBlockEvaluation ( _F_ )</h1>
+      <h1><ins>PrepareForClassStaticBlockEvaluation ( _F_ )</ins></h1>
       <p>When the abstract operation PrepareForClassStaticBlockEvaluation is called with function object _F_, the following steps are taken:</p>
       <emu-alg>
         1. Let _outerContext_ be the running execution context.
@@ -245,7 +272,7 @@
     </emu-clause>
 
     <emu-clause id="sec-classstaticblockbindthis" aoid="ClassStaticBlockBindThis">
-      <h1>ClassStaticBlockBindThis ( _F_, _innerContext_ )</h1>
+      <h1><ins>ClassStaticBlockBindThis ( _F_, _innerContext_ )</ins></h1>
       <p>When the abstract operation ClassStaticBlockBindThis is called with function object _F_ and execution context _innerContext_, the following steps are taken:</p>
       <emu-alg>
         1. Let _innerRealm_ be _F_.[[Realm]].
@@ -258,7 +285,7 @@
     </emu-clause>
 
     <emu-clause id="sec-classstaticblockevaluatebody" aoid="ClassStaticBlockEvaluateBody">
-      <h1>ClassStaticBlockEvaluateBody ( _block_ )</h1>
+      <h1><ins>ClassStaticBlockEvaluateBody ( _block_ )</ins></h1>
       <emu-alg>
         1. Perform ? ClassStaticBlockDeclarationInstantiation(_block_).
         1. Return the result of evaluating _block_.
@@ -266,7 +293,7 @@
     </emu-clause>
 
     <emu-clause id="classstaticblockdeclarationinstantiation" aoid="ClassStaticBlockDeclarationInstantiation">
-      <h1>ClassStaticBlockDeclarationInstantiation ( _block_ )</h1>
+      <h1><ins>ClassStaticBlockDeclarationInstantiation ( _block_ )</ins></h1>
       <emu-alg>
         1. Let _env_ be the LexicalEnvironment of the running execution context.
         1. Let _envRec_ be _env_'s EnvironmentRecord.
