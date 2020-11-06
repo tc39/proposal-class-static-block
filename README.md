@@ -297,7 +297,7 @@ The following is a high-level list of tasks to progress through each stage of th
 ### Stage 2 Entrance Criteria
 
 * [x] [Initial specification text][Specification].  
-* [ ] [Transpiler support][Transpiler] (_Optional_).  
+* [x] [Transpiler support][Transpiler] (_Optional_). Babel `v7.12.0`
 
 ### Stage 3 Entrance Criteria
 
