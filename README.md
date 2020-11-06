@@ -194,17 +194,24 @@ class C {
 <!--#region:semantics-->
 # Semantics
 
-- A `static {}` block creates a new lexical scope (e.g. `var`, `function`, and block-scoped 
-  declarations are local to the `static {}` block. This lexical scope is nested within the lexical 
-  scope of the class body (granting privileged access to instance private state for the class). 
-- A class may have at most one `static {}` block in its class body. 
-- A `static {}` block is evaluated immediately after all public static field initializers have been 
-  evaluated as part of class declaration evaluation, regardless of its order within the class body 
+- A `static {}` initialization block creates a new lexical scope (e.g. `var`, `function`, and block-scoped
+  declarations are local to the `static {}` initialization block. This lexical scope is nested within the lexical
+  scope of the class body (granting privileged access to instance private state for the class).
+- A class may have at most one `static {}` initialization block in its class body.
+- A `static {}` initialization block is evaluated immediately after all static field initializers have been
+  evaluated as part of class declaration evaluation, regardless of its order within the class body
   (this aligns with `constructor() {}`).
-- A `static {}` block may not have decorators (instead you would decorate the class itself). 
+- A `static {}` initialization block may not have decorators (instead you would decorate the class itself).
   Decorators can always add a class finisher to add their own static initialization.
-- When evaluated, a `static {}` block's `this` receiver is the constructor object of the class 
+- When evaluated, a `static {}` initialization block's `this` receiver is the constructor object of the class
   (as with static field initializers).
+- It is a **Syntax Error** to reference `arguments` from within a `static {}` initialization block.
+- It is a **Syntax Error** to include a _SuperCall_ (i.e., `super()`) from within a `static {}` initialization block.
+- A `static {}` initialization block may contain _SuperProperty_ references as a means to access or invoke static
+  members on a base class that may have been overridden by the derived class containing the `static {}`
+  initialization block.
+- A `static {}` initialization block should be represented as an independent stack frame in debuggers and exception
+  traces.
 
 <!--#endregion:semantics-->
 
@@ -313,7 +320,7 @@ The following is a high-level list of tasks to progress through each stage of th
 [Prose]: #motivations
 [Examples]: #examples
 [API]: #api
-[Specification]: https://rbuckton.github.io/proposal-class-static-block
+[Specification]: https://tc39.es/proposal-class-static-block
 [Transpiler]: #todo
 [Stage3ReviewerSignOff]: #todo
 [Stage3EditorSignOff]: #todo
