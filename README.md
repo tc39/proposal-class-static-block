@@ -198,7 +198,7 @@ class C {
   declarations are local to the `static {}` initialization block. This lexical scope is nested within the lexical
   scope of the class body (granting privileged access to instance private state for the class).
 - A class may have at most one `static {}` initialization block in its class body.
-- A `static {}` initialization block is evaluated immediately after all public static field initializers have been
+- A `static {}` initialization block is evaluated immediately after all static field initializers have been
   evaluated as part of class declaration evaluation, regardless of its order within the class body
   (this aligns with `constructor() {}`).
 - A `static {}` initialization block may not have decorators (instead you would decorate the class itself).
