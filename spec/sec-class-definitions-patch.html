@@ -57,14 +57,6 @@
     </emu-alg>
   </emu-clause>
 
-  <emu-clause id="sec-static-semantics-isstatic">
-    <h1>Static Semantics: IsStatic</h1>
-    <emu-grammar collapsed><ins>ClassElement: ClassStaticBlock</ins></emu-grammar>
-    <emu-alg>
-      1. <ins>Return *false*.</ins>
-    </emu-alg>
-  </emu-clause>
-
   <emu-clause id="sec-static-semantics-nonconstructormethoddefinitions">
     <h1>Static Semantics: NonConstructorMethodDefinitions</h1>
     <emu-grammar collapsed>ClassElementList: ClassElement</emu-grammar>
@@ -279,7 +271,7 @@
         1. Let _localEnv_ be the LexicalEnvironment of _innerContext_.
         1. Let _envRec_ be _localEnv_'s EnvironmentRecord.
         1. Assert: _envRec_ is a class static block Environment Record.
-        1. Assert: The next step never returns an abrupt completion because _envRec_.[[ThisBindingStatus]] is not `"initialized"`.
+        1. Assert: The next step never returns an abrupt completion because _envRec_.[[ThisBindingStatus]] is not ~initialized~.
         1. Perform _envRec_.BindThisValue(_F_).
       </emu-alg>
     </emu-clause>
