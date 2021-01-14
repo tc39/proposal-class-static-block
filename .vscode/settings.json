@@ -3,7 +3,7 @@
         "files.trimTrailingWhitespace": false
     },
     "files.associations": {
-        "*.html": "ecmarkup",
+        // "*.html": "ecmarkup",
         "*.emu": "ecmarkup"
     }
 }
