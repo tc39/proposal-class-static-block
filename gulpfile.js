@@ -1,8 +1,8 @@
 const del = require("del");
+const path = require("path");
 const gulp = require("gulp");
 const emu = require("gulp-emu");
 const gls = require("gulp-live-server");
-const spawn = require("child_process").spawn;
 
 const clean = () => del("docs/**/*");
 gulp.task("clean", clean);
@@ -20,7 +20,10 @@ gulp.task("watch", watch);
 const serve = () => {
     const server = gls.static("docs", 8080);
     const promise = server.start();
-    gulp.watch(["docs/**/*"], file => server.notify(file));
+    (/** @type {import("chokidar").FSWatcher}*/(gulp.watch(["docs/**/*"])))
+        .on("change", file => {
+            server.notify({ path: path.resolve(file) });
+        });
     return promise;
 };
 gulp.task("start", gulp.parallel(watch, serve));
