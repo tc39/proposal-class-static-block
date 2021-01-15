@@ -57,14 +57,6 @@
     </emu-alg>
   </emu-clause>
 
-  <emu-clause id="sec-static-semantics-isstatic">
-    <h1>Static Semantics: IsStatic</h1>
-    <emu-grammar collapsed><ins>ClassElement: ClassStaticBlock</ins></emu-grammar>
-    <emu-alg>
-      1. <ins>Return *false*.</ins>
-    </emu-alg>
-  </emu-clause>
-
   <emu-clause id="sec-static-semantics-nonconstructormethoddefinitions">
     <h1>Static Semantics: NonConstructorMethodDefinitions</h1>
     <emu-grammar collapsed>ClassElementList: ClassElement</emu-grammar>
@@ -243,7 +235,7 @@
       1. Let _innerContext_ be PrepareForClassStaticBlockEvaluation(_F_).
       1. Assert: _innerContext_ is now the running execution context.
       1. Perform ClassStaticBlockBindThis(_F_, _innerContext_).
-      1. Let _result_ be ClassStaticBlockEvaluateBody(_F_).
+      1. Let _result_ be ClassStaticBlockEvaluateBody(|ClassStaticBlockBody|).
       1. Remove _innerContext_ from the execution context stack and restore _outerContext_ as the running execution context.
       1. ReturnIfAbrupt(_result_).
       1. Return NormalCompletion(*undefined*).
@@ -279,7 +271,7 @@
         1. Let _localEnv_ be the LexicalEnvironment of _innerContext_.
         1. Let _envRec_ be _localEnv_'s EnvironmentRecord.
         1. Assert: _envRec_ is a class static block Environment Record.
-        1. Assert: The next step never returns an abrupt completion because _envRec_.[[ThisBindingStatus]] is not `"initialized"`.
+        1. Assert: The next step never returns an abrupt completion because _envRec_.[[ThisBindingStatus]] is not ~initialized~.
         1. Perform _envRec_.BindThisValue(_F_).
       </emu-alg>
     </emu-clause>
@@ -295,6 +287,7 @@
     <emu-clause id="classstaticblockdeclarationinstantiation" aoid="ClassStaticBlockDeclarationInstantiation">
       <h1><ins>ClassStaticBlockDeclarationInstantiation ( _block_ )</ins></h1>
       <emu-alg>
+        1. NOTE: Only a single Environment Record is needed for top-level vars and lexical declarations.
         1. Let _env_ be the LexicalEnvironment of the running execution context.
         1. Let _envRec_ be _env_'s EnvironmentRecord.
         1. Let _varNames_ be the VarDeclaredNames of _block_.
