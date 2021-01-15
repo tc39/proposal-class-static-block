@@ -323,7 +323,7 @@ The following is a high-level list of tasks to progress through each stage of th
 [Specification]: https://tc39.es/proposal-class-static-block
 [Transpiler]: #todo
 [Stage3ReviewerSignOff]: #todo
-[Stage3EditorSignOff]: #todo
+[Stage3EditorSignOff]: https://github.com/tc39/proposal-class-static-block/pull/31
 [Test262PullRequest]: #todo
 [Implementation1]: #todo
 [Implementation2]: #todo
