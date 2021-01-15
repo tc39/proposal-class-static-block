@@ -70,15 +70,13 @@
     <h1>Environment Record Operations</h1>
     <emu-clause id="sec-newclassstaticblockenvironment" aoid="NewClassStaticBlockEnvironment">
         <h1><ins>NewClassStaticBlockEnvironment ( _F_ )</ins></h1>
-        <p>The abstract operation NewClassStaticBlockEnvironment takes arguments _F_. It performs the following steps when called:</p>
+        <p>The abstract operation NewClassStaticBlockEnvironment takes argument _F_. It performs the following steps when called:</p>
         <emu-alg>
             1. Assert: _F_ is an ECMAScript function.
             1. Let _env_ be a new Class Static Block Environment Record containing no bindings.
             1. Set _env_.[[FunctionObject]] to _F_.
             1. Set _env_.[[ThisBindingStatus]] to ~uninitialized~.
-            1. Let _home_ be _F_.[[HomeObject]].
-            1. Set _env_.[[HomeObject]] to _home_.
-            1. Set _env_.[[NewTarget]] to _newTarget_.
+            1. Set _env_.[[HomeObject]] to _F_.[[HomeObject]].
             1. Set _env_.[[OuterEnv]] to _F_.[[Environment]].
             1. Return _env_.
         </emu-alg>
