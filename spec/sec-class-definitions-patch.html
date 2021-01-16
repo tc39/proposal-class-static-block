@@ -34,6 +34,32 @@
         <p><ins>It is a Syntax Error if HasDirectSuper of |ClassStaticBlock| is *true*.</ins></p>
       </li>
     </ul>
+    <emu-grammar collapsed><ins>ClassStaticBlockBody: ClassStaticBlockStatementList</ins></emu-grammar>
+    <ul>
+      <li>
+        <p><ins>It is a Syntax Error if the LexicallyDeclaredNames of ClassStaticBlockStatementList contains any duplicate entries.</ins></p>
+      </li>
+      <li>
+        <p><ins>It is a Syntax Error if any element of the LexicallyDeclaredNames of ClassStaticBlockStatementList also occurs in the VarDeclaredNames of ClassStaticBlockStatementList.</ins></p>
+      </li>
+      <li>
+        <p><ins>It is a Syntax Error ContainsDuplicateLabels of ClassStaticBlockStatementList with argument &laquo; &raquo; is *true*.</ins></p>
+      </li>
+      <li>
+        <p><ins>It is a Syntax Error ContainsUndefinedBreakTarget of ClassStaticBlockStatementList with argument &laquo; &raquo; is *true*.</ins></p>
+      </li>
+      <li>
+        <p><ins>It is a Syntax Error ContainsUndefinedContinueTarget of ClassStaticBlockStatementList with arguments &laquo; &raquo; and &laquo; &raquo; is *true*.</ins></p>
+      </li>
+    </ul>
+  </emu-clause>
+
+  <emu-clause id="sec-static-semantics-classelementkind">
+    <h1>Static Semantics: ClassElementKind</h1>
+    <emu-grammar><ins>ClassElement : ClassStaticBlock</ins></emu-grammar>
+    <emu-alg>
+      1. Return ~ClassStaticBlock~.
+    </emu-alg>
   </emu-clause>
 
   <emu-clause id="sec-class-definitions-static-semantics-contains">
@@ -49,6 +75,33 @@
     </emu-note>
   </emu-clause>
 
+  <emu-clause id="sec-class-definitions-static-semantics-containsduplicatelabels">
+    <h1><ins>Static Semantics: ContainsDuplicateLabels</ins></h1>
+    <p>With parameter _labelSet_.</p>
+    <emu-grammar collapsed><ins>ClassStaticBlockStatementList: [emmpty]</ins></emu-grammar>
+    <emu-alg>
+      1. <ins>Return *false*.</ins>
+    </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-class-definitions-static-semantics-containsundefinedbreaktarget">
+    <h1><ins>Static Semantics: ContainsUndefinedBreakTarget</ins></h1>
+    <p>With parameter _labelSet_.</p>
+    <emu-grammar collapsed><ins>ClassStaticBlockStatementList: [emmpty]</ins></emu-grammar>
+    <emu-alg>
+      1. <ins>Return *false*.</ins>
+    </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-class-definitions-static-semantics-containsundefinedcontinuetarget">
+    <h1><ins>Static Semantics: ContainsUndefinedContinueTarget</ins></h1>
+    <p>With parameters _iterationSet_ and _labelSet_.</p>
+    <emu-grammar collapsed><ins>ClassStaticBlockStatementList: [emmpty]</ins></emu-grammar>
+    <emu-alg>
+      1. <ins>Return *false*.</ins>
+    </emu-alg>
+  </emu-clause>
+
   <emu-clause id="sec-class-definitions-static-semantics-hasdirectsuper">
     <h1><ins>Static Semantics: HasDirectSuper</ins></h1>
     <emu-grammar collapsed><ins>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</ins></emu-grammar>
@@ -57,36 +110,19 @@
     </emu-alg>
   </emu-clause>
 
-  <emu-clause id="sec-static-semantics-nonconstructormethoddefinitions">
-    <h1>Static Semantics: NonConstructorMethodDefinitions</h1>
-    <emu-grammar collapsed>ClassElementList: ClassElement</emu-grammar>
-    <emu-alg>
-      1. If |ClassElement| is <emu-grammar collapsed>ClassElement : `;`</emu-grammar> <ins>or <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar></ins>, return a new empty List.
-      1. If IsStatic of |ClassElement| is *false* and PropName of |ClassElement| is `"constructor"`, return a new empty List.
-      1. Return a List containing |ClassElement|.
-    </emu-alg>
-    <emu-grammar collapsed>ClassElementList: ClassElementList ClassElement</emu-grammar>
-    <emu-alg>
-      1. Let _list_ be NonConstructorMethodDefinitions of |ClassElementList|.
-      1. If |ClassElement| is <emu-grammar collapsed>ClassElement : `;`</emu-grammar> <ins>or <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar></ins>, return _list_.
-      1. If IsStatic of |ClassElement| is *false* and PropName of |ClassElement| is `"constructor"`, return _list_.
-      1. Append |ClassElement| to the end of _list_.
-      1. Return _list_.
-    </emu-alg>
-  </emu-clause>
-
   <emu-clause id="sec-static-semantics-classstaticblocklist" aoid="ClassStaticBlockList">
     <h1><ins>Static Semantics: ClassStaticBlockList</ins></h1>
     <emu-grammar collapsed>ClassElementList: ClassElement</emu-grammar>
     <emu-alg>
-      1. If |ClassElement| is not <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar>, return a new empty List.
-      1. Return a List containing |ClassElement|.
+      1. If ClassElementKind of |ClassElement| is ~ClassStaticBlock~, then
+        1. Return a List whose sole element is |ClassElement|.
+      1. Return a new empty List.
     </emu-alg>
     <emu-grammar collapsed>ClassElementList: ClassElementList ClassElement</emu-grammar>
     <emu-alg>
       1. Let _list_ be ClassStaticBlockList of |ClassElementList|.
-      1. If |ClassElement| is not <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar>, return _list_.
-      1. Append |ClassElement| to the end of _list_.
+      1. If ClassElementKind of |ClassElement| is ~ClassStaticBlock~, then
+        1. Append |ClassElement| to the end of _list_.
       1. Return _list_.
     </emu-alg>
   </emu-clause>
