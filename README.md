@@ -302,7 +302,7 @@ The following is a high-level list of tasks to progress through each stage of th
 ### Stage 3 Entrance Criteria
 
 * [x] [Complete specification text][Specification].  
-* [ ] Designated reviewers have [signed off][Stage3ReviewerSignOff] on the current spec text.  
+* [x] Designated reviewers have [signed off][Stage3ReviewerSignOff] on the current spec text.  
 * [x] The ECMAScript editor has [signed off][Stage3EditorSignOff] on the current spec text.  
 
 ### Stage 4 Entrance Criteria
@@ -322,7 +322,7 @@ The following is a high-level list of tasks to progress through each stage of th
 [API]: #api
 [Specification]: https://tc39.es/proposal-class-static-block
 [Transpiler]: #todo
-[Stage3ReviewerSignOff]: #todo
+[Stage3ReviewerSignOff]: https://github.com/tc39/proposal-class-static-block/issues/23
 [Stage3EditorSignOff]: https://github.com/tc39/proposal-class-static-block/pull/31
 [Test262PullRequest]: #todo
 [Implementation1]: #todo
