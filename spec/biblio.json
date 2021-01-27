@@ -1,0 +1,5 @@
+{
+    "https://tc39.es/ecma262/": [
+        {"type": "clause", "id": "sec-class-definitions-static-semantics-containsarguments", "aoid": "ContainsArguments", "title": "Static Semantics: ContainsArguments", "titleHTML": "Static Semantics: ContainsArguments", "namespace": "https://tc39.es/ecma262/", "number": "14.6.15", "location": "", "referencingIds": [], "key": "Static Semantics: ContainsArguments" }
+    ]
+}
