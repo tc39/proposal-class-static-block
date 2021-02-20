@@ -6,7 +6,7 @@
       MethodDefinition[?Yield, ?Await]
       `static` MethodDefinition[?Yield, ?Await]
       FieldDefinition[?Yield, ?Await] `;`
-      staticFieldDefinition[?Yield, ?Await] `;`
+      `static` FieldDefinition[?Yield, ?Await] `;`
       <ins>ClassStaticBlock</ins>
       `;`
 
@@ -39,19 +39,19 @@
         <p><ins>It is a Syntax Error if any element of the LexicallyDeclaredNames of |ClassStaticBlockStatementList| also occurs in the VarDeclaredNames of |ClassStaticBlockStatementList|.</ins></p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error ContainsDuplicateLabels of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</ins></p>
+        <p><ins>It is a Syntax Error if ContainsDuplicateLabels of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</ins></p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error ContainsUndefinedBreakTarget of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</ins></p>
+        <p><ins>It is a Syntax Error if ContainsUndefinedBreakTarget of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</ins></p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error ContainsUndefinedContinueTarget of |ClassStaticBlockStatementList| with arguments &laquo; &raquo; and &laquo; &raquo; is *true*.</ins></p>
+        <p><ins>It is a Syntax Error if ContainsUndefinedContinueTarget of |ClassStaticBlockStatementList| with arguments &laquo; &raquo; and &laquo; &raquo; is *true*.</ins></p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error ContainsArguments of |ClassStaticBlockStatementList| is *true*.</ins></p>
+        <p><ins>It is a Syntax Error if ContainsArguments of |ClassStaticBlockStatementList| is *true*.</ins></p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error |ClassStaticBlockStatementList| Contains |SuperCall| is *true*.</ins></p>
+        <p><ins>It is a Syntax Error if |ClassStaticBlockStatementList| Contains |SuperCall| is *true*.</ins></p>
       </li>
     </ul>
   </emu-clause>
