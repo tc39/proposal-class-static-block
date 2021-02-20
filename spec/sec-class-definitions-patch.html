@@ -156,16 +156,16 @@
     </emu-alg>
   </emu-clause>
 
-  <emu-clause id="sec-runtime-semantics-classstaticblockevaluation">
-    <h1><ins>Runtime Semantics: ClassStaticBlockEvaluation</ins></h1>
+  <emu-clause id="sec-runtime-semantics-classstaticblockdefinitionevaluation">
+    <h1><ins>Runtime Semantics: ClassStaticBlockDefinitionEvaluation</ins></h1>
     <p>With parameter _homeObject_.</p>
     <emu-grammar collapsed>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</emu-grammar>
     <emu-alg>
       1. Let _lex_ be the running execution context's LexicalEnvironment.
       1. Let _privateScope_ be the running execution context's PrivateEnvironment.
-      1. Let _block_ be FunctionCreate(~Method~, &laquo; &raquo;, |ClassStaticBlockBody|, _lex_, _privateScope_).
-      1. Perform MakeMethod(_block_, _homeObject_).
-      1. Return the ClassStaticBlockDefinition Record { [[Block]]: _block_ }.
+      1. Let _body_ be FunctionCreate(~Method~, &laquo; &raquo;, |ClassStaticBlockBody|, _lex_, _privateScope_).
+      1. Perform MakeMethod(_body_, _homeObject_).
+      1. Return the ClassStaticBlockDefinition Record { [[Body]]: _body_ }.
     </emu-alg>
   </emu-clause>
 
@@ -174,7 +174,7 @@
     <p>With parameters _object_ and _enumerable_.</p>
     <emu-grammar collapsed><ins>ClassElement: ClassStaticBlock</ins></emu-grammar>
     <emu-alg>
-      1. <ins>Return ClassStaticBlockEvaluation of |ClassStaticBlock| with argument _object_.</ins>
+      1. <ins>Return ClassStaticBlockDefinitionEvaluation of |ClassStaticBlock| with argument _object_.</ins>
     </emu-alg>
   </emu-clause>
 
