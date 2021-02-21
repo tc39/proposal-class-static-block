@@ -156,31 +156,32 @@
     </emu-alg>
   </emu-clause>
 
-  <emu-clause id="sec-runtime-semantics-classstaticblockdefinitionevaluation">
+  <emu-clause id="sec-runtime-semantics-classstaticblockdefinitionevaluation" aoid="ClassStaticBlockDefinitionEvaluation">
     <h1><ins>Runtime Semantics: ClassStaticBlockDefinitionEvaluation</ins></h1>
     <p>With parameter _homeObject_.</p>
     <emu-grammar collapsed>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</emu-grammar>
     <emu-alg>
       1. Let _lex_ be the running execution context's LexicalEnvironment.
       1. Let _privateScope_ be the running execution context's PrivateEnvironment.
-      1. Let _body_ be FunctionCreate(~Method~, &laquo; &raquo;, |ClassStaticBlockBody|, _lex_, _privateScope_).
+      1. Let _body_ be OrdinaryFunctionCreate(~Method~, &laquo; &raquo;, |ClassStaticBlockBody|, _lex_, _privateScope_).
       1. Perform MakeMethod(_body_, _homeObject_).
       1. Return the ClassStaticBlockDefinition Record { [[Body]]: _body_ }.
     </emu-alg>
   </emu-clause>
 
-  <emu-clause id="sec-runtime-semantics-classelementevaluation">
+  <emu-clause id="sec-runtime-semantics-classelementevaluation" aoid="ClassElementEvaluation">
     <h1>Runtime Semantics: ClassElementEvaluation</h1>
     <p>With parameters _object_ and _enumerable_.</p>
     <emu-grammar collapsed><ins>ClassElement: ClassStaticBlock</ins></emu-grammar>
     <emu-alg>
       1. <ins>Return ClassStaticBlockDefinitionEvaluation of |ClassStaticBlock| with argument _object_.</ins>
     </emu-alg>
+    <emu-note>DRAFT NOTE: See <a href="https://arai-a.github.io/ecma262-compare/?pr=1668&id=sec-runtime-semantics-classelementevaluation">ClassElementEvaluation</a> in the <a href="https://arai-a.github.io/ecma262-compare/?pr=1668">Static Class Features proposal</a> for more information.</emu-note>
   </emu-clause>
 
   <emu-clause id="sec-runtime-semantics-classdefinitionevaluation">
     <h1>Runtime Semantics: ClassDefinitionEvaluation</h1>
-    <emu-note>This algorithm is a delta from the <a href="https://arai-a.github.io/ecma262-compare/?pr=1668">Static Class Features proposal</a>.</emu-note>
+    <emu-note>DRAFT NOTE: This algorithm is a delta from the <a href="https://arai-a.github.io/ecma262-compare/?pr=1668">Static Class Features proposal</a>.</emu-note>
     <p>With parameter _className_.</p>
     <emu-grammar collapsed>ClassTail : ClassHeritage? `{` ClassBody? `}`</emu-grammar>
     <emu-alg>
