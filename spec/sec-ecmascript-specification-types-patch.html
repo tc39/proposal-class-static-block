@@ -1,0 +1,36 @@
+<emu-clause id="sec-ecmascript-specification-types">
+  <h1>ECMAScript Specification Types</h1>
+  <emu-clause id="sec-classstaticblockdefinition-records">
+    <h1><ins>ClassStaticBlockDefinition Records</ins></h1>
+    <p>A <dfn>ClassStaticBlockDefinition Record</dfn> is a Record value used to encapsulate the executable code for a class static initialization block.</p>
+    <p>ClassStaticBlockDefinition Records have the fields listed in <emu-xref href="#table-classstaticblockdefinition-record-fields"></emu-xref>.</p>
+    <emu-table id="table-classstaticblockdefinition-record-fields" caption="ClassStaticBlockDefinition Record Fields">
+      <table>
+        <tbody>
+        <tr>
+          <th>
+            Field Name
+          </th>
+          <th>
+            Value
+          </th>
+          <th>
+            Meaning
+          </th>
+        </tr>
+        <tr>
+          <td>
+            [[Body]]
+          </td>
+          <td>
+            An function object.
+          </td>
+          <td>
+            The function object to be called during static initialization of a class.
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </emu-table>
+  </emu-clause>
+</emu-clause>

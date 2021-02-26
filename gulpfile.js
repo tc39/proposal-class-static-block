@@ -9,7 +9,9 @@ gulp.task("clean", clean);
 
 const build = () => gulp
     .src(["spec/index.html"])
-    .pipe(emu())
+    .pipe(emu({
+        ecma262Biblio: false
+    }))
     .pipe(gulp.dest("docs"));
 gulp.task("build", build);
 

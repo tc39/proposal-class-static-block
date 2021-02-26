@@ -13,7 +13,7 @@ existing use cases and enable new use cases not currently handled by that propos
 <!--#region:status-->
 ## Status
 
-**Stage:** 2  
+**Stage:** 3  
 **Champion:** Ron Buckton (@rbuckton)  
 
 _For detailed status of this proposal see [TODO](#todo), below._  
@@ -197,12 +197,9 @@ class C {
 - A `static {}` initialization block creates a new lexical scope (e.g. `var`, `function`, and block-scoped
   declarations are local to the `static {}` initialization block. This lexical scope is nested within the lexical
   scope of the class body (granting privileged access to instance private state for the class).
-- A class may have at most one `static {}` initialization block in its class body.
-- A `static {}` initialization block is evaluated immediately after all static field initializers have been
-  evaluated as part of class declaration evaluation, regardless of its order within the class body
-  (this aligns with `constructor() {}`).
+- A class may have any number of `static {}` initialization blocks in its class body.
+- `static {}` initialization blocks are evaluated in document order interleaved with static field initializers.
 - A `static {}` initialization block may not have decorators (instead you would decorate the class itself).
-  Decorators can always add a class finisher to add their own static initialization.
 - When evaluated, a `static {}` initialization block's `this` receiver is the constructor object of the class
   (as with static field initializers).
 - It is a **Syntax Error** to reference `arguments` from within a `static {}` initialization block.

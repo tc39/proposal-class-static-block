@@ -1,0 +1,11 @@
+<emu-clause id="sec-operations-on-objects">
+    <h1>Operations on Objects</h1>
+    <emu-clause id="sec-evaluatestaticblock" aoid="EvaluateStaticBlock">
+        <h1><ins>EvaluateStaticBlock ( _receiver_ , _blockRecord_ )</ins></h1>
+        <emu-alg>
+            1. Assert: Type(_receiver_) is Object.
+            1. Assert: _blockRecord_ is a ClassStaticBlockDefinition Record.
+            1. Perform ? Call(_blockRecord_.[[Body]], _receiver_).
+        </emu-alg>
+    </emu-clause>
+</emu-clause>
