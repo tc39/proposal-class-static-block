@@ -235,7 +235,7 @@ let A, B;
   B = class B {
     constructor(a) {
       const x = friendA.getX(a); // ok
-      friendA.setX(a, value); // ok
+      friendA.setX(a, x); // ok
     }
   };
 }
