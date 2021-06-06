@@ -1,0 +1,127 @@
+<emu-clause id="sec-static-semantics-lexicallyscopeddeclarations" oldids="sec-block-static-semantics-lexicallyscopeddeclarations,sec-switch-statement-static-semantics-lexicallyscopeddeclarations,sec-labelled-statements-static-semantics-lexicallyscopeddeclarations,sec-function-definitions-static-semantics-lexicallyscopeddeclarations,sec-arrow-function-definitions-static-semantics-lexicallyscopeddeclarations,sec-async-arrow-function-definitions-static-semantics-LexicallyScopedDeclarations,sec-scripts-static-semantics-lexicallyscopeddeclarations,sec-module-semantics-static-semantics-lexicallyscopeddeclarations,sec-exports-static-semantics-lexicallyscopeddeclarations" type="sdo" aoid="LexicallyScopedDeclarations">
+  <h1>Static Semantics: LexicallyScopedDeclarations</h1>
+  <emu-grammar>StatementList : StatementList StatementListItem</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be LexicallyScopedDeclarations of |StatementList|.
+    1. Append to _declarations_ the elements of the LexicallyScopedDeclarations of |StatementListItem|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>StatementListItem : Statement</emu-grammar>
+  <emu-alg>
+    1. If |Statement| is <emu-grammar>Statement : LabelledStatement</emu-grammar> , return LexicallyScopedDeclarations of |LabelledStatement|.
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>StatementListItem : Declaration</emu-grammar>
+  <emu-alg>
+    1. Return a List whose sole element is DeclarationPart of |Declaration|.
+  </emu-alg>
+  <emu-grammar>CaseBlock : `{` `}`</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>CaseBlock : `{` CaseClauses? DefaultClause CaseClauses? `}`</emu-grammar>
+  <emu-alg>
+    1. If the first |CaseClauses| is present, let _declarations_ be the LexicallyScopedDeclarations of the first |CaseClauses|.
+    1. Else, let _declarations_ be a new empty List.
+    1. Append to _declarations_ the elements of the LexicallyScopedDeclarations of |DefaultClause|.
+    1. If the second |CaseClauses| is not present, return _declarations_.
+    1. Return the result of appending to _declarations_ the elements of the LexicallyScopedDeclarations of the second |CaseClauses|.
+  </emu-alg>
+  <emu-grammar>CaseClauses : CaseClauses CaseClause</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be LexicallyScopedDeclarations of |CaseClauses|.
+    1. Append to _declarations_ the elements of the LexicallyScopedDeclarations of |CaseClause|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>CaseClause : `case` Expression `:` StatementList?</emu-grammar>
+  <emu-alg>
+    1. If the |StatementList| is present, return the LexicallyScopedDeclarations of |StatementList|.
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>DefaultClause : `default` `:` StatementList?</emu-grammar>
+  <emu-alg>
+    1. If the |StatementList| is present, return the LexicallyScopedDeclarations of |StatementList|.
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>LabelledStatement : LabelIdentifier `:` LabelledItem</emu-grammar>
+  <emu-alg>
+    1. Return the LexicallyScopedDeclarations of |LabelledItem|.
+  </emu-alg>
+  <emu-grammar>LabelledItem : Statement</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>LabelledItem : FunctionDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return a List whose sole element is |FunctionDeclaration|.
+  </emu-alg>
+  <emu-grammar>FunctionStatementList : [empty]</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>FunctionStatementList : StatementList</emu-grammar>
+  <emu-alg>
+    1. Return the TopLevelLexicallyScopedDeclarations of |StatementList|.
+  </emu-alg>
+  <emu-grammar collapsed><ins>ClassBlockStatementList: [empty]</ins></emu-grammar>
+  <emu-alg>
+    1. <ins>Return a new empty List.</ins>
+  </emu-alg>
+  <emu-grammar collapsed><ins>ClassBlockStatementList: StatementList</ins></emu-grammar>
+  <emu-alg>
+    1. <ins>Return the TopLevelLexicallyScopedDeclarations of |StatementList|.</ins>
+  </emu-alg>
+  <emu-grammar>ConciseBody : ExpressionBody</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>
+    AsyncConciseBody : ExpressionBody
+  </emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>ScriptBody : StatementList</emu-grammar>
+  <emu-alg>
+    1. Return TopLevelLexicallyScopedDeclarations of |StatementList|.
+  </emu-alg>
+  <emu-grammar>Module : [empty]</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>ModuleItemList : ModuleItemList ModuleItem</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be LexicallyScopedDeclarations of |ModuleItemList|.
+    1. Append to _declarations_ the elements of the LexicallyScopedDeclarations of |ModuleItem|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>ModuleItem : ImportDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>
+    ExportDeclaration :
+      `export` ExportFromClause FromClause `;`
+      `export` NamedExports `;`
+      `export` VariableStatement
+  </emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>ExportDeclaration : `export` Declaration</emu-grammar>
+  <emu-alg>
+    1. Return a List whose sole element is DeclarationPart of |Declaration|.
+  </emu-alg>
+  <emu-grammar>ExportDeclaration : `export` `default` HoistableDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return a List whose sole element is DeclarationPart of |HoistableDeclaration|.
+  </emu-alg>
+  <emu-grammar>ExportDeclaration : `export` `default` ClassDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return a List whose sole element is |ClassDeclaration|.
+  </emu-alg>
+  <emu-grammar>ExportDeclaration : `export` `default` AssignmentExpression `;`</emu-grammar>
+  <emu-alg>
+    1. Return a List whose sole element is this |ExportDeclaration|.
+  </emu-alg>
+</emu-clause>

@@ -26,11 +26,32 @@ contributors: Ron Buckton, Ecma International
   <emu-import href="sec-operations-on-objects-patch.html"></emu-import>
 </emu-clause>
 
-<emu-clause id="sec-ecmascript-language-expressions">
-  <h1>ECMAScript Language: Expressions</h1>
-  <emu-clause id="sec-identifiers">
-    <h1>Identifiers</h1>
-    <emu-import href="sec-identifiers-static-semantics-early-errors-patch.html"></emu-import>
+<emu-clause id="sec-syntax-directed-operations">
+  <h1>Syntax-Directed Operations</h1>
+  <p>In addition to those defined in this section, specialized syntax-directed operations are defined throughout this specification.</p>
+  <emu-clause id="sec-syntax-directed-operations-scope-analysis">
+    <h1>Scope Analysis</h1>
+    <emu-import href="sec-static-semantics-lexicallydeclarednames-patch.html"></emu-import>
+    <emu-import href="sec-static-semantics-lexicallyscopeddeclarations-patch.html"></emu-import>
+    <emu-import href="sec-static-semantics-vardeclarednames-patch.html"></emu-import>
+    <emu-import href="sec-static-semantics-varscopeddeclarations-patch.html"></emu-import>
+  </emu-clause>
+
+  <emu-clause id="sec-syntax-directed-operations-labels">
+    <h1>Labels</h1>
+    <emu-import href="sec-static-semantics-containsduplicatelabels-patch.html"></emu-import>
+    <emu-import href="sec-static-semantics-containsundefinedbreaktarget-patch.html"></emu-import>
+    <emu-import href="sec-static-semantics-containsundefinedcontinuetarget-patch.html"></emu-import>
+  </emu-clause>
+  <emu-clause id="sec-syntax-directed-operations-contains">
+    <h1>Contains</h1>
+    <emu-import href="sec-static-semantics-contains-patch.html"></emu-import>
+    <emu-import href="sec-static-semantics-computedpropertycontains-patch.html"></emu-import>
+  </emu-clause>
+  <emu-clause id="sec-syntax-directed-operations-miscellaneous">
+    <h1>Miscellaneous</h1>
+    <p>These operations are used in multiple places throughout the specification.</p>
+    <emu-import href="sec-static-semantics-propname-patch.html"></emu-import>
   </emu-clause>
 </emu-clause>
 

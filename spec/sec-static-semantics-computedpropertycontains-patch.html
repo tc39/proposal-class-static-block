@@ -1,0 +1,49 @@
+<emu-clause id="sec-static-semantics-computedpropertycontains" oldids="sec-object-initializer-static-semantics-computedpropertycontains,sec-method-definitions-static-semantics-computedpropertycontains,sec-generator-function-definitions-static-semantics-computedpropertycontains,sec-async-generator-function-definitions-static-semantics-computedpropertycontains,sec-class-definitions-static-semantics-computedpropertycontains,sec-async-function-definitions-static-semantics-ComputedPropertyContains" type="sdo" aoid="ComputedPropertyContains">
+  <h1>Static Semantics: ComputedPropertyContains</h1>
+  <p>With parameter _symbol_.</p>
+  <emu-grammar>PropertyName : LiteralPropertyName</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>PropertyName : ComputedPropertyName</emu-grammar>
+  <emu-alg>
+    1. Return the result of |ComputedPropertyName| Contains _symbol_.
+  </emu-alg>
+  <emu-grammar>
+    MethodDefinition :
+      PropertyName `(` UniqueFormalParameters `)` `{` FunctionBody `}`
+      `get` PropertyName `(` `)` `{` FunctionBody `}`
+      `set` PropertyName `(` PropertySetParameterList `)` `{` FunctionBody `}`
+  </emu-grammar>
+  <emu-alg>
+    1. Return the result of ComputedPropertyContains for |PropertyName| with argument _symbol_.
+  </emu-alg>
+  <emu-grammar>GeneratorMethod : `*` PropertyName `(` UniqueFormalParameters `)` `{` GeneratorBody `}`</emu-grammar>
+  <emu-alg>
+    1. Return the result of ComputedPropertyContains for |PropertyName| with argument _symbol_.
+  </emu-alg>
+  <emu-grammar>AsyncGeneratorMethod : `async` `*` PropertyName `(` UniqueFormalParameters `)` `{` AsyncGeneratorBody `}`</emu-grammar>
+  <emu-alg>
+    1. Return the result of ComputedPropertyContains for |PropertyName| with argument _symbol_.
+  </emu-alg>
+  <emu-grammar>ClassElementList : ClassElementList ClassElement</emu-grammar>
+  <emu-alg>
+    1. Let _inList_ be ComputedPropertyContains of |ClassElementList| with argument _symbol_.
+    1. If _inList_ is *true*, return *true*.
+    1. Return the result of ComputedPropertyContains for |ClassElement| with argument _symbol_.
+  </emu-alg>
+  <emu-grammar><ins>ClassElement : ClassStaticBlock</ins></emu-grammar>
+  <emu-alg>
+    1. <ins>Return *false*</ins>.
+  </emu-alg>
+  <emu-grammar>ClassElement : `;`</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>
+    AsyncMethod : `async` PropertyName `(` UniqueFormalParameters `)` `{` AsyncFunctionBody `}`
+  </emu-grammar>
+  <emu-alg>
+    1. Return the result of ComputedPropertyContains for |PropertyName| with argument _symbol_.
+  </emu-alg>
+</emu-clause>

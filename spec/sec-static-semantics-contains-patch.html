@@ -1,0 +1,133 @@
+<emu-clause id="sec-static-semantics-contains" oldids="sec-object-initializer-static-semantics-contains,sec-static-semantics-static-semantics-contains,sec-function-definitions-static-semantics-contains,sec-arrow-function-definitions-static-semantics-contains,sec-generator-function-definitions-static-semantics-contains,sec-async-generator-function-definitions-static-semantics-contains,sec-class-definitions-static-semantics-contains,sec-async-function-definitions-static-semantics-Contains,sec-async-arrow-function-definitions-static-semantics-Contains" type="sdo" aoid="Contains">
+  <h1>Static Semantics: Contains</h1>
+  <p>With parameter _symbol_.</p>
+  <p>Every grammar production alternative in this specification which is not listed below implicitly has the following default definition of Contains:</p>
+  <emu-alg>
+    1. For each child node _child_ of this Parse Node, do
+      1. If _child_ is an instance of _symbol_, return *true*.
+      1. If _child_ is an instance of a nonterminal, then
+        1. Let _contained_ be the result of _child_ Contains _symbol_.
+        1. If _contained_ is *true*, return *true*.
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>
+    FunctionDeclaration :
+      `function` BindingIdentifier `(` FormalParameters `)` `{` FunctionBody `}`
+      `function` `(` FormalParameters `)` `{` FunctionBody `}`
+
+    FunctionExpression :
+      `function` BindingIdentifier? `(` FormalParameters `)` `{` FunctionBody `}`
+
+    GeneratorDeclaration :
+      `function` `*` BindingIdentifier `(` FormalParameters `)` `{` GeneratorBody `}`
+      `function` `*` `(` FormalParameters `)` `{` GeneratorBody `}`
+
+    GeneratorExpression :
+      `function` `*` BindingIdentifier? `(` FormalParameters `)` `{` GeneratorBody `}`
+
+    AsyncGeneratorDeclaration :
+      `async` `function` `*` BindingIdentifier `(` FormalParameters `)` `{` AsyncGeneratorBody `}`
+      `async` `function` `*` `(` FormalParameters `)` `{` AsyncGeneratorBody `}`
+
+    AsyncGeneratorExpression :
+      `async` `function` `*` BindingIdentifier? `(` FormalParameters `)` `{` AsyncGeneratorBody `}`
+
+    AsyncFunctionDeclaration :
+      `async` `function` BindingIdentifier `(` FormalParameters `)` `{` AsyncFunctionBody `}`
+      `async` `function` `(` FormalParameters `)` `{` AsyncFunctionBody `}`
+
+    AsyncFunctionExpression :
+      `async` `function` BindingIdentifier? `(` FormalParameters `)` `{` AsyncFunctionBody `}`
+  </emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-note>
+    <p>Static semantic rules that depend upon substructure generally do not look into function definitions.</p>
+  </emu-note>
+  <emu-grammar>ClassTail : ClassHeritage? `{` ClassBody `}`</emu-grammar>
+  <emu-alg>
+    1. If _symbol_ is |ClassBody|, return *true*.
+    1. If _symbol_ is |ClassHeritage|, then
+      1. If |ClassHeritage| is present, return *true*; otherwise return *false*.
+    1. Let _inHeritage_ be |ClassHeritage| Contains _symbol_.
+    1. If _inHeritage_ is *true*, return *true*.
+    1. Return the result of ComputedPropertyContains for |ClassBody| with argument _symbol_.
+  </emu-alg>
+  <emu-note>
+    <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |PropertyName|s.</p>
+  </emu-note>
+
+  <emu-grammar><ins>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</ins></emu-grammar>
+  <emu-alg>
+    1. <ins>If _symbol_ is |ClassStaticBlockBody|, return *true*.</ins>
+    1. <ins>Return *false*.</ins>
+  </emu-alg>
+  <emu-note>
+    <p><ins>Static semantic rules that depend upon substructure generally do not look into `static` initialization blocks.</ins></p>
+  </emu-note>
+
+  <emu-grammar>ArrowFunction : ArrowParameters `=>` ConciseBody</emu-grammar>
+  <emu-alg>
+    1. If _symbol_ is not one of |NewTarget|, |SuperProperty|, |SuperCall|, `super` or `this`, return *false*.
+    1. If |ArrowParameters| Contains _symbol_ is *true*, return *true*.
+    1. Return |ConciseBody| Contains _symbol_.
+  </emu-alg>
+  <emu-grammar>ArrowParameters : CoverParenthesizedExpressionAndArrowParameterList</emu-grammar>
+  <emu-alg>
+    1. Let _formals_ be CoveredFormalsList of |CoverParenthesizedExpressionAndArrowParameterList|.
+    1. Return _formals_ Contains _symbol_.
+  </emu-alg>
+  <emu-grammar>
+    AsyncArrowFunction : `async` AsyncArrowBindingIdentifier `=>` AsyncConciseBody
+  </emu-grammar>
+  <emu-alg>
+    1. If _symbol_ is not one of |NewTarget|, |SuperProperty|, |SuperCall|, `super`, or `this`, return *false*.
+    1. Return |AsyncConciseBody| Contains _symbol_.
+  </emu-alg>
+  <emu-grammar>
+    AsyncArrowFunction : CoverCallExpressionAndAsyncArrowHead `=>` AsyncConciseBody
+  </emu-grammar>
+  <emu-alg>
+    1. If _symbol_ is not one of |NewTarget|, |SuperProperty|, |SuperCall|, `super`, or `this`, return *false*.
+    1. Let _head_ be CoveredAsyncArrowHead of |CoverCallExpressionAndAsyncArrowHead|.
+    1. If _head_ Contains _symbol_ is *true*, return *true*.
+    1. Return |AsyncConciseBody| Contains _symbol_.
+  </emu-alg>
+  <emu-note>
+    <p>Contains is used to detect `new.target`, `this`, and `super` usage within an |ArrowFunction| or |AsyncArrowFunction|.</p>
+  </emu-note>
+  <emu-grammar>PropertyDefinition : MethodDefinition</emu-grammar>
+  <emu-alg>
+    1. If _symbol_ is |MethodDefinition|, return *true*.
+    1. Return the result of ComputedPropertyContains for |MethodDefinition| with argument _symbol_.
+  </emu-alg>
+  <emu-grammar>LiteralPropertyName : IdentifierName</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>MemberExpression : MemberExpression `.` IdentifierName</emu-grammar>
+  <emu-alg>
+    1. If |MemberExpression| Contains _symbol_ is *true*, return *true*.
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>SuperProperty : `super` `.` IdentifierName</emu-grammar>
+  <emu-alg>
+    1. If _symbol_ is the |ReservedWord| `super`, return *true*.
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>CallExpression : CallExpression `.` IdentifierName</emu-grammar>
+  <emu-alg>
+    1. If |CallExpression| Contains _symbol_ is *true*, return *true*.
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>OptionalChain : `?.` IdentifierName</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>OptionalChain : OptionalChain `.` IdentifierName</emu-grammar>
+  <emu-alg>
+    1. If |OptionalChain| Contains _symbol_ is *true*, return *true*.
+    1. Return *false*.
+  </emu-alg>
+</emu-clause>

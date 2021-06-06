@@ -1,0 +1,120 @@
+<emu-clause id="sec-static-semantics-lexicallydeclarednames" oldids="sec-block-static-semantics-lexicallydeclarednames,sec-switch-statement-static-semantics-lexicallydeclarednames,sec-labelled-statements-static-semantics-lexicallydeclarednames,sec-function-definitions-static-semantics-lexicallydeclarednames,sec-arrow-function-definitions-static-semantics-lexicallydeclarednames,sec-async-arrow-function-definitions-static-semantics-LexicallyDeclaredNames,sec-scripts-static-semantics-lexicallydeclarednames,sec-module-semantics-static-semantics-lexicallydeclarednames" type="sdo" aoid="LexicallyDeclaredNames">
+  <h1>Static Semantics: LexicallyDeclaredNames</h1>
+  <emu-grammar>Block : `{` `}`</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>StatementList : StatementList StatementListItem</emu-grammar>
+  <emu-alg>
+    1. Let _names_ be LexicallyDeclaredNames of |StatementList|.
+    1. Append to _names_ the elements of the LexicallyDeclaredNames of |StatementListItem|.
+    1. Return _names_.
+  </emu-alg>
+  <emu-grammar>StatementListItem : Statement</emu-grammar>
+  <emu-alg>
+    1. If |Statement| is <emu-grammar>Statement : LabelledStatement</emu-grammar> , return LexicallyDeclaredNames of |LabelledStatement|.
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>StatementListItem : Declaration</emu-grammar>
+  <emu-alg>
+    1. Return the BoundNames of |Declaration|.
+  </emu-alg>
+  <emu-grammar>CaseBlock : `{` `}`</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>CaseBlock : `{` CaseClauses? DefaultClause CaseClauses? `}`</emu-grammar>
+  <emu-alg>
+    1. If the first |CaseClauses| is present, let _names_ be the LexicallyDeclaredNames of the first |CaseClauses|.
+    1. Else, let _names_ be a new empty List.
+    1. Append to _names_ the elements of the LexicallyDeclaredNames of |DefaultClause|.
+    1. If the second |CaseClauses| is not present, return _names_.
+    1. Return the result of appending to _names_ the elements of the LexicallyDeclaredNames of the second |CaseClauses|.
+  </emu-alg>
+  <emu-grammar>CaseClauses : CaseClauses CaseClause</emu-grammar>
+  <emu-alg>
+    1. Let _names_ be LexicallyDeclaredNames of |CaseClauses|.
+    1. Append to _names_ the elements of the LexicallyDeclaredNames of |CaseClause|.
+    1. Return _names_.
+  </emu-alg>
+  <emu-grammar>CaseClause : `case` Expression `:` StatementList?</emu-grammar>
+  <emu-alg>
+    1. If the |StatementList| is present, return the LexicallyDeclaredNames of |StatementList|.
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>DefaultClause : `default` `:` StatementList?</emu-grammar>
+  <emu-alg>
+    1. If the |StatementList| is present, return the LexicallyDeclaredNames of |StatementList|.
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>LabelledStatement : LabelIdentifier `:` LabelledItem</emu-grammar>
+  <emu-alg>
+    1. Return the LexicallyDeclaredNames of |LabelledItem|.
+  </emu-alg>
+  <emu-grammar>LabelledItem : Statement</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>LabelledItem : FunctionDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return BoundNames of |FunctionDeclaration|.
+  </emu-alg>
+  <emu-grammar>FunctionStatementList : [empty]</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>FunctionStatementList : StatementList</emu-grammar>
+  <emu-alg>
+    1. Return TopLevelLexicallyDeclaredNames of |StatementList|.
+  </emu-alg>
+  <emu-grammar><ins>ClassBlockStatementList: [empty]</ins></emu-grammar>
+  <emu-alg>
+    1. <ins>Return a new empty List.</ins>
+  </emu-alg>
+  <emu-grammar><ins>ClassBlockStatementList: StatementList</ins></emu-grammar>
+  <emu-alg>
+    1. <ins>Return the TopLevelLexicallyDeclaredNames of |StatementList|.</ins>
+  </emu-alg>
+  <emu-grammar>ConciseBody : ExpressionBody</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>
+    AsyncConciseBody : ExpressionBody
+  </emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>ScriptBody : StatementList</emu-grammar>
+  <emu-alg>
+    1. Return TopLevelLexicallyDeclaredNames of |StatementList|.
+  </emu-alg>
+  <emu-note>
+    <p>At the top level of a |Script|, function declarations are treated like var declarations rather than like lexical declarations.</p>
+  </emu-note>
+  <emu-note>
+    <p>The LexicallyDeclaredNames of a |Module| includes the names of all of its imported bindings.</p>
+  </emu-note>
+  <emu-grammar>ModuleItemList : ModuleItemList ModuleItem</emu-grammar>
+  <emu-alg>
+    1. Let _names_ be LexicallyDeclaredNames of |ModuleItemList|.
+    1. Append to _names_ the elements of the LexicallyDeclaredNames of |ModuleItem|.
+    1. Return _names_.
+  </emu-alg>
+  <emu-grammar>ModuleItem : ImportDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return the BoundNames of |ImportDeclaration|.
+  </emu-alg>
+  <emu-grammar>ModuleItem : ExportDeclaration</emu-grammar>
+  <emu-alg>
+    1. If |ExportDeclaration| is `export` |VariableStatement|, return a new empty List.
+    1. Return the BoundNames of |ExportDeclaration|.
+  </emu-alg>
+  <emu-grammar>ModuleItem : StatementListItem</emu-grammar>
+  <emu-alg>
+    1. Return LexicallyDeclaredNames of |StatementListItem|.
+  </emu-alg>
+  <emu-note>
+    <p>At the top level of a |Module|, function declarations are treated like lexical declarations rather than like var declarations.</p>
+  </emu-note>
+</emu-clause>
