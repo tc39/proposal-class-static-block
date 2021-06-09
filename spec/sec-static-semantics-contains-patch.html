@@ -58,14 +58,16 @@
     <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |PropertyName|s.</p>
   </emu-note>
 
-  <emu-grammar><ins>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</ins></emu-grammar>
+  <ins class="block">
+  <emu-grammar>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</emu-grammar>
   <emu-alg>
-    1. <ins>If _symbol_ is |ClassStaticBlockBody|, return *true*.</ins>
-    1. <ins>Return *false*.</ins>
+    1. If _symbol_ is |ClassStaticBlockBody|, return *true*.
+    1. Return *false*.
   </emu-alg>
   <emu-note>
-    <p><ins>Static semantic rules that depend upon substructure generally do not look into `static` initialization blocks.</ins></p>
+    <p>Static semantic rules that depend upon substructure generally do not look into `static` initialization blocks.</p>
   </emu-note>
+  </ins>
 
   <emu-grammar>ArrowFunction : ArrowParameters `=>` ConciseBody</emu-grammar>
   <emu-alg>

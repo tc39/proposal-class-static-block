@@ -10,7 +10,7 @@
       <ins>ClassStaticBlock</ins>
       `;`
 
-    <ins>
+    <ins class="block">
     ClassStaticBlock :
       `static` `{` ClassStaticBlockBody `}`
 
@@ -24,33 +24,35 @@
 
   <emu-clause id="sec-class-definitions-static-semantics-early-errors">
     <h1>Static Semantics: Early Errors</h1>
-    <emu-grammar><ins>ClassStaticBlockBody: ClassStaticBlockStatementList</ins></emu-grammar>
+    <ins class="block">
+    <emu-grammar>ClassStaticBlockBody: ClassStaticBlockStatementList</emu-grammar>
     <ul>
       <li>
-        <p><ins>It is a Syntax Error if the LexicallyDeclaredNames of |ClassStaticBlockStatementList| contains any duplicate entries.</ins></p>
+        <p>It is a Syntax Error if the LexicallyDeclaredNames of |ClassStaticBlockStatementList| contains any duplicate entries.</p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error if any element of the LexicallyDeclaredNames of |ClassStaticBlockStatementList| also occurs in the VarDeclaredNames of |ClassStaticBlockStatementList|.</ins></p>
+        <p>It is a Syntax Error if any element of the LexicallyDeclaredNames of |ClassStaticBlockStatementList| also occurs in the VarDeclaredNames of |ClassStaticBlockStatementList|.</p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error if ContainsDuplicateLabels of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</ins></p>
+        <p>It is a Syntax Error if ContainsDuplicateLabels of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error if ContainsUndefinedBreakTarget of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</ins></p>
+        <p>It is a Syntax Error if ContainsUndefinedBreakTarget of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error if ContainsUndefinedContinueTarget of |ClassStaticBlockStatementList| with arguments &laquo; &raquo; and &laquo; &raquo; is *true*.</ins></p>
+        <p>It is a Syntax Error if ContainsUndefinedContinueTarget of |ClassStaticBlockStatementList| with arguments &laquo; &raquo; and &laquo; &raquo; is *true*.</p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error if ContainsArguments of |ClassStaticBlockStatementList| is *true*.</ins></p>
+        <p>It is a Syntax Error if ContainsArguments of |ClassStaticBlockStatementList| is *true*.</p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error if |ClassStaticBlockStatementList| Contains |SuperCall| is *true*.</ins></p>
+        <p>It is a Syntax Error if |ClassStaticBlockStatementList| Contains |SuperCall| is *true*.</p>
       </li>
       <li>
-        <p><ins>It is a Syntax Error if ContainsAwait of |ClassStaticBlockStatementList| is *true*.</ins></p>
+        <p>It is a Syntax Error if ContainsAwait of |ClassStaticBlockStatementList| is *true*.</p>
       </li>
     </ul>
+    </ins>
   </emu-clause>
 
   <emu-clause id="sec-static-semantics-classelementkind" type="sdo" aoid="ClassElementKind">
@@ -69,10 +71,12 @@
     <emu-alg>
       1. Return ~NonConstructorMethod~.
     </emu-alg>
-    <emu-grammar><ins>ClassElement : ClassStaticBlock</ins></emu-grammar>
+    <ins class="block">
+    <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar>
     <emu-alg>
-      1. <ins>Return ~NonConstructorMethod~.</ins>
+      1. Return ~NonConstructorMethod~.
     </emu-alg>
+    </ins>
     <emu-grammar>ClassElement : `;`</emu-grammar>
     <emu-alg>
       1. Return ~empty~.
@@ -97,10 +101,12 @@
     <emu-alg>
       1. Return *true*.
     </emu-alg>
-    <emu-grammar><ins>ClassElement : ClassStaticBlock</ins></emu-grammar>
+    <ins class="block">
+    <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar>
     <emu-alg>
-      1. <ins>Return *true*.</ins>
+      1. Return *true*.
     </emu-alg>
+    </ins>
     <emu-grammar>ClassElement : `;`</emu-grammar>
     <emu-alg>
       1. Return *false*.
@@ -110,19 +116,13 @@
   <emu-clause id="sec-static-semantics-containsawait" type="sdo" aoid="ContainsAwait">
     <h1><ins>Static Semantics: ContainsAwait</ins></h1>
 
+    <ins class="block">
     <p>Every grammar production alternative in this specification which is not listed below implicitly has the following default definition of ContainsAwait:</p>
     <emu-alg>
       1. For each child node _child_ of this Parse Node, do
         1. If _child_ is an instance of a nonterminal, then
           1. If ContainsAwait of _child_ is *true*, return *true*.
       1. Return *false*.
-    </emu-alg>
-
-    <emu-grammar>
-      UnaryExpression : AwaitExpression
-    </emu-grammar>
-    <emu-alg>
-      1. Return *true*.
     </emu-alg>
 
     <emu-grammar>
@@ -135,6 +135,9 @@
     <emu-alg>
       1. Return *false*.
     </emu-alg>
+    <emu-note>
+      <p>Static semantic rules that depend upon substructure generally do not look into function definitions.</p>
+    </emu-note>
 
     <emu-grammar>
       MethodDefinition :
@@ -145,6 +148,9 @@
     <emu-alg>
       1. Return ContainsAwait of |ClassElementName|.
     </emu-alg>
+    <emu-note>
+      <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |ClassElementName|s.</p>
+    </emu-note>
 
     <emu-grammar>
       GeneratorMethod : `*` ClassElementName `(` UniqueFormalParameters `)` `{` GeneratorBody `}`
@@ -152,6 +158,9 @@
     <emu-alg>
       1. Return ContainsAwait of |ClassElementName|.
     </emu-alg>
+    <emu-note>
+      <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |ClassElementName|s.</p>
+    </emu-note>
 
     <emu-grammar>
       GeneratorDeclaration : `function` `*` BindingIdentifier `(` FormalParameters `)` `{` GeneratorBody `}`
@@ -163,6 +172,9 @@
     <emu-alg>
       1. Return *false*.
     </emu-alg>
+    <emu-note>
+      <p>Static semantic rules that depend upon substructure generally do not look into function definitions.</p>
+    </emu-note>
 
     <emu-grammar>
       AsyncMethod : `async` ClassElementName `(` UniqueFormalParameters `)` `{` AsyncFunctionBody `}`
@@ -170,6 +182,9 @@
     <emu-alg>
       1. Return ContainsAwait of |ClassElementName|.
     </emu-alg>
+    <emu-note>
+      <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |ClassElementName|s.</p>
+    </emu-note>
 
     <emu-grammar>
       AsyncFunctionDeclaration : `async` `function` BindingIdentifier `(` FormalParameters `)` `{` AsyncFunctionBody `}`
@@ -183,6 +198,9 @@
     <emu-alg>
       1. Return *false*.
     </emu-alg>
+    <emu-note>
+      <p>Static semantic rules that depend upon substructure generally do not look into function definitions.</p>
+    </emu-note>
 
     <emu-grammar>ArrowFunction : ArrowParameters `=>` ConciseBody</emu-grammar>
     <emu-alg>
@@ -204,6 +222,13 @@
     </emu-alg>
 
     <emu-grammar>
+      UnaryExpression : AwaitExpression
+    </emu-grammar>
+    <emu-alg>
+      1. Return *true*.
+    </emu-alg>
+
+    <emu-grammar>
       ForInOfStatement : `for` `await` `(` LeftHandSideExpression `of` AssignmentExpression `)` Statement
 
       ForInOfStatement : `for` `await` `(` `var` ForBinding `of` AssignmentExpression `)` Statement
@@ -213,10 +238,12 @@
     <emu-alg>
       1. Return *true*.
     </emu-alg>
+    </ins>
   </emu-clause>
 
   <emu-clause id="sec-runtime-semantics-classstaticblockdefinitionevaluation" aoid="ClassStaticBlockDefinitionEvaluation">
     <h1><ins>Runtime Semantics: ClassStaticBlockDefinitionEvaluation</ins></h1>
+    <ins class="block">
     <p>With parameter _homeObject_.</p>
     <emu-grammar>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</emu-grammar>
     <emu-alg>
@@ -228,6 +255,7 @@
       1. Return the ClassStaticBlockDefinition Record { [[Body]]: _body_ }.
     </emu-alg>
     <emu-note>The function created for _body_ is never directly accessible to ECMAScript code.</emu-note>
+    </ins>
   </emu-clause>
 
   <emu-clause id="sec-static-semantics-classelementevaluation" type="sdo" aoid="ClassElementEvaluation">
@@ -252,10 +280,12 @@
       1. Return MethodDefinitionEvaluation of |MethodDefinition| with arguments _object_ and _enumerable_.
     </emu-alg>
 
-    <emu-grammar><ins>ClassElement: ClassStaticBlock</ins></emu-grammar>
+    <ins class="block">
+    <emu-grammar>ClassElement: ClassStaticBlock</emu-grammar>
     <emu-alg>
-      1. <ins>Return ClassStaticBlockDefinitionEvaluation of |ClassStaticBlock| with argument _object_.</ins>
+      1. Return ClassStaticBlockDefinitionEvaluation of |ClassStaticBlock| with argument _object_.
     </emu-alg>
+    </ins>
 
     <emu-grammar>
       ClassElement : `;`

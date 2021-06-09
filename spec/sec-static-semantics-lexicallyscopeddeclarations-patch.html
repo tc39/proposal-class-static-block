@@ -63,14 +63,16 @@
   <emu-alg>
     1. Return the TopLevelLexicallyScopedDeclarations of |StatementList|.
   </emu-alg>
-  <emu-grammar collapsed><ins>ClassBlockStatementList: [empty]</ins></emu-grammar>
+  <ins class="block">
+  <emu-grammar>ClassBlockStatementList: [empty]</emu-grammar>
   <emu-alg>
-    1. <ins>Return a new empty List.</ins>
+    1. Return a new empty List.
   </emu-alg>
-  <emu-grammar collapsed><ins>ClassBlockStatementList: StatementList</ins></emu-grammar>
+  <emu-grammar>ClassBlockStatementList: StatementList</emu-grammar>
   <emu-alg>
-    1. <ins>Return the TopLevelLexicallyScopedDeclarations of |StatementList|.</ins>
+    1. Return the TopLevelLexicallyScopedDeclarations of |StatementList|.
   </emu-alg>
+  </ins>
   <emu-grammar>ConciseBody : ExpressionBody</emu-grammar>
   <emu-alg>
     1. Return a new empty List.

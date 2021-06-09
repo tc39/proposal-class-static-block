@@ -159,10 +159,12 @@
   <emu-alg>
     1. Return *false*.
   </emu-alg>
-  <emu-grammar><ins>ClassStaticBlockStatementList: [empty]</ins></emu-grammar>
+  <ins class="block">
+  <emu-grammar>ClassStaticBlockStatementList: [empty]</emu-grammar>
   <emu-alg>
-    1. <ins>Return *false*.</ins>
+    1. Return *false*.
   </emu-alg>
+  </ins>
   <emu-grammar>ModuleItemList : ModuleItemList ModuleItem</emu-grammar>
   <emu-alg>
     1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |ModuleItemList| with arguments _iterationSet_ and &laquo; &raquo;.
