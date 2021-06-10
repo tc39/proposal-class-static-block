@@ -394,17 +394,14 @@
         1. Perform ! PrivateMethodOrAccessorAdd(_method_, _F_).
       1. For each element <del>_fieldRecord_</del><ins>_elementRecord_</ins> of <del>_staticFields_</del><ins>_staticElements_</ins>, do
         1. <del>Let _result_ be DefineField(_F_, _fieldRecord_).</del>
-        1. <del>If _result_ is an abrupt completion, then</del>
-          1. <del>Set the running execution context's PrivateEnvironment to _outerPrivateEnvironment_.</del>
-          1. <del>Return _result_.</del>
         1. <ins>If _elementRecord_ is a ClassFieldDefinition Record, then</ins>
           1. <ins>Let _result_ be DefineField(_F_, _elementRecord_).</ins>
         1. <ins>Else,</ins>
           1. <ins>Assert: _elementRecord_ is a ClassStaticBlockDefinition Record.</ins>
-          1. <ins>Let _result_ be the result of performing EvaluateStaticBlock(_F_, _elementRecord_).</ins>
-        1. <ins>If _result_ is an abrupt completion, then</ins>
-          1. <ins>Set the running execution context's PrivateEnvironment to _outerPrivateEnvironment_.</ins>
-          1. <ins>Return _result_.</ins>
+          1. <ins>Let _result_ be EvaluateStaticBlock(_F_, _elementRecord_).</ins>
+        1. If _result_ is an abrupt completion, then
+          1. Set the running execution context's PrivateEnvironment to _outerPrivateEnvironment_.
+          1. Return _result_.
       1. Set the running execution context's PrivateEnvironment to _outerPrivateEnvironment_.
       1. Return _F_.
     </emu-alg>
