@@ -1,0 +1,18 @@
+name: Publish PR to gh-pages/pr/<number>
+on:
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.number }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          branch: gh-pages
+          folder: docs
+          target-folder: pr/${{ github.event.number }}/
