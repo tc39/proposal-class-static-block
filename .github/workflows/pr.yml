@@ -18,7 +18,7 @@ jobs:
           target_folder: pr/${{ github.event.number }}/
       - id: get-preview-url
         name: Get preview url
-        run: echo "::set-output preview-url=https://tc39.es/$(basename $GITHUB_REPOSITORY)/pr/${{ github.event.number }}"
+        run: echo "::set-output name=preview-url::https://tc39.es/$(basename $GITHUB_REPOSITORY)/pr/${{ github.event.number }}"
         shell: bash
       - name: Post Preview Comment
         uses: phulsechinmay/rewritable-pr-comment@v0.3.0
