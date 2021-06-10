@@ -1,4 +1,4 @@
-name: Publish PR to gh-pages/pr/<number>
+name: Publish PR to gh-pages/pr/
 on:
   pull_request:
     branches: [ main ]
@@ -15,4 +15,4 @@ jobs:
         with:
           branch: gh-pages
           folder: docs
-          target-folder: pr/${{ github.event.number }}/
+          target_folder: pr/${{ github.event.number }}/
