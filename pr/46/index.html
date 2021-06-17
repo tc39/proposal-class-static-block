@@ -5370,7 +5370,7 @@ li.menu-search-result-term:before {
 
     <ins class="block">
     <p>Every grammar production alternative in this specification which is not listed below implicitly has the following default definition of ContainsAwait:</p>
-    <emu-alg><ol><li>For each child node <var>child</var> of this <emu-xref href="#sec-syntactic-grammar"><a href="https://tc39.es/ecma262/#sec-syntactic-grammar">Parse Node</a></emu-xref>, do<ol><li>If <var>child</var> is an instance of a nonterminal, then<ol><li>If <emu-xref aoid="ContainsAwait" id="_ref_257"><a href="#sec-static-semantics-containsawait">ContainsAwait</a></emu-xref> of <var>child</var> is <emu-val>true</emu-val>, return <emu-val>true</emu-val>.</li></ol></li></ol></li><li>Return <emu-val>false</emu-val>.</li></ol></emu-alg>
+    <emu-alg><ol><li>For each child node <var>child</var> of this <emu-xref href="#sec-syntactic-grammar"><a href="https://tc39.es/ecma262/#sec-syntactic-grammar">Parse Node</a></emu-xref>, do<ol><li>If <var>child</var> is an instance of a nonterminal, then<ol><li>If <emu-xref aoid="ContainsAwait" id="_ref_257"><a href="#sec-static-semantics-containsawait">ContainsAwait</a></emu-xref> for <var>child</var> is <emu-val>true</emu-val>, return <emu-val>true</emu-val>.</li></ol></li></ol></li><li>Return <emu-val>false</emu-val>.</li></ol></emu-alg>
 
     <emu-grammar><emu-production name="FunctionDeclaration">
     <emu-nt><a href="https://tc39.es/ecma262/#prod-FunctionDeclaration">FunctionDeclaration</a></emu-nt> <emu-geq>:</emu-geq> <emu-rhs a="gxoavzvy">
