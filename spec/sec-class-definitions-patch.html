@@ -121,53 +121,38 @@
     <emu-alg>
       1. For each child node _child_ of this Parse Node, do
         1. If _child_ is an instance of a nonterminal, then
-          1. If ContainsAwait of _child_ is *true*, return *true*.
+          1. If ContainsAwait for _child_ is *true*, return *true*.
       1. Return *false*.
     </emu-alg>
 
     <emu-grammar>
-      FunctionDeclaration : `function` BindingIdentifier `(` FormalParameters `)` `{` FunctionBody `}`
+      FunctionDeclaration :
+        `function` BindingIdentifier `(` FormalParameters `)` `{` FunctionBody `}`
+        `function` `(` FormalParameters `)` `{` FunctionBody `}`
 
-      FunctionDeclaration : `function` `(` FormalParameters `)` `{` FunctionBody `}`
+      FunctionExpression :
+        `function` BindingIdentifier? `(` FormalParameters `)` `{` FunctionBody `}`
 
-      FunctionExpression : `function` BindingIdentifier? `(` FormalParameters `)` `{` FunctionBody `}`
-    </emu-grammar>
-    <emu-alg>
-      1. Return *false*.
-    </emu-alg>
-    <emu-note>
-      <p>Static semantic rules that depend upon substructure generally do not look into function definitions.</p>
-    </emu-note>
+      GeneratorDeclaration :
+        `function` `*` BindingIdentifier `(` FormalParameters `)` `{` GeneratorBody `}`
+        `function` `*` `(` FormalParameters `)` `{` GeneratorBody `}`
 
-    <emu-grammar>
-      MethodDefinition :
-        ClassElementName `(` UniqueFormalParameters `)` `{` FunctionBody `}`
-        `get` ClassElementName `(` `)` `{` FunctionBody `}`
-        `set` ClassElementName `(` PropertySetParameterList `)` `{` FunctionBody `}`
-    </emu-grammar>
-    <emu-alg>
-      1. Return ContainsAwait of |ClassElementName|.
-    </emu-alg>
-    <emu-note>
-      <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |ClassElementName|s.</p>
-    </emu-note>
+      GeneratorExpression :
+        `function` `*` BindingIdentifier? `(` FormalParameters `)` `{` GeneratorBody `}`
 
-    <emu-grammar>
-      GeneratorMethod : `*` ClassElementName `(` UniqueFormalParameters `)` `{` GeneratorBody `}`
-    </emu-grammar>
-    <emu-alg>
-      1. Return ContainsAwait of |ClassElementName|.
-    </emu-alg>
-    <emu-note>
-      <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |ClassElementName|s.</p>
-    </emu-note>
+      AsyncGeneratorDeclaration :
+        `async` `function` `*` BindingIdentifier `(` FormalParameters `)` `{` AsyncGeneratorBody `}`
+        `async` `function` `*` `(` FormalParameters `)` `{` AsyncGeneratorBody `}`
 
-    <emu-grammar>
-      GeneratorDeclaration : `function` `*` BindingIdentifier `(` FormalParameters `)` `{` GeneratorBody `}`
+      AsyncGeneratorExpression :
+        `async` `function` `*` BindingIdentifier? `(` FormalParameters `)` `{` AsyncGeneratorBody `}`
 
-      GeneratorDeclaration : `function` `*` `(` FormalParameters `)` `{` GeneratorBody `}`
+      AsyncFunctionDeclaration :
+        `async` `function` BindingIdentifier `(` FormalParameters `)` `{` AsyncFunctionBody `}`
+        `async` `function` `(` FormalParameters `)` `{` AsyncFunctionBody `}`
 
-      GeneratorExpression : `function` `*` BindingIdentifier? `(` FormalParameters `)` `{` GeneratorBody `}`
+      AsyncFunctionExpression :
+        `async` `function` BindingIdentifier? `(` FormalParameters `)` `{` AsyncFunctionBody `}`
     </emu-grammar>
     <emu-alg>
       1. Return *false*.
@@ -176,50 +161,29 @@
       <p>Static semantic rules that depend upon substructure generally do not look into function definitions.</p>
     </emu-note>
 
-    <emu-grammar>
-      AsyncMethod : `async` ClassElementName `(` UniqueFormalParameters `)` `{` AsyncFunctionBody `}`
-    </emu-grammar>
+    <emu-grammar>ClassTail : ClassHeritage? `{` ClassBody `}`</emu-grammar>
     <emu-alg>
-      1. Return ContainsAwait of |ClassElementName|.
+      1. If |ClassHeritage| is present, then
+        1. If ContainsAwait for |ClassHeritage| is *true*, return *true*.
+      1. Return the result of ComputedPropertyContainsAwait for |ClassBody|.
     </emu-alg>
     <emu-note>
-      <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |ClassElementName|s.</p>
+      <p>Static semantic rules that depend upon substructure generally do not look into class bodies except for |PropertyName|s.</p>
     </emu-note>
 
     <emu-grammar>
-      AsyncFunctionDeclaration : `async` `function` BindingIdentifier `(` FormalParameters `)` `{` AsyncFunctionBody `}`
+      ArrowFunction : ArrowParameters `=>` ConciseBody
 
-      AsyncFunctionDeclaration : `async` `function` `(` FormalParameters `)` `{` AsyncFunctionBody `}`
-
-      AsyncFunctionExpression : `async` `function` `(` FormalParameters `)` `{` AsyncFunctionBody `}`
-
-      AsyncFunctionExpression : `async` `function` BindingIdentifier `(` FormalParameters `)` `{` AsyncFunctionBody `}`
+      AsyncArrowFunction :
+        `async` AsyncArrowBindingIdentifier `=>` AsyncConciseBody
+        CoverCallExpressionAndAsyncArrowHead `=>` AsyncConciseBody
     </emu-grammar>
     <emu-alg>
       1. Return *false*.
     </emu-alg>
     <emu-note>
-      <p>Static semantic rules that depend upon substructure generally do not look into function definitions.</p>
+      <p>Static semantic rules that depend upon substructure containing `await` do not need to look into arrow functions.</p>
     </emu-note>
-
-    <emu-grammar>ArrowFunction : ArrowParameters `=>` ConciseBody</emu-grammar>
-    <emu-alg>
-      1. Return *false*.
-    </emu-alg>
-
-    <emu-grammar>
-      AsyncArrowFunction : `async` AsyncArrowBindingIdentifier `=>` AsyncConciseBody
-    </emu-grammar>
-    <emu-alg>
-      1. Return *false*.
-    </emu-alg>
-
-    <emu-grammar>
-      AsyncArrowFunction : CoverCallExpressionAndAsyncArrowHead `=>` AsyncConciseBody
-    </emu-grammar>
-    <emu-alg>
-      1. Return *false*.
-    </emu-alg>
 
     <emu-grammar>
       UnaryExpression : AwaitExpression
@@ -237,6 +201,62 @@
     </emu-grammar>
     <emu-alg>
       1. Return *true*.
+    </emu-alg>
+    </ins>
+  </emu-clause>
+
+  <emu-clause id="sec-static-semantics-computedpropertycontainsawait" type="sdo" aoid="ComputedPropertyContainsAwait">
+    <h1><ins>Static Semantics: ComputedPropertyContainsAwait</ins></h1>
+    <ins class="block">
+    <emu-grammar>
+      ClassElementName : PrivateIdentifier
+
+      PropertyName : LiteralPropertyName
+    </emu-grammar>
+    <emu-alg>
+      1. Return *false*.
+    </emu-alg>
+    <emu-grammar>PropertyName : ComputedPropertyName</emu-grammar>
+    <emu-alg>
+      1. Return the result of ComputedPropertyContainsAwait for |ComputedPropertyName|.
+    </emu-alg>
+    <emu-grammar>
+      MethodDefinition :
+        ClassElementName `(` UniqueFormalParameters `)` `{` FunctionBody `}`
+        `get` ClassElementName `(` `)` `{` FunctionBody `}`
+        `set` ClassElementName `(` PropertySetParameterList `)` `{` FunctionBody `}`
+    </emu-grammar>
+    <emu-alg>
+      1. Return the result of ComputedPropertyContainsAwait for |ClassElementName|.
+    </emu-alg>
+    <emu-grammar>GeneratorMethod : `*` ClassElementName `(` UniqueFormalParameters `)` `{` GeneratorBody `}`</emu-grammar>
+    <emu-alg>
+      1. Return the result of ComputedPropertyContainsAwait for |ClassElementName|.
+    </emu-alg>
+    <emu-grammar>AsyncGeneratorMethod : `async` `*` ClassElementName `(` UniqueFormalParameters `)` `{` AsyncGeneratorBody `}`</emu-grammar>
+    <emu-alg>
+      1. Return the result of ComputedPropertyContainsAwait for |ClassElementName|.
+    </emu-alg>
+    <emu-grammar>ClassElementList : ClassElementList ClassElement</emu-grammar>
+    <emu-alg>
+      1. Let ComputedPropertyContainsAwait for |ClassElementList| is *true*, return *true*.
+      1. Return the result of ComputedPropertyContainsAwait for |ClassElement|.
+    </emu-alg>
+    <emu-grammar>ClassElement : `;`</emu-grammar>
+    <emu-alg>
+      1. Return *false*.
+    </emu-alg>
+    <emu-grammar>
+      AsyncMethod : `async` ClassElementName `(` UniqueFormalParameters `)` `{` AsyncFunctionBody `}`
+    </emu-grammar>
+    <emu-alg>
+      1. Return the result of ComputedPropertyContainsAwait for |ClassElementName|.
+    </emu-alg>
+    <emu-grammar>
+      FieldDefinition : ClassElementName Initializer?
+    </emu-grammar>
+    <emu-alg>
+      1. Return the result of ComputedPropertyContainsAwait for |ClassElementName|.
     </emu-alg>
     </ins>
   </emu-clause>
