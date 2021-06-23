@@ -1,0 +1,182 @@
+<emu-clause id="sec-static-semantics-containsundefinedcontinuetarget" oldids="sec-statement-semantics-static-semantics-containsundefinedcontinuetarget,sec-block-static-semantics-containsundefinedcontinuetarget,sec-if-statement-static-semantics-containsundefinedcontinuetarget,sec-do-while-statement-static-semantics-containsundefinedcontinuetarget,sec-while-statement-static-semantics-containsundefinedcontinuetarget,sec-for-statement-static-semantics-containsundefinedcontinuetarget,sec-for-in-and-for-of-statements-static-semantics-containsundefinedcontinuetarget,sec-continue-statement-static-semantics-containsundefinedcontinuetarget,sec-with-statement-static-semantics-containsundefinedcontinuetarget,sec-switch-statement-static-semantics-containsundefinedcontinuetarget,sec-labelled-statements-static-semantics-containsundefinedcontinuetarget,sec-try-statement-static-semantics-containsundefinedcontinuetarget,sec-function-definitions-static-semantics-containsundefinedcontinuetarget,sec-module-semantics-static-semantics-containsundefinedcontinuetarget" type="sdo" aoid="ContainsUndefinedContinueTarget">
+  <h1>Static Semantics: ContainsUndefinedContinueTarget</h1>
+  <p>With parameters _iterationSet_ and _labelSet_.</p>
+  <emu-grammar>
+    Statement :
+      VariableStatement
+      EmptyStatement
+      ExpressionStatement
+      BreakStatement
+      ReturnStatement
+      ThrowStatement
+      DebuggerStatement
+
+    Block : `{` `}`
+
+    StatementListItem : Declaration
+  </emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>BreakableStatement : IterationStatement</emu-grammar>
+  <emu-alg>
+    1. Let _newIterationSet_ be a copy of _iterationSet_ with all the elements of _labelSet_ appended.
+    1. Return ContainsUndefinedContinueTarget of |IterationStatement| with arguments _newIterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>StatementList : StatementList StatementListItem</emu-grammar>
+  <emu-alg>
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |StatementList| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Return ContainsUndefinedContinueTarget of |StatementListItem| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>IfStatement : `if` `(` Expression `)` Statement `else` Statement</emu-grammar>
+  <emu-alg>
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of the first |Statement| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Return ContainsUndefinedContinueTarget of the second |Statement| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>IfStatement : `if` `(` Expression `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Return ContainsUndefinedContinueTarget of |Statement| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>DoWhileStatement : `do` Statement `while` `(` Expression `)` `;`</emu-grammar>
+  <emu-alg>
+    1. Return ContainsUndefinedContinueTarget of |Statement| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>WhileStatement : `while` `(` Expression `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Return ContainsUndefinedContinueTarget of |Statement| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>
+    ForStatement :
+      `for` `(` Expression? `;` Expression? `;` Expression? `)` Statement
+      `for` `(` `var` VariableDeclarationList `;` Expression? `;` Expression? `)` Statement
+      `for` `(` LexicalDeclaration Expression? `;` Expression? `)` Statement
+  </emu-grammar>
+  <emu-alg>
+    1. Return ContainsUndefinedContinueTarget of |Statement| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>
+    ForInOfStatement :
+      `for` `(` LeftHandSideExpression `in` Expression `)` Statement
+      `for` `(` `var` ForBinding `in` Expression `)` Statement
+      `for` `(` ForDeclaration `in` Expression `)` Statement
+      `for` `(` LeftHandSideExpression `of` AssignmentExpression `)` Statement
+      `for` `(` `var` ForBinding `of` AssignmentExpression `)` Statement
+      `for` `(` ForDeclaration `of` AssignmentExpression `)` Statement
+      `for` `await` `(` LeftHandSideExpression `of` AssignmentExpression `)` Statement
+      `for` `await` `(` `var` ForBinding `of` AssignmentExpression `)` Statement
+      `for` `await` `(` ForDeclaration `of` AssignmentExpression `)` Statement
+  </emu-grammar>
+  <emu-alg>
+    1. Return ContainsUndefinedContinueTarget of |Statement| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-note>
+    <p>This section is extended by Annex <emu-xref href="#sec-initializers-in-forin-statement-heads"></emu-xref>.</p>
+  </emu-note>
+  <emu-grammar>ContinueStatement : `continue` `;`</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>ContinueStatement : `continue` LabelIdentifier `;`</emu-grammar>
+  <emu-alg>
+    1. If the StringValue of |LabelIdentifier| is not an element of _iterationSet_, return *true*.
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>WithStatement : `with` `(` Expression `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Return ContainsUndefinedContinueTarget of |Statement| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>SwitchStatement : `switch` `(` Expression `)` CaseBlock</emu-grammar>
+  <emu-alg>
+    1. Return ContainsUndefinedContinueTarget of |CaseBlock| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>CaseBlock : `{` `}`</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>CaseBlock : `{` CaseClauses? DefaultClause CaseClauses? `}`</emu-grammar>
+  <emu-alg>
+    1. If the first |CaseClauses| is present, then
+      1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of the first |CaseClauses| with arguments _iterationSet_ and &laquo; &raquo;.
+      1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |DefaultClause| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. If the second |CaseClauses| is not present, return *false*.
+    1. Return ContainsUndefinedContinueTarget of the second |CaseClauses| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>CaseClauses : CaseClauses CaseClause</emu-grammar>
+  <emu-alg>
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |CaseClauses| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Return ContainsUndefinedContinueTarget of |CaseClause| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>CaseClause : `case` Expression `:` StatementList?</emu-grammar>
+  <emu-alg>
+    1. If the |StatementList| is present, return ContainsUndefinedContinueTarget of |StatementList| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>DefaultClause : `default` `:` StatementList?</emu-grammar>
+  <emu-alg>
+    1. If the |StatementList| is present, return ContainsUndefinedContinueTarget of |StatementList| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>LabelledStatement : LabelIdentifier `:` LabelledItem</emu-grammar>
+  <emu-alg>
+    1. Let _label_ be the StringValue of |LabelIdentifier|.
+    1. Let _newLabelSet_ be a copy of _labelSet_ with _label_ appended.
+    1. Return ContainsUndefinedContinueTarget of |LabelledItem| with arguments _iterationSet_ and _newLabelSet_.
+  </emu-alg>
+  <emu-grammar>LabelledItem : FunctionDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <emu-grammar>TryStatement : `try` Block Catch</emu-grammar>
+  <emu-alg>
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |Block| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Return ContainsUndefinedContinueTarget of |Catch| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>TryStatement : `try` Block Finally</emu-grammar>
+  <emu-alg>
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |Block| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Return ContainsUndefinedContinueTarget of |Finally| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>TryStatement : `try` Block Catch Finally</emu-grammar>
+  <emu-alg>
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |Block| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |Catch| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Return ContainsUndefinedContinueTarget of |Finally| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>Catch : `catch` `(` CatchParameter `)` Block</emu-grammar>
+  <emu-alg>
+    1. Return ContainsUndefinedContinueTarget of |Block| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>FunctionStatementList : [empty]</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  <ins class="block">
+  <emu-grammar>ClassStaticBlockStatementList: [empty]</emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+  </ins>
+  <emu-grammar>ModuleItemList : ModuleItemList ModuleItem</emu-grammar>
+  <emu-alg>
+    1. Let _hasUndefinedLabels_ be ContainsUndefinedContinueTarget of |ModuleItemList| with arguments _iterationSet_ and &laquo; &raquo;.
+    1. If _hasUndefinedLabels_ is *true*, return *true*.
+    1. Return ContainsUndefinedContinueTarget of |ModuleItem| with arguments _iterationSet_ and &laquo; &raquo;.
+  </emu-alg>
+  <emu-grammar>
+    ModuleItem :
+      ImportDeclaration
+      ExportDeclaration
+  </emu-grammar>
+  <emu-alg>
+    1. Return *false*.
+  </emu-alg>
+</emu-clause>

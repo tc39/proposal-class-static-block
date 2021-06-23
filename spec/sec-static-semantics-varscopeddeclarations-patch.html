@@ -1,0 +1,216 @@
+<emu-clause id="sec-static-semantics-varscopeddeclarations" oldids="sec-statement-semantics-static-semantics-varscopeddeclarations,sec-block-static-semantics-varscopeddeclarations,sec-variable-statement-static-semantics-varscopeddeclarations,sec-if-statement-static-semantics-varscopeddeclarations,sec-do-while-statement-static-semantics-varscopeddeclarations,sec-while-statement-static-semantics-varscopeddeclarations,sec-for-statement-static-semantics-varscopeddeclarations,sec-for-in-and-for-of-statements-static-semantics-varscopeddeclarations,sec-with-statement-static-semantics-varscopeddeclarations,sec-switch-statement-static-semantics-varscopeddeclarations,sec-labelled-statements-static-semantics-varscopeddeclarations,sec-try-statement-static-semantics-varscopeddeclarations,sec-function-definitions-static-semantics-varscopeddeclarations,sec-arrow-function-definitions-static-semantics-varscopeddeclarations,sec-async-arrow-function-definitions-static-semantics-VarScopedDeclarations,sec-scripts-static-semantics-varscopeddeclarations,sec-module-semantics-static-semantics-varscopeddeclarations" type="sdo" aoid="VarScopedDeclarations">
+  <h1>Static Semantics: VarScopedDeclarations</h1>
+  <emu-grammar>
+    Statement :
+      EmptyStatement
+      ExpressionStatement
+      ContinueStatement
+      BreakStatement
+      ReturnStatement
+      ThrowStatement
+      DebuggerStatement
+  </emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>Block : `{` `}`</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>StatementList : StatementList StatementListItem</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of |StatementList|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |StatementListItem|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>StatementListItem : Declaration</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>VariableDeclarationList : VariableDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return a List whose sole element is |VariableDeclaration|.
+  </emu-alg>
+  <emu-grammar>VariableDeclarationList : VariableDeclarationList `,` VariableDeclaration</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of |VariableDeclarationList|.
+    1. Append |VariableDeclaration| to _declarations_.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>IfStatement : `if` `(` Expression `)` Statement `else` Statement</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of the first |Statement|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of the second |Statement|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>IfStatement : `if` `(` Expression `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |Statement|.
+  </emu-alg>
+  <emu-grammar>DoWhileStatement : `do` Statement `while` `(` Expression `)` `;`</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |Statement|.
+  </emu-alg>
+  <emu-grammar>WhileStatement : `while` `(` Expression `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |Statement|.
+  </emu-alg>
+  <emu-grammar>ForStatement : `for` `(` Expression? `;` Expression? `;` Expression? `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |Statement|.
+  </emu-alg>
+  <emu-grammar>ForStatement : `for` `(` `var` VariableDeclarationList `;` Expression? `;` Expression? `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of |VariableDeclarationList|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |Statement|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>ForStatement : `for` `(` LexicalDeclaration Expression? `;` Expression? `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |Statement|.
+  </emu-alg>
+  <emu-grammar>
+    ForInOfStatement :
+      `for` `(` LeftHandSideExpression `in` Expression `)` Statement
+      `for` `(` ForDeclaration `in` Expression `)` Statement
+      `for` `(` LeftHandSideExpression `of` AssignmentExpression `)` Statement
+      `for` `(` ForDeclaration `of` AssignmentExpression `)` Statement
+      `for` `await` `(` LeftHandSideExpression `of` AssignmentExpression `)` Statement
+      `for` `await` `(` ForDeclaration `of` AssignmentExpression `)` Statement
+  </emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |Statement|.
+  </emu-alg>
+  <emu-grammar>
+    ForInOfStatement :
+      `for` `(` `var` ForBinding `in` Expression `)` Statement
+      `for` `(` `var` ForBinding `of` AssignmentExpression `)` Statement
+      `for` `await` `(` `var` ForBinding `of` AssignmentExpression `)` Statement
+  </emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be a List whose sole element is |ForBinding|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |Statement|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-note>
+    <p>This section is extended by Annex <emu-xref href="#sec-initializers-in-forin-statement-heads"></emu-xref>.</p>
+  </emu-note>
+  <emu-grammar>WithStatement : `with` `(` Expression `)` Statement</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |Statement|.
+  </emu-alg>
+  <emu-grammar>SwitchStatement : `switch` `(` Expression `)` CaseBlock</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |CaseBlock|.
+  </emu-alg>
+  <emu-grammar>CaseBlock : `{` `}`</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>CaseBlock : `{` CaseClauses? DefaultClause CaseClauses? `}`</emu-grammar>
+  <emu-alg>
+    1. If the first |CaseClauses| is present, let _declarations_ be the VarScopedDeclarations of the first |CaseClauses|.
+    1. Else, let _declarations_ be a new empty List.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |DefaultClause|.
+    1. If the second |CaseClauses| is not present, return _declarations_.
+    1. Return the result of appending to _declarations_ the elements of the VarScopedDeclarations of the second |CaseClauses|.
+  </emu-alg>
+  <emu-grammar>CaseClauses : CaseClauses CaseClause</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of |CaseClauses|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |CaseClause|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>CaseClause : `case` Expression `:` StatementList?</emu-grammar>
+  <emu-alg>
+    1. If the |StatementList| is present, return the VarScopedDeclarations of |StatementList|.
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>DefaultClause : `default` `:` StatementList?</emu-grammar>
+  <emu-alg>
+    1. If the |StatementList| is present, return the VarScopedDeclarations of |StatementList|.
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>LabelledStatement : LabelIdentifier `:` LabelledItem</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |LabelledItem|.
+  </emu-alg>
+  <emu-grammar>LabelledItem : FunctionDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>TryStatement : `try` Block Catch</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of |Block|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |Catch|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>TryStatement : `try` Block Finally</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of |Block|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |Finally|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>TryStatement : `try` Block Catch Finally</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of |Block|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |Catch|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |Finally|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>Catch : `catch` `(` CatchParameter `)` Block</emu-grammar>
+  <emu-alg>
+    1. Return the VarScopedDeclarations of |Block|.
+  </emu-alg>
+  <emu-grammar>FunctionStatementList : [empty]</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>FunctionStatementList : StatementList</emu-grammar>
+  <emu-alg>
+    1. Return the TopLevelVarScopedDeclarations of |StatementList|.
+  </emu-alg>
+  <ins class="block">
+  <emu-grammar>ClassStaticBlockStatementList: [empty]</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>ClassStaticBlockStatementList: StatementList</emu-grammar>
+  <emu-alg>
+    1. Return the TopLevelVarScopedDeclarations of |StatementList|.
+  </emu-alg>
+  </ins>
+  <emu-grammar>ConciseBody : ExpressionBody</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>
+    AsyncConciseBody : ExpressionBody
+  </emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>ScriptBody : StatementList</emu-grammar>
+  <emu-alg>
+    1. Return TopLevelVarScopedDeclarations of |StatementList|.
+  </emu-alg>
+  <emu-grammar>Module : [empty]</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>ModuleItemList : ModuleItemList ModuleItem</emu-grammar>
+  <emu-alg>
+    1. Let _declarations_ be VarScopedDeclarations of |ModuleItemList|.
+    1. Append to _declarations_ the elements of the VarScopedDeclarations of |ModuleItem|.
+    1. Return _declarations_.
+  </emu-alg>
+  <emu-grammar>ModuleItem : ImportDeclaration</emu-grammar>
+  <emu-alg>
+    1. Return a new empty List.
+  </emu-alg>
+  <emu-grammar>ModuleItem : ExportDeclaration</emu-grammar>
+  <emu-alg>
+    1. If |ExportDeclaration| is `export` |VariableStatement|, return VarScopedDeclarations of |VariableStatement|.
+    1. Return a new empty List.
+  </emu-alg>
+</emu-clause>
