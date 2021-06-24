@@ -25,31 +25,31 @@
   <emu-clause id="sec-class-definitions-static-semantics-early-errors">
     <h1>Static Semantics: Early Errors</h1>
     <ins class="block">
-    <emu-grammar>ClassStaticBlockBody: ClassStaticBlockStatementList</emu-grammar>
+    <emu-grammar>ClassStaticBlockBody : ClassStaticBlockStatementList</emu-grammar>
     <ul>
       <li>
-        <p>It is a Syntax Error if the LexicallyDeclaredNames of |ClassStaticBlockStatementList| contains any duplicate entries.</p>
+        It is a Syntax Error if the LexicallyDeclaredNames of |ClassStaticBlockStatementList| contains any duplicate entries.
       </li>
       <li>
-        <p>It is a Syntax Error if any element of the LexicallyDeclaredNames of |ClassStaticBlockStatementList| also occurs in the VarDeclaredNames of |ClassStaticBlockStatementList|.</p>
+        It is a Syntax Error if any element of the LexicallyDeclaredNames of |ClassStaticBlockStatementList| also occurs in the VarDeclaredNames of |ClassStaticBlockStatementList|.
       </li>
       <li>
-        <p>It is a Syntax Error if ContainsDuplicateLabels of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</p>
+        It is a Syntax Error if ContainsDuplicateLabels of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.
       </li>
       <li>
-        <p>It is a Syntax Error if ContainsUndefinedBreakTarget of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.</p>
+        It is a Syntax Error if ContainsUndefinedBreakTarget of |ClassStaticBlockStatementList| with argument &laquo; &raquo; is *true*.
       </li>
       <li>
-        <p>It is a Syntax Error if ContainsUndefinedContinueTarget of |ClassStaticBlockStatementList| with arguments &laquo; &raquo; and &laquo; &raquo; is *true*.</p>
+        It is a Syntax Error if ContainsUndefinedContinueTarget of |ClassStaticBlockStatementList| with arguments &laquo; &raquo; and &laquo; &raquo; is *true*.
       </li>
       <li>
-        <p>It is a Syntax Error if ContainsArguments of |ClassStaticBlockStatementList| is *true*.</p>
+        It is a Syntax Error if ContainsArguments of |ClassStaticBlockStatementList| is *true*.
       </li>
       <li>
-        <p>It is a Syntax Error if |ClassStaticBlockStatementList| Contains |SuperCall| is *true*.</p>
+        It is a Syntax Error if |ClassStaticBlockStatementList| Contains |SuperCall| is *true*.
       </li>
       <li>
-        <p>It is a Syntax Error if ContainsAwait of |ClassStaticBlockStatementList| is *true*.</p>
+        It is a Syntax Error if ContainsAwait of |ClassStaticBlockStatementList| is *true*.
       </li>
     </ul>
     </ins>
@@ -110,6 +110,63 @@
     <emu-grammar>ClassElement : `;`</emu-grammar>
     <emu-alg>
       1. Return *false*.
+    </emu-alg>
+  </emu-clause>
+
+
+  <emu-clause id="sec-static-semantics-privateboundidentifiers" type="sdo" aoid="PrivateBoundIdentifiers">
+    <h1>Static Semantics: PrivateBoundIdentifiers</h1>
+    <emu-grammar>
+      FieldDefinition : ClassElementName Initializer?
+    </emu-grammar>
+    <emu-alg>
+      1. Return PrivateBoundIdentifiers of |ClassElementName|.
+    </emu-alg>
+
+    <emu-grammar>
+      ClassElementName : PrivateIdentifier
+    </emu-grammar>
+    <emu-alg>
+      1. Return a List whose sole element is the StringValue of |PrivateIdentifier|.
+    </emu-alg>
+
+    <emu-grammar>
+      ClassElementName : PropertyName
+      
+      <ins>ClassElement : ClassStaticBlock</ins>
+
+      ClassElement : `;`
+    </emu-grammar>
+    <emu-alg>
+      1. Return a new empty List.
+    </emu-alg>
+
+    <emu-grammar>
+      ClassElementList : ClassElementList ClassElement
+    </emu-grammar>
+    <emu-alg>
+      1. Let _names_ be PrivateBoundIdentifiers of |ClassElementList|.
+      1. Append to _names_ the elements of PrivateBoundIdentifiers of |ClassElement|.
+      1. Return _names_.
+    </emu-alg>
+
+    <emu-grammar>
+      MethodDefinition :
+        ClassElementName `(` UniqueFormalParameters `)` `{` FunctionBody `}`
+        `get` ClassElementName `(` `)` `{` FunctionBody `}`
+        `set` ClassElementName `(` PropertySetParameterList `)` `{` FunctionBody `}`
+
+      GeneratorMethod :
+        `*` ClassElementName `(` UniqueFormalParameters `)` `{` GeneratorBody `}`
+
+      AsyncMethod :
+        `async` ClassElementName `(` UniqueFormalParameters `)` `{` AsyncFunctionBody `}`
+
+      AsyncGeneratorMethod :
+        `async` `*` ClassElementName `(` UniqueFormalParameters `)` `{` AsyncGeneratorBody `}`
+    </emu-grammar>
+    <emu-alg>
+      1. Return PrivateBoundIdentifiers of |ClassElementName|.
     </emu-alg>
   </emu-clause>
 
@@ -218,7 +275,7 @@
     </emu-alg>
     <emu-grammar>PropertyName : ComputedPropertyName</emu-grammar>
     <emu-alg>
-      1. Return the result of ComputedPropertyContainsAwait for |ComputedPropertyName|.
+      1. Return the result of ContainsAwait for |ComputedPropertyName|.
     </emu-alg>
     <emu-grammar>
       MethodDefinition :
@@ -242,7 +299,11 @@
       1. Let ComputedPropertyContainsAwait for |ClassElementList| is *true*, return *true*.
       1. Return the result of ComputedPropertyContainsAwait for |ClassElement|.
     </emu-alg>
-    <emu-grammar>ClassElement : `;`</emu-grammar>
+    <emu-grammar>
+      ClassElement : ClassStaticBlock
+
+      ClassElement : `;`
+    </emu-grammar>
     <emu-alg>
       1. Return *false*.
     </emu-alg>
@@ -265,16 +326,29 @@
     <h1><ins>Runtime Semantics: ClassStaticBlockDefinitionEvaluation</ins></h1>
     <ins class="block">
     <p>With parameter _homeObject_.</p>
-    <emu-grammar>ClassStaticBlock: `static` `{` ClassStaticBlockBody `}`</emu-grammar>
+    <emu-grammar>ClassStaticBlock : `static` `{` ClassStaticBlockBody `}`</emu-grammar>
     <emu-alg>
       1. Let _lex_ be the running execution context's LexicalEnvironment.
       1. Let _privateScope_ be the running execution context's PrivateEnvironment.
       1. Let _sourceText_ be the empty sequence of Unicode code points.
-      1. Let _body_ be OrdinaryFunctionCreate(%Function.prototype%, _sourceText_, &laquo; &raquo;, |ClassStaticBlockBody|, ~non-lexical-this~, _lex_, _privateScope_).
-      1. Perform MakeMethod(_body_, _homeObject_).
-      1. Return the ClassStaticBlockDefinition Record { [[Body]]: _body_ }.
+      1. Let _formalParameters_ be an instance of the production <emu-grammar>FormalParameters : [empty]</emu-grammar>.
+      1. Let _bodyFunction_ be OrdinaryFunctionCreate(%Function.prototype%, _sourceText_, _formalParameters_, |ClassStaticBlockBody|, ~non-lexical-this~, _lex_, _privateScope_).
+      1. Perform MakeMethod(_bodyFunction_, _homeObject_).
+      1. Return the ClassStaticBlockDefinition Record { [[BodyFunction]]: _bodyFunction_ }.
     </emu-alg>
-    <emu-note>The function created for _body_ is never directly accessible to ECMAScript code.</emu-note>
+    <emu-note>The function created for _bodyFunction_ is never directly accessible to ECMAScript code.</emu-note>
+    </ins>
+  </emu-clause>
+
+  <emu-clause id="sec-runtime-semantics-evaluateclassstaticblockbody" type="sdo" aoid="EvaluateClassStaticBlockBody">
+    <h1><ins>Runtime Semantics: EvaluateClassStaticBlockBody</ins></h1>
+    <ins class="block">
+    <p>With parameter _functionObject_.</p>
+    <emu-grammar>ClassStaticBlockBody : ClassStaticBlockStatementList</emu-grammar>
+    <emu-alg>
+      1. Perform ? FunctionDeclarationInstantiation(_functionObject_, &laquo; &raquo;).
+      1. Return the result of evaluating |ClassStaticBlockStatementList|.
+    </emu-alg>
     </ins>
   </emu-clause>
 
@@ -301,7 +375,7 @@
     </emu-alg>
 
     <ins class="block">
-    <emu-grammar>ClassElement: ClassStaticBlock</emu-grammar>
+    <emu-grammar>ClassElement : ClassStaticBlock</emu-grammar>
     <emu-alg>
       1. Return ClassStaticBlockDefinitionEvaluation of |ClassStaticBlock| with argument _object_.
     </emu-alg>
@@ -425,5 +499,45 @@
       1. Set the running execution context's PrivateEnvironment to _outerPrivateEnvironment_.
       1. Return _F_.
     </emu-alg>
+  </emu-clause>
+
+  <emu-clause id="sec-class-definitions-runtime-semantics-evaluation">
+    <h1>Runtime Semantics: Evaluation</h1>
+    <emu-grammar>ClassDeclaration : `class` BindingIdentifier ClassTail</emu-grammar>
+    <emu-alg>
+      1. Perform ? BindingClassDeclarationEvaluation of this |ClassDeclaration|.
+      1. Return NormalCompletion(~empty~).
+    </emu-alg>
+    <emu-note>
+      <p><emu-grammar>ClassDeclaration : `class` ClassTail</emu-grammar> only occurs as part of an |ExportDeclaration| and is never directly evaluated.</p>
+    </emu-note>
+    <emu-grammar>ClassExpression : `class` ClassTail</emu-grammar>
+    <emu-alg>
+      1. Let _value_ be ? ClassDefinitionEvaluation of |ClassTail| with arguments *undefined* and *""*.
+      1. Set _value_.[[SourceText]] to the source text matched by |ClassExpression|.
+      1. Return _value_.
+    </emu-alg>
+    <emu-grammar>ClassExpression : `class` BindingIdentifier ClassTail</emu-grammar>
+    <emu-alg>
+      1. Let _className_ be StringValue of |BindingIdentifier|.
+      1. Let _value_ be ? ClassDefinitionEvaluation of |ClassTail| with arguments _className_ and _className_.
+      1. Set _value_.[[SourceText]] to the source text matched by |ClassExpression|.
+      1. Return _value_.
+    </emu-alg>
+    <emu-grammar>ClassElementName : PrivateIdentifier</emu-grammar>
+    <emu-alg>
+      1. Let _privateIdentifier_ be StringValue of |PrivateIdentifier|.
+      1. Let _privateEnvRec_ be the running execution context's PrivateEnvironment.
+      1. Let _names_ be _privateEnvRec_.[[Names]].
+      1. Assert: Exactly one element of _names_ is a Private Name whose [[Description]] is _privateIdentifier_.
+      1. Let _privateName_ be the Private Name in _names_ whose [[Description]] is _privateIdentifier_.
+      1. Return _privateName_.
+    </emu-alg>
+    <ins class="block">
+    <emu-grammar>ClassStaticBlockStatementList : [empty]</emu-grammar>
+    <emu-alg>
+      1. Return NormalCompletion(*undefined*).
+    </emu-alg>
+    </ins>
   </emu-clause>
 </emu-clause>

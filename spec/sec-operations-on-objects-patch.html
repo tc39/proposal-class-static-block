@@ -3,10 +3,11 @@
   <emu-clause id="sec-evaluatestaticblock" aoid="EvaluateStaticBlock">
     <h1><ins>EvaluateStaticBlock ( _receiver_ , _blockRecord_ )</ins></h1>
     <ins class="block">
+    <p>The abstract operation EvaluateStaticBlock takes arguments _receiver_ (an Object) and _blockRecord_ (a ClassStaticBlockDefinition Record). It performs the following steps when called:</p>
     <emu-alg>
       1. Assert: Type(_receiver_) is Object.
       1. Assert: _blockRecord_ is a ClassStaticBlockDefinition Record.
-      1. Perform ? Call(_blockRecord_.[[Body]], _receiver_).
+      1. Perform ? Call(_blockRecord_.[[BodyFunction]], _receiver_).
     </emu-alg>
     </ins>
   </emu-clause>
