@@ -1,0 +1,60 @@
+<emu-clause id="sec-runtime-semantics-evaluatebody" type="sdo" aoid="EvaluateBody">
+  <h1>Runtime Semantics: EvaluateBody</h1>
+  <p>With parameters _functionObject_ and _argumentsList_ (a List).</p>
+  <emu-grammar>FunctionBody : FunctionStatementList</emu-grammar>
+  <emu-alg>
+    1. Return ? EvaluateFunctionBody of |FunctionBody| with arguments _functionObject_ and _argumentsList_.
+  </emu-alg>
+  <emu-grammar>ConciseBody : ExpressionBody</emu-grammar>
+  <emu-alg>
+    1. Return ? EvaluateConciseBody of |ConciseBody| with arguments _functionObject_ and _argumentsList_.
+  </emu-alg>
+  <emu-grammar>GeneratorBody : FunctionBody</emu-grammar>
+  <emu-alg>
+    1. Return ? EvaluateGeneratorBody of |GeneratorBody| with arguments _functionObject_ and _argumentsList_.
+  </emu-alg>
+  <emu-grammar>
+    AsyncGeneratorBody : FunctionBody
+  </emu-grammar>
+  <emu-alg>
+    1. Return ? EvaluateAsyncGeneratorBody of |AsyncGeneratorBody| with arguments _functionObject_ and _argumentsList_.
+  </emu-alg>
+  <emu-grammar>
+    AsyncFunctionBody : FunctionBody
+  </emu-grammar>
+  <emu-alg>
+    1. Return ? EvaluateAsyncFunctionBody of |AsyncFunctionBody| with arguments _functionObject_ and _argumentsList_.
+  </emu-alg>
+  <emu-grammar>
+    AsyncConciseBody : ExpressionBody
+  </emu-grammar>
+  <emu-alg>
+    1. Return ? EvaluateAsyncConciseBody of |AsyncConciseBody| with arguments _functionObject_ and _argumentsList_.
+  </emu-alg>
+  <emu-grammar>
+    Initializer :
+      `=` AssignmentExpression
+  </emu-grammar>
+  <emu-alg>
+    1. Assert: _argumentsList_ is empty.
+    1. Assert: _functionObject_.[[ClassFieldInitializerName]] is not ~empty~.
+    1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true*, then
+      1. Let _value_ be NamedEvaluation of |Initializer| with argument _functionObject_.[[ClassFieldInitializerName]].
+    1. Else,
+      1. Let _rhs_ be the result of evaluating |AssignmentExpression|.
+      1. Let _value_ be ? GetValue(_rhs_).
+    1. Return Completion { [[Type]]: ~return~, [[Value]]: _value_, [[Target]]: ~empty~ }.
+  </emu-alg>
+  <emu-note>
+    <p>Even though field initializers constitute a function boundary, calling FunctionDeclarationInstantiation does not have any observable effect and so is omitted.</p>
+  </emu-note>
+  <ins class="block">
+  <emu-grammar>
+    ClassStaticBlockBody : ClassStaticBlockStatementList
+  </emu-grammar>
+  <emu-alg>
+    1. Assert: _argumentsList_ is empty.
+    1. Return ? EvaluateClassStaticBlockBody of |ClassStaticBlockBody| with argument _functionObject_.
+  </emu-alg>
+  </ins>
+</emu-clause>
