@@ -11,11 +11,11 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
           folder: docs
-          target_folder: pr/${{ github.event.number }}/
+          target-folder: pr/${{ github.event.number }}/
       - id: get-preview-url
         name: Get preview url
         run: echo "::set-output name=preview-url::https://tc39.es/$(basename $GITHUB_REPOSITORY)/pr/${{ github.event.number }}"
