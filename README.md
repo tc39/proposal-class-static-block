@@ -294,7 +294,9 @@ The following is a high-level list of tasks to progress through each stage of th
 ### Stage 2 Entrance Criteria
 
 * [x] [Initial specification text][Specification].  
-* [x] [Transpiler support][Transpiler] (_Optional_). Babel `v7.12.0`
+* [x] [Transpiler support][Transpiler] (_Optional_). 
+  * Babel `v7.12.0`
+  * TypeScript `v4.4 beta` ([TypeScript Playground](https://www.typescriptlang.org/play?ts=4.4.0-dev.20210628#code/DYUwLgBA5uAaCEAuCAKAxsgwgSggXgD4IA7AVwFsAjEAJwG4AoBtYAQwGd2JMIBvBiBADEAD3wQADI0HswrMAEs0fAYOhxxywhDQA6UdIgBfBieYB7Yu3Ohdwc1BQwwsFMRAB3bimy+6QA))
 
 ### Stage 3 Entrance Criteria
 
@@ -303,10 +305,14 @@ The following is a high-level list of tasks to progress through each stage of th
 * [x] The ECMAScript editor has [signed off][Stage3EditorSignOff] on the current spec text.  
 
 ### Stage 4 Entrance Criteria
-
+> For up-to-date information on Stage 4 criteria, check: [#48](https://github.com/tc39/proposal-class-static-block/issues/48)
 * [ ] [Test262](https://github.com/tc39/test262) acceptance tests have been written for mainline usage scenarios and [merged][Test262PullRequest].  
-* [ ] Two compatible implementations which pass the acceptance tests: [\[1\]][Implementation1], [\[2\]][Implementation2].  
-* [ ] A [pull request][Ecma262PullRequest] has been sent to tc39/ecma262 with the integrated spec text.  
+  * In Progress
+* [ ] Two compatible implementations which pass the acceptance tests: 
+  * [ ] [SpiderMonkey][Implementation1] — Partially shipping [behind a flag](https://github.com/tc39/proposal-class-static-block/issues/48#issuecomment-867967054), pending acceptance tests:  
+    ![SpiderMonkey Example](https://user-images.githubusercontent.com/3902892/123336344-9912f100-d4fa-11eb-949f-b3692d22cd21.png "Example showing class static blocks working in FireFox Nightly")
+  * [ ] [_Pending_][Implementation2]
+* [x] A [pull request][Ecma262PullRequest] has been sent to tc39/ecma262 with the integrated spec text.  
 * [ ] The ECMAScript editor has signed off on the [pull request][Ecma262PullRequest].  
 <!--#endregion:todo-->
 
@@ -317,11 +323,11 @@ The following is a high-level list of tasks to progress through each stage of th
 [Prose]: #motivations
 [Examples]: #examples
 [API]: #api
-[Specification]: https://tc39.es/proposal-class-static-block
+[Specification]: https://arai-a.github.io/ecma262-compare/?pr=2440
 [Transpiler]: #todo
 [Stage3ReviewerSignOff]: https://github.com/tc39/proposal-class-static-block/issues/23
 [Stage3EditorSignOff]: https://github.com/tc39/proposal-class-static-block/pull/31
-[Test262PullRequest]: #todo
-[Implementation1]: #todo
+[Test262PullRequest]: https://github.com/tc39/test262/pull/2968
+[Implementation1]: https://bugzilla.mozilla.org/show_bug.cgi?id=1712138
 [Implementation2]: #todo
 [Ecma262PullRequest]: #todo
