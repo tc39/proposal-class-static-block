@@ -10,10 +10,11 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          BRANCH: gh-pages
-          FOLDER: docs
-          CLEAN_EXCLUDE: |
+          branch: gh-pages
+          folder: docs
+          dry-run: true
+          clean-exclude: |
             pr
             
