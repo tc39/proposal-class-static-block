@@ -313,7 +313,7 @@ The following is a high-level list of tasks to progress through each stage of th
   * [x] [V8][Implementation2] — Shipping unflagged (at least as of 9.4.146):  \
     ![V8 Example](https://user-images.githubusercontent.com/3902892/129283096-45218040-2056-452b-8418-3f394b616174.png "Example showing class static blocks working in Chrome 9.4.146")
 * [x] A [pull request][Ecma262PullRequest] has been sent to tc39/ecma262 with the integrated spec text.  
-* [ ] The ECMAScript editor has signed off on the [pull request][Ecma262PullRequest].  
+* [x] The ECMAScript editor has signed off on the [pull request][Ecma262PullRequest].  
 <!--#endregion:todo-->
 
 [Process]: https://tc39.github.io/process-document/
