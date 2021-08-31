@@ -13,7 +13,7 @@ existing use cases and enable new use cases not currently handled by that propos
 <!--#region:status-->
 ## Status
 
-**Stage:** 3  
+**Stage:** 4  
 **Champion:** Ron Buckton (@rbuckton)  
 
 _For detailed status of this proposal see [TODO](#todo), below._  
